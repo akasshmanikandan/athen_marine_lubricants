@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+extracted_slides
+extracted_images
+setup_site.py
