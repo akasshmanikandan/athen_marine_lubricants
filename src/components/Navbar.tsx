@@ -15,7 +15,6 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on page transition
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
@@ -33,36 +32,53 @@ export const Navbar: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-[#051118]/95 backdrop-blur-md border-b border-emerald-900/40 shadow-xl shadow-black/40 py-3' 
-        : 'bg-gradient-to-b from-[#051118]/95 to-[#051118]/80 backdrop-blur-sm py-4 border-b border-slate-800/40'
+        ? 'bg-[#04121a]/95 backdrop-blur-md border-b border-emerald-900/40 shadow-xl shadow-black/40 py-2.5' 
+        : 'bg-[#051118]/90 backdrop-blur-sm py-3.5 border-b border-slate-800/40'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Dual Brand Logos: Athen Marine + Legero */}
-          <Link to="/" className="flex items-center gap-4 group">
-            <div className="bg-white/95 rounded-lg p-1.5 shadow-md flex items-center h-12 transition-transform duration-300 group-hover:scale-105">
+          {/* Brand Logo & Strategic Partners */}
+          <div className="flex items-center gap-4 sm:gap-6">
+            
+            {/* Athen Marine Logo */}
+            <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
               <img 
-                src="/assets/logo-athen.png" 
+                src="/assets/logo-athen-dark-theme.png" 
                 alt="Athen Marine" 
-                className="h-9 w-auto object-contain" 
+                className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
               />
-            </div>
-            
-            <div className="hidden sm:block h-7 w-[1px] bg-slate-700/60" />
-            
-            <div className="hidden sm:flex items-center gap-2 bg-slate-900/60 border border-slate-700/50 rounded-lg px-2.5 py-1">
-              <img 
-                src="/assets/logo-legero.png" 
-                alt="Legero International Group B.V." 
-                className="h-7 w-auto object-contain" 
-              />
-              <div className="text-[10px] leading-tight text-slate-300">
-                <span className="text-slate-400 block font-normal">Strategic Partner</span>
-                <span className="font-semibold text-emerald-400">Legero Group</span>
+            </Link>
+
+            {/* Strategic Partners Divider & Badges */}
+            <div className="hidden md:flex items-center gap-3 pl-4 border-l border-slate-700/60">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400">In Strategic Partnership:</span>
+              
+              <div className="flex items-center gap-3">
+                {/* Legero */}
+                <div className="flex items-center gap-1.5" title="Legero International Group B.V.">
+                  <img 
+                    src="/assets/logo-legero.png" 
+                    alt="Legero International Group" 
+                    className="h-6 w-auto object-contain filter brightness-110" 
+                  />
+                  <span className="text-[11px] font-semibold text-slate-300 hidden lg:inline">Legero Group</span>
+                </div>
+
+                <span className="text-slate-600">•</span>
+
+                {/* Eleven Energy */}
+                <div className="flex items-center gap-1.5" title="Eleven Energy">
+                  <img 
+                    src="/assets/logo-eleven-dark-theme.png" 
+                    alt="Eleven Energy" 
+                    className="h-4 w-auto object-contain" 
+                  />
+                </div>
               </div>
             </div>
-          </Link>
+
+          </div>
 
           {/* Desktop Nav Links */}
           <nav className="hidden xl:flex items-center gap-1">
@@ -83,15 +99,6 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          {/* Tablet Nav Links (condensed) */}
-          <nav className="hidden lg:flex xl:hidden items-center gap-1">
-            <NavLink to="/about" className="px-2 py-1 text-xs text-slate-300 hover:text-white">About</NavLink>
-            <NavLink to="/products" className="px-2 py-1 text-xs text-slate-300 hover:text-white">Products</NavLink>
-            <NavLink to="/network" className="px-2 py-1 text-xs text-slate-300 hover:text-white">Network</NavLink>
-            <NavLink to="/journey" className="px-2 py-1 text-xs text-slate-300 hover:text-white">Journey</NavLink>
-            <NavLink to="/leadership" className="px-2 py-1 text-xs text-slate-300 hover:text-white">Leadership</NavLink>
-          </nav>
-
           {/* Action Button */}
           <div className="hidden sm:flex items-center gap-3">
             <Link
@@ -104,7 +111,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <Link
               to="/contact"
               className="px-3 py-1.5 text-xs font-semibold text-slate-950 bg-emerald-400 rounded-md sm:hidden"
@@ -123,7 +130,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Dropdown */}
         {isOpen && (
-          <div className="lg:hidden mt-3 pt-3 pb-4 border-t border-slate-800 bg-[#091b24]/95 rounded-xl px-4 shadow-2xl backdrop-blur-lg animate-in fade-in slide-in-from-top-2">
+          <div className="xl:hidden mt-3 pt-3 pb-4 border-t border-slate-800 bg-[#091b24]/95 rounded-xl px-4 shadow-2xl backdrop-blur-lg animate-in fade-in slide-in-from-top-2">
             <div className="flex flex-col space-y-2">
               <NavLink
                 to="/"
@@ -142,13 +149,19 @@ export const Navbar: React.FC = () => {
                   <ChevronRight className="w-4 h-4 text-slate-500" />
                 </NavLink>
               ))}
-              <div className="pt-2 border-t border-slate-800">
+
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between px-2 text-xs text-slate-400">
+                <span>Strategic Partners:</span>
+                <span className="text-emerald-400 font-semibold">Legero • Eleven Energy</span>
+              </div>
+
+              <div className="pt-2">
                 <Link
                   to="/contact"
                   className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-slate-950 bg-emerald-400 rounded-lg"
                 >
                   <PhoneCall className="w-4 h-4" />
-                  <span>24/7 Bunkering Inquiry</span>
+                  <span>24/7 Port Bunkering RFQ</span>
                 </Link>
               </div>
             </div>
