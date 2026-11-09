@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUp, Anchor, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -20,12 +21,12 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg"
             >
               Get In Touch
-            </a>
+            </Link>
             <button
               onClick={scrollToTop}
               className="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 transition-colors"
@@ -67,27 +68,27 @@ export const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-bold uppercase tracking-wider mb-4">Navigation</h4>
+            <h4 className="text-white font-bold uppercase tracking-wider mb-4">Company Pages</h4>
             <ul className="space-y-2.5">
-              <li><a href="#about" className="hover:text-emerald-400 transition-colors">About Athen</a></li>
-              <li><a href="#vision" className="hover:text-emerald-400 transition-colors">Vision & Mission</a></li>
-              <li><a href="#expansion" className="hover:text-emerald-400 transition-colors">Expansion Waves</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors">Product Portfolio</a></li>
-              <li><a href="#network" className="hover:text-emerald-400 transition-colors">Global Port Network</a></li>
-              <li><a href="#journey" className="hover:text-emerald-400 transition-colors">Evolution Roadmap</a></li>
-              <li><a href="#leadership" className="hover:text-emerald-400 transition-colors">Leadership & Board</a></li>
+              <li><Link to="/about" className="hover:text-emerald-400 transition-colors">About Athen</Link></li>
+              <li><Link to="/vision" className="hover:text-emerald-400 transition-colors">Vision & Mission</Link></li>
+              <li><Link to="/expansion" className="hover:text-emerald-400 transition-colors">Expansion Waves</Link></li>
+              <li><Link to="/products" className="hover:text-emerald-400 transition-colors">Product Portfolio</Link></li>
+              <li><Link to="/network" className="hover:text-emerald-400 transition-colors">Global Port Network</Link></li>
+              <li><Link to="/journey" className="hover:text-emerald-400 transition-colors">Evolution Roadmap</Link></li>
+              <li><Link to="/leadership" className="hover:text-emerald-400 transition-colors">Leadership & Board</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-bold uppercase tracking-wider mb-4">Lubricant Ranges</h4>
             <ul className="space-y-2.5">
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors">Main Cylinder Grades</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors">System Oils</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors">Trunk Piston Oils (TPEO)</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors">Secondary & Hydraulics</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors">EAL Bio-Lubricants</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors">Marine Greases</a></li>
+              <li><Link to="/products" className="hover:text-emerald-400 transition-colors">Main Cylinder Grades</Link></li>
+              <li><Link to="/products" className="hover:text-emerald-400 transition-colors">System Oils</Link></li>
+              <li><Link to="/products" className="hover:text-emerald-400 transition-colors">Trunk Piston Oils (TPEO)</Link></li>
+              <li><Link to="/products" className="hover:text-emerald-400 transition-colors">Secondary & Hydraulics</Link></li>
+              <li><Link to="/products" className="hover:text-emerald-400 transition-colors">EAL Bio-Lubricants</Link></li>
+              <li><Link to="/products" className="hover:text-emerald-400 transition-colors">Marine Greases</Link></li>
             </ul>
           </div>
 

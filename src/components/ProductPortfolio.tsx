@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Check, Shield, FileText, ChevronRight, Sparkles, Filter, Info, QrCode } from 'lucide-react';
+import { Check, ChevronRight, Sparkles, QrCode, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { COMPANY_INFO, Product } from '../data/content';
 
 export const ProductPortfolio: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'all' | 'main' | 'secondary' | 'eal' | 'greases'>('all');
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Products' },
@@ -19,7 +19,7 @@ export const ProductPortfolio: React.FC = () => {
     : COMPANY_INFO.products.filter(p => p.category === activeTab);
 
   return (
-    <section id="products" className="py-24 bg-[#051118] relative">
+    <section id="products" className="py-20 bg-[#051118] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -37,7 +37,7 @@ export const ProductPortfolio: React.FC = () => {
             </p>
           </div>
 
-          {/* EU Badge & QR info */}
+          {/* EU Badge */}
           <div className="flex items-center gap-4 bg-[#0b212d] border border-emerald-800/40 rounded-2xl p-4">
             <div className="w-12 h-12 rounded-xl bg-blue-950/80 border border-blue-500/40 flex items-center justify-center font-extrabold text-blue-300 text-xs text-center leading-tight">
               MADE IN EU ★★★
@@ -49,18 +49,19 @@ export const ProductPortfolio: React.FC = () => {
           </div>
         </div>
 
-        {/* Featured Product Hero Card with Real Drum Image (Slide 9) */}
+        {/* Featured Product Hero Card with Cleanly Cut Transparent Drum */}
         <div className="bg-gradient-to-r from-[#071d27] via-[#0a2735] to-[#071d27] border border-emerald-500/30 rounded-3xl p-6 sm:p-10 mb-14 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* Drum Product Image */}
-            <div className="lg:col-span-5 flex justify-center relative">
-              <div className="relative">
-                <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-3xl transform scale-90" />
+            {/* Clean Drum Image (Properly transparent with no square white box) */}
+            <div className="lg:col-span-5 flex justify-center relative py-4">
+              <div className="relative flex items-center justify-center">
+                {/* Soft emerald backdrop halo */}
+                <div className="absolute w-72 h-72 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
                 <img 
                   src="/assets/product-barrel.png" 
                   alt="Athen Marine Lubricant Drum - Made in EU" 
-                  className="relative z-10 max-h-[380px] w-auto object-contain filter drop-shadow-[0_20px_25px_rgba(0,0,0,0.7)] hover:scale-105 transition-transform duration-500" 
+                  className="relative z-10 max-h-[380px] w-auto object-contain filter drop-shadow-[0_25px_30px_rgba(0,0,0,0.8)] hover:scale-105 transition-transform duration-500" 
                 />
               </div>
             </div>
@@ -99,16 +100,16 @@ export const ProductPortfolio: React.FC = () => {
               </div>
 
               <div className="pt-2 flex flex-wrap items-center gap-4">
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="px-5 py-3 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg flex items-center gap-2"
                 >
                   <span>Request Technical Data Sheets (TDS)</span>
                   <ChevronRight className="w-4 h-4" />
-                </a>
+                </Link>
 
-                <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <img src="/assets/qr-code.png" alt="Scan for TDS" className="w-9 h-9 rounded bg-white p-0.5" />
+                <div className="flex items-center gap-2 text-xs text-slate-300 bg-slate-900/70 px-3 py-2 rounded-xl border border-slate-800">
+                  <img src="/assets/qr-code.png" alt="Scan for TDS" className="w-8 h-8 rounded bg-white p-0.5" />
                   <span>Scan QR for instant technical specifications</span>
                 </div>
               </div>
@@ -182,13 +183,13 @@ export const ProductPortfolio: React.FC = () => {
                   ))}
                 </div>
 
-                <a
-                  href="#contact"
+                <Link
+                  to={`/contact?grade=${encodeURIComponent(product.name)}`}
                   className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-semibold bg-emerald-950/80 hover:bg-emerald-500 hover:text-slate-950 text-emerald-300 border border-emerald-800/50 transition-colors"
                 >
                   <span>Request Quote & Availability</span>
                   <ChevronRight className="w-3.5 h-3.5" />
-                </a>
+                </Link>
               </div>
             </div>
           ))}
