@@ -23,7 +23,7 @@ export const GrowthHighlights: React.FC = () => {
 
         {/* 4 Pillars Grid (Slide 10) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {COMPANY_INFO.expansionHighlights.map((item, index) => {
+          {(COMPANY_INFO.expansionHighlights || []).map((item, index) => {
             const icons = [Anchor, Factory, Ship, Layers];
             const Icon = icons[index % icons.length];
             return (

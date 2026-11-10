@@ -1,7 +1,7 @@
 export interface ProductFamily {
   id: string;
   name: string;
-  category: 'cylinder' | 'system' | 'trunk' | 'hydraulic' | 'gear' | 'synthetics' | 'eal' | 'greases';
+  category: string;
   subtitle: string;
   keyGrades: string;
   application: string;
@@ -25,6 +25,14 @@ export interface BoardMember {
   tag: string;
 }
 
+export interface TimelineMilestone {
+  period: string;
+  title: string;
+  subtitle: string;
+  points?: string[];
+  isHighlight?: boolean;
+}
+
 export const COMPANY_INFO = {
   name: 'Athen Marine',
   tagline: 'Intellectual Engineering. Delivering Trust.',
@@ -34,12 +42,6 @@ export const COMPANY_INFO = {
     { name: 'Eleven Energy', role: 'Marine Fuel & Bunkering Expertise', logo: '/assets/logo-eleven.png' },
   ],
   domain: 'www.athenmarine.com',
-  globalHubs: [
-    { city: 'Dubai', country: 'U.A.E. (Corporate HQ)', address: '1802, IFZA Towers, Dubai Silicon Oasis', phone: '+971 50 210 6852', email: 'support.uae@athenmarine.com' },
-    { city: 'Rotterdam', country: 'Europe', entity: 'Athen Marine EU BV', phone: '+31 10 2660890', email: 'orders@athenmarine.eu' },
-    { city: 'Singapore', country: 'Asia-Pacific', entity: 'Athen Marine Pte Ltd', phone: '+65 98332876', email: 'info@athenmarine.com' },
-    { city: 'Mumbai', country: 'India', entity: 'Athen Marine India Pvt Ltd', phone: '+91 9512349669', email: 'support.ind@athenmarine.com' },
-  ],
   heroStats: [
     { label: 'Countries Served', value: '20+' },
     { label: 'Ports Covered', value: '200+' },
@@ -48,25 +50,134 @@ export const COMPANY_INFO = {
     { label: 'Direct & In-Direct Team', value: '100+' },
     { label: 'On-Demand Dispatch', value: '24/7' },
   ],
+  vision: {
+    title: "Where we're headed",
+    statement: "To become the most trusted international marine lubricant brand.",
+    pillars: [
+      "Technical Excellence in marine lubrication and condition monitoring",
+      "Dependable Supply across global trading lanes and bunkering hubs",
+      "Customer Relationships that go far beyond transactional products"
+    ]
+  },
+  mission: {
+    title: "Why we exist",
+    statement: "To Empower the Global Maritime through reliable lubrication solutions.",
+    deliverables: [
+      { title: "Assurance", desc: "Rigorous ISO testing, lab Certificate of Analysis (CoA), and OEM compliance." },
+      { title: "Expertise", desc: "Decades of combined technical, chemical, and marine engineering pedigree." },
+      { title: "Dependable Support", desc: "Seamless port logistics and bunker barge delivery across every port and voyage." }
+    ]
+  },
+  values: [
+    {
+      name: "Agility",
+      quote: "We adapt and execute with speed",
+      desc: "Fast responses for critical vessel orders, emergency port deliveries, and rapid custom technical solutions."
+    },
+    {
+      name: "Growth",
+      quote: "Ambitious, driven and continuously raising the bar",
+      desc: "Constantly expanding our port footprint, testing new eco-friendly formulations, and investing in our maritime partners."
+    },
+    {
+      name: "Trust",
+      quote: "We do what we say with integrity",
+      desc: "Uncompromising honesty, transparent communication, and 100% adherence to international OEM standards."
+    },
+    {
+      name: "Partnership",
+      quote: "We build lasting relationships through trust, responsiveness and shared growth",
+      desc: "We work alongside fleet operators as long-term allies in vessel longevity and carbon efficiency."
+    }
+  ],
+  expansionHighlights: [
+    {
+      title: "Strategic Partnership with LEGERO & Eleven Energy",
+      subtitle: "Together for sustainable growth and innovation",
+      desc: "Backed by Legero International Group B.V. for worldwide spare parts and freight logistics, alongside Eleven Energy's marine fuel trading and bunkering prowess.",
+      badge: "Logistics Backbone"
+    },
+    {
+      title: "Blending in GREECE",
+      subtitle: "EU blended products across EU ports",
+      desc: "State-of-the-art European blending facility producing certified marine lubricants conforming to strict EU environmental and chemical standards for Mediterranean and North European vessels.",
+      badge: "Made in EU"
+    },
+    {
+      title: "ROTTERDAM Barge",
+      subtitle: "Seamless ARA region and EU deliveries in partnership with Legero",
+      desc: "Dedicated marine barge delivery capability directly servicing the Amsterdam-Rotterdam-Antwerp (ARA) mega-port hub, providing on-time bunkering and bulk transfers.",
+      badge: "ARA Hub Dedicated"
+    },
+    {
+      title: "Blending in INDIA",
+      subtitle: "Athen products available across all ports in India and neighboring countries",
+      desc: "High-capacity blending and distribution infrastructure covering the Indian subcontinent, Sri Lanka, and Indian Ocean trade routes with ultra-fast turnaround.",
+      badge: "Indian Ocean Gateway"
+    }
+  ],
+  evolution: [
+    {
+      period: "2020",
+      title: "The Beginning",
+      subtitle: "Athen Marine is born",
+      points: ["Founded with a vision to bring intellectual engineering and customer centricity to marine lubrication."]
+    },
+    {
+      period: "2021-22",
+      title: "Building Credibility",
+      subtitle: "Secured first OE approvals",
+      points: ["Rigorous testing and benchmark field trials with major original equipment engine manufacturers."]
+    },
+    {
+      period: "2023-24",
+      title: "Complete Portfolio Launch",
+      subtitle: "Introduced full range of marine lubricant solutions",
+      points: ["Launched Main Grades, Secondary Grades, EAL Bio-lubricants, and Heavy-duty Marine Greases."]
+    },
+    {
+      period: "2025-26",
+      title: "Scaling Globally",
+      subtitle: "5,000+ vessels serviced across 500+ ports",
+      points: [
+        "Strategic Partnerships sealed with Legero International Group and Eleven Energy.",
+        "Expansion of Rotterdam barge delivery and dual blending hubs in Greece and India."
+      ],
+      isHighlight: true
+    },
+    {
+      period: "2027-28",
+      title: "Industry Recognition",
+      subtitle: "100% OEM approved product portfolio",
+      points: ["Port coverage scaling to 800+ international maritime ports across 6 continents."]
+    },
+    {
+      period: "By 2030",
+      title: "A Global Force",
+      subtitle: "10% of Global Merchant Fleet powered by Athen",
+      points: ["Leading the industry in green shipping formulations, bio-lubricants, and digitized port bunkering."],
+      isHighlight: true
+    }
+  ],
   whyChooseUs: [
     {
       title: 'Technical Expertise',
-      desc: 'Engineering driven solutions that support optimal vessel performance.',
+      desc: 'Engineering driven solutions that support optimal vessel performance and reduced lifecycle wear.',
       icon: 'Shield'
     },
     {
       title: 'Reliable Supply',
-      desc: 'Consistent product availability across major global ports.',
+      desc: 'Consistent product availability across global bunkering hubs with fast barge and shore turnaround.',
       icon: 'Anchor'
     },
     {
       title: 'Personalized Support',
-      desc: 'Responsive, human connect to vessel superintendents and fleet managers.',
+      desc: 'Responsive, human connect to customer needs with round-the-clock technical superintendent access.',
       icon: 'HeartHandshake'
     },
     {
       title: 'Trusted Partnership',
-      desc: 'We work alongside our customers to create long-term maritime value.',
+      desc: 'We work alongside our customers to create long-term value, predictive drain intervals, and reduced TCO.',
       icon: 'Award'
     }
   ],
@@ -243,6 +354,12 @@ export const COMPANY_INFO = {
       bio: 'A veteran of the marine lubricants industry with nearly three decades of experience, Santosh Menon leads Athen Marine as Chief Executive Officer. His career spans technical, sales, and general management roles at Castrol India, Reliance Industries, and Total Lubricants, followed by his tenure at Gulf Oil Marine, where he rose to Operations Head for the Middle East and South Asia. Under his direction, Athen Marine, formed in Dubai, is building a respected global lubricants brand grounded in technical expertise and dependable supply.',
       image: '/assets/santosh-menon-clean.jpg'
     }
+  ],
+  globalHubs: [
+    { city: 'Dubai', country: 'U.A.E. (Corporate HQ)', address: '1802, IFZA Towers, Dubai Silicon Oasis', phone: '+971 50 210 6852', email: 'support.uae@athenmarine.com' },
+    { city: 'Rotterdam', country: 'Europe', entity: 'Athen Marine EU BV', phone: '+31 10 2660890', email: 'orders@athenmarine.eu' },
+    { city: 'Singapore', country: 'Asia-Pacific', entity: 'Athen Marine Pte Ltd', phone: '+65 98332876', email: 'info@athenmarine.com' },
+    { city: 'Mumbai', country: 'India', entity: 'Athen Marine India Pvt Ltd', phone: '+91 9512349669', email: 'support.ind@athenmarine.com' },
   ],
   ports: [
     { name: 'Rotterdam', country: 'Netherlands', region: 'Europe & ARA', lat: 51.92, lng: 4.47, note: 'Dedicated Athen Marine Bunker Barge & EU Warehouse Hub' },

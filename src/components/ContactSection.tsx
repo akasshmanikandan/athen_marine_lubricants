@@ -41,7 +41,7 @@ export const ContactSection: React.FC = () => {
 
         {/* Global Hubs Grid (Direct from Official Brochure Page 12) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {COMPANY_INFO.globalHubs.map((hub, i) => (
+          {(COMPANY_INFO.globalHubs || []).map((hub, i) => (
             <div key={i} className="bg-[#0b212d] border border-emerald-900/50 rounded-2xl p-6 flex flex-col justify-between">
               <div>
                 <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider block mb-1">

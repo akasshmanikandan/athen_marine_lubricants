@@ -23,7 +23,7 @@ export const EvolutionTimeline: React.FC = () => {
           <div className="hidden lg:block absolute top-1/2 left-4 right-4 h-1 bg-gradient-to-r from-emerald-950 via-emerald-500 to-teal-400 -translate-y-8 z-0 opacity-40" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 relative z-10">
-            {COMPANY_INFO.evolution.map((step, idx) => (
+            {(COMPANY_INFO.evolution || []).map((step, idx) => (
               <div 
                 key={idx}
                 className={`bg-[#091d27] border ${

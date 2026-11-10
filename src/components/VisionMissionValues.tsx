@@ -38,7 +38,7 @@ export const VisionMissionValues: React.FC = () => {
                   Recognized Globally For:
                 </p>
                 <div className="space-y-3">
-                  {COMPANY_INFO.vision.pillars.map((pillar, i) => (
+                  {(COMPANY_INFO.vision?.pillars || []).map((pillar, i) => (
                     <div key={i} className="flex items-center gap-3 bg-slate-900/60 border border-slate-800 rounded-xl p-3.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-400" />
                       <span className="text-slate-200 text-sm font-medium">{pillar}</span>
@@ -77,7 +77,7 @@ export const VisionMissionValues: React.FC = () => {
                   Being a Trusted Partner That Delivers:
                 </p>
                 <div className="grid grid-cols-1 gap-3">
-                  {COMPANY_INFO.mission.deliverables.map((item, i) => (
+                  {(COMPANY_INFO.mission?.deliverables || []).map((item, i) => (
                     <div key={i} className="bg-slate-900/60 border border-slate-800 rounded-xl p-3.5">
                       <strong className="text-emerald-400 text-sm block mb-0.5">{item.title}</strong>
                       <span className="text-slate-300 text-xs">{item.desc}</span>
@@ -110,7 +110,7 @@ export const VisionMissionValues: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {COMPANY_INFO.values.map((val, idx) => {
+            {(COMPANY_INFO.values || []).map((val, idx) => {
               const icons = [Zap, TrendingUp, ShieldCheck, HeartHandshake];
               const IconComp = icons[idx % icons.length];
               return (

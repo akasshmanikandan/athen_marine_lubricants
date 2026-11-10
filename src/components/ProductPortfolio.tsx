@@ -216,7 +216,7 @@ export const ProductPortfolio: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {COMPANY_INFO.assureServices.map((svc) => (
+            {(COMPANY_INFO.assureServices || []).map((svc) => (
               <div key={svc.number} className="bg-slate-900/80 border border-emerald-900/50 rounded-2xl p-6 flex flex-col justify-between">
                 <div>
                   <div className="text-3xl font-black text-emerald-400 mb-3 font-mono">

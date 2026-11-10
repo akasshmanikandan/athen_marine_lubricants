@@ -22,7 +22,7 @@ export const LeadershipTeam: React.FC = () => {
 
         {/* Board Profiles Grid (From Pages 9, 10, 11 of Corporate Brochure) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {COMPANY_INFO.boardMembers.map((member, idx) => (
+          {(COMPANY_INFO.boardMembers || []).map((member, idx) => (
             <div 
               key={idx}
               className="bg-[#0b212d] border border-emerald-900/50 hover:border-emerald-500/60 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 shadow-xl transition-all duration-300 hover:-translate-y-1"

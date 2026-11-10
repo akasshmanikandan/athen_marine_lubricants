@@ -95,7 +95,7 @@ export const Hero: React.FC = () => {
 
         {/* Floating Quick Stats Bar */}
         <div className="mt-16 pt-8 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {COMPANY_INFO.heroStats.map((stat, i) => (
+          {(COMPANY_INFO.heroStats || []).map((stat, i) => (
             <div key={i} className="space-y-1">
               <div className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-baseline gap-1">
                 <span className="text-emerald-400">{stat.value}</span>
