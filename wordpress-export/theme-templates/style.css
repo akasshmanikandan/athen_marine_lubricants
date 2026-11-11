@@ -6105,3 +6105,11 @@ p.am-about-block__signature{
 	.am-dlv-dir{ position: static; width: auto; max-height: none; margin: 16px; }
 }
 .am-dlv-dir{ left: 24px; width: 262px; bottom: 20px; }
+
+/* Draggable directory card */
+@media (min-width: 901px){
+	.am-dlv-dir__title{ cursor: grab; user-select: none; touch-action: none; display: flex; align-items: center; gap: 10px; }
+	.am-dlv-dir__title::before{ content: "\2807"; font-size: 20px; line-height: 1; color: var(--grey); }
+	.am-dlv-dir.is-dragging{ box-shadow: 0 24px 60px rgba(0,0,0,0.32); }
+	.am-dlv-dir.is-dragging .am-dlv-dir__title{ cursor: grabbing; }
+}

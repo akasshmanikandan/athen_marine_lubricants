@@ -375,6 +375,67 @@
 				closeResults();
 			}
 		} );
+
+		/* Make the directory card draggable (grab the heading). Desktop only:
+		   on small screens the card sits below the map. */
+		var dir = document.querySelector( '.am-dlv-dir' );
+		var handle = dir ? dir.querySelector( '.am-dlv-dir__title' ) : null;
+		var stageEl = dir ? dir.parentElement : null;
+		var small = window.matchMedia ? window.matchMedia( '(max-width: 900px)' ) : { matches: false };
+
+		function clampDir() {
+			if ( ! dir || small.matches || dir.style.top === '' ) {
+				return;
+			}
+			var maxL = Math.max( 0, stageEl.clientWidth - dir.offsetWidth );
+			var maxT = Math.max( 0, stageEl.clientHeight - dir.offsetHeight );
+			dir.style.left = Math.min( Math.max( 0, parseFloat( dir.style.left ) ), maxL ) + 'px';
+			dir.style.top = Math.min( Math.max( 0, parseFloat( dir.style.top ) ), maxT ) + 'px';
+		}
+
+		if ( dir && handle && stageEl ) {
+			var dragging = false, startX = 0, startY = 0, startL = 0, startT = 0;
+
+			handle.addEventListener( 'pointerdown', function ( e ) {
+				if ( small.matches ) {
+					return;
+				}
+				dragging = true;
+				startX = e.clientX;
+				startY = e.clientY;
+				startL = dir.offsetLeft;
+				startT = dir.offsetTop;
+				dir.style.left = startL + 'px';
+				dir.style.top = startT + 'px';
+				dir.style.right = 'auto';
+				dir.style.bottom = 'auto';
+				dir.classList.add( 'is-dragging' );
+				handle.setPointerCapture( e.pointerId );
+				e.preventDefault();
+			} );
+			handle.addEventListener( 'pointermove', function ( e ) {
+				if ( ! dragging ) {
+					return;
+				}
+				dir.style.left = ( startL + e.clientX - startX ) + 'px';
+				dir.style.top = ( startT + e.clientY - startY ) + 'px';
+				clampDir();
+			} );
+			function endDrag() {
+				dragging = false;
+				dir.classList.remove( 'is-dragging' );
+			}
+			handle.addEventListener( 'pointerup', endDrag );
+			handle.addEventListener( 'pointercancel', endDrag );
+			/* Double-click the heading to snap back to the default corner. */
+			handle.addEventListener( 'dblclick', function () {
+				dir.style.left = dir.style.top = dir.style.right = dir.style.bottom = '';
+			} );
+			window.addEventListener( 'resize', clampDir );
+			listEl.addEventListener( 'click', function () {
+				window.setTimeout( clampDir, 0 );
+			} );
+		}
 	}
 
 	/* ---------------------------------------------------------------- */
