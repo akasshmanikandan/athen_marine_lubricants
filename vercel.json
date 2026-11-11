@@ -1,8 +1,20 @@
 {
-  "framework": "vite",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "framework": null,
+  "installCommand": null,
+  "buildCommand": null,
+  "outputDirectory": "site",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/service", "destination": "/services/", "permanent": true },
+    { "source": "/company", "destination": "/about-us/", "permanent": true },
+    { "source": "/service/delivery-network", "destination": "/delivery-network/", "permanent": true },
+    { "source": "/service/about-us", "destination": "/about-us/", "permanent": true },
+    { "source": "/service/services", "destination": "/services/", "permanent": true },
+    { "source": "/request-a-quote", "destination": "/request-quote/", "permanent": true },
+    { "source": "/product-catalog-3", "destination": "/product-catalog/", "permanent": true },
+    { "source": "/main-grades", "destination": "/products/#main-grades", "permanent": true },
+    { "source": "/secondaries", "destination": "/products/#secondary-grades", "permanent": true },
+    { "source": "/synthetics", "destination": "/products/#synthetics", "permanent": true },
+    { "source": "/grease", "destination": "/products/#greases", "permanent": true }
   ]
 }
