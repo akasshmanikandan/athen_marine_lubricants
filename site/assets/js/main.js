@@ -106,7 +106,6 @@
 		'China': [ 'Zhoushan', 'Shanghai', 'Dalian', 'Dongjiakou', 'Ghuangzaou Shipyard', 'Guangzou', 'Longkou', 'Mahzi', 'Shidongkou', 'Xiazhimen', 'Xinya Shipyard', 'Others' ],
 		'Curacao': [ 'Curacao', 'Others' ],
 		'Denmark': [ 'Skagen', 'Others' ],
-		'Egypt': [ 'Suez Canal', 'Port Said', 'Alexandria', 'Safaga' ],
 		'Gibraltar': [ 'Gibraltar', 'Others' ],
 		'Greece': [ 'Piraeus', 'Lavrio', 'Vatika', 'Chios', 'Kalamata', 'Others' ],
 		'Hong Kong': [ 'Hong Kong', 'Others' ],
@@ -132,40 +131,39 @@
 		'Vietnam': [ 'Ho Chi Minh', 'Others' ]
 	};
 
-	/* Pin positions as percentages — each pin sits at the geometric center
-	   of that country's own landmass as drawn in world-map.png (computed
-	   via border-bounded flood fill / local centroid, then snapped to the
-	   nearest solid land pixel), not at a specific port's coordinates. */
+	/* Pin positions as percentages of world-map.png (Mercator, 360 deg across
+	   the full width). Each pin tip sits at the real latitude/longitude of the
+	   country's main port or city (large multi-coast countries use their centre):
+	   left = (1200 + lon * 2400/360) / 2400, top = (1097.58 - 381.97 * ln(tan(pi/4 + lat/2))) / 1554. */
 	var COUNTRY_PINS = {
-		'Bangladesh': { left: 75.77, top: 60.50 },
-		'Brazil': { left: 35.25, top: 75.72 },
-		'China': { left: 78.87, top: 53.45 },
-		'Curacao': { left: 30.00, top: 62.55 },
-		'Denmark': { left: 54.17, top: 41.83 },
-		'Egypt': { left: 58.25, top: 59.06 },
-		'Gibraltar': { left: 48.50, top: 53.63 },
-		'Greece': { left: 56.83, top: 51.54 },
-		'Hong Kong': { left: 81.62, top: 60.45 },
-		'India': { left: 71.74, top: 60.75 },
-		'Indonesia': { left: 78.05, top: 71.60 },
-		'Malaysia': { left: 77.79, top: 67.56 },
-		'Malta': { left: 54.03, top: 54.15 },
-		'Netherlands': { left: 51.88, top: 44.08 },
-		'Oman': { left: 65.56, top: 61.84 },
-		'Pakistan': { left: 69.28, top: 57.31 },
-		'Panama': { left: 27.71, top: 67.12 },
-		'Saudi Arabia': { left: 62.35, top: 60.14 },
-		'Senegal': { left: 45.99, top: 64.60 },
-		'Singapore': { left: 79.97, top: 74.13 },
-		'South Africa': { left: 56.94, top: 83.95 },
-		'South Korea': { left: 85.86, top: 54.52 },
-		'Spain': { left: 49.88, top: 52.83 },
-		'Sri Lanka': { left: 72.29, top: 68.02 },
-		'Estonia': { left: 57.78, top: 43.56 },
-		'Turkey': { left: 58.13, top: 49.16 },
-		'UAE': { left: 65.46, top: 59.65 },
-		'USA': { left: 22.33, top: 52.04 },
-		'Vietnam': { left: 79.67, top: 65.77 }
+		'Bangladesh': { left: 75.50, top: 60.80 },
+		'Brazil': { left: 35.31, top: 75.29 },
+		'China': { left: 83.75, top: 56.53 },
+		'Curacao': { left: 30.84, top: 65.37 },
+		'Denmark': { left: 52.64, top: 41.50 },
+		'Estonia': { left: 56.88, top: 38.74 },
+		'Gibraltar': { left: 48.51, top: 53.98 },
+		'Greece': { left: 56.57, top: 53.01 },
+		'Hong Kong': { left: 81.71, top: 60.81 },
+		'India': { left: 70.24, top: 62.29 },
+		'Indonesia': { left: 79.67, top: 73.25 },
+		'Malaysia': { left: 78.17, top: 69.34 },
+		'Malta': { left: 54.03, top: 54.11 },
+		'Netherlands': { left: 51.36, top: 44.16 },
+		'Oman': { left: 66.25, top: 60.21 },
+		'Pakistan': { left: 68.61, top: 59.61 },
+		'Panama': { left: 27.92, top: 66.75 },
+		'Saudi Arabia': { left: 62.50, top: 60.02 },
+		'Senegal': { left: 45.17, top: 64.25 },
+		'Singapore': { left: 78.85, top: 70.08 },
+		'South Africa': { left: 58.61, top: 84.08 },
+		'South Korea': { left: 85.47, top: 54.74 },
+		'Spain': { left: 49.00, top: 51.77 },
+		'Sri Lanka': { left: 72.18, top: 67.65 },
+		'Turkey': { left: 58.05, top: 51.31 },
+		'UAE': { left: 65.35, top: 59.45 },
+		'USA': { left: 24.98, top: 57.15 },
+		'Vietnam': { left: 79.64, top: 65.97 }
 	};
 
 	/* Region grouping for the filter buttons above the map. */
@@ -187,7 +185,6 @@
 		'UAE': 'middle-east',
 		'Oman': 'middle-east',
 		'Turkey': 'middle-east',
-		'Egypt': 'middle-east',
 		'Pakistan': 'asia',
 		'India': 'asia',
 		'Sri Lanka': 'asia',

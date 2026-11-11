@@ -5,6 +5,7 @@
   "outputDirectory": "site",
   "trailingSlash": true,
   "redirects": [
+    { "source": "/egypt", "destination": "/delivery-network/", "permanent": true },
     { "source": "/service", "destination": "/services/", "permanent": true },
     { "source": "/company", "destination": "/about-us/", "permanent": true },
     { "source": "/service/delivery-network", "destination": "/delivery-network/", "permanent": true },

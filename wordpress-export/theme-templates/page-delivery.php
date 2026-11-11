@@ -107,11 +107,6 @@ get_header();
 				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'India', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Available through strategic partnership with ZEST Marine.', 'athen-marine' ); ?></p>
 			</div>
-			<div class="am-dlv-location-card">
-				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Egypt', 'athen-marine' ); ?></h3>
-				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Supporting vessels transiting the Suez Canal and calling at Egyptian ports, extending dependable marine lubricant supply into the Middle East and North Africa corridor.', 'athen-marine' ); ?></p>
-				<span class="am-dlv-location-card__note"><a href="/egypt/"><?php esc_html_e( 'See the dedicated Egypt page for full port coverage and local contact details.', 'athen-marine' ); ?></a></span>
-			</div>
 		</div>
 	</section>
 

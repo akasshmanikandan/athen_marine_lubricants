@@ -139,11 +139,6 @@ get_header();
 				<p class="am-contact-regional-card__org"><?php esc_html_e( 'Athen Marine India (P) Ltd.', 'athen-marine' ); ?></p>
 				<p class="am-contact-regional-card__detail"><a href="tel:+919521349669"><?php esc_html_e( 'Mobile: +91 95213 49669', 'athen-marine' ); ?></a></p>
 			</div>
-			<div class="am-contact-regional-card">
-				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'Egypt Sales Contact', 'athen-marine' ); ?></h3>
-				<p class="am-contact-regional-card__pending"><?php esc_html_e( 'Regional contact details to be published once confirmed. In the meantime, reach our team using the form above or visit our Egypt page.', 'athen-marine' ); ?></p>
-				<p class="am-contact-regional-card__detail"><a href="/egypt/"><?php esc_html_e( 'View Egypt Coverage →', 'athen-marine' ); ?></a></p>
-			</div>
 		</div>
 	</section>
 

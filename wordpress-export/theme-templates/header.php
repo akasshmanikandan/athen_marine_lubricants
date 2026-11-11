@@ -47,8 +47,8 @@
 	</div>
 	<div class="am-ticker__track">
 		<div class="am-ticker__content">
-			<span>LIVE SHIPPING &amp; ENERGY NEWS &#9733; Athen Marine now serving Egypt &amp; the Suez Canal corridor &#9733; Technical support available through Athen Assure &#9733; 20+ countries, 200+ ports served worldwide &#9733; Strategic partnership with Legero International Group B.V. &#9733;</span>
-			<span>LIVE SHIPPING &amp; ENERGY NEWS &#9733; Athen Marine now serving Egypt &amp; the Suez Canal corridor &#9733; Technical support available through Athen Assure &#9733; 20+ countries, 200+ ports served worldwide &#9733; Strategic partnership with Legero International Group B.V. &#9733;</span>
+			<span>LIVE SHIPPING &amp; ENERGY NEWS &#9733; Technical support available through Athen Assure &#9733; 20+ countries, 200+ ports served worldwide &#9733; Strategic partnership with Legero International Group B.V. &#9733;</span>
+			<span>LIVE SHIPPING &amp; ENERGY NEWS &#9733; Technical support available through Athen Assure &#9733; 20+ countries, 200+ ports served worldwide &#9733; Strategic partnership with Legero International Group B.V. &#9733;</span>
 		</div>
 	</div>
 </div>
@@ -119,7 +119,6 @@
 					array( 'label' => __( 'Our Reach', 'athen-marine' ), 'url' => '/delivery-network/#reach' ),
 					array( 'label' => __( 'World Map & Ports', 'athen-marine' ), 'url' => '/delivery-network/#map' ),
 					array( 'label' => __( 'Global Locations', 'athen-marine' ), 'url' => '/delivery-network/#locations' ),
-					array( 'label' => __( 'Egypt Coverage', 'athen-marine' ), 'url' => '/egypt/' ),
 				),
 			),
 			array(

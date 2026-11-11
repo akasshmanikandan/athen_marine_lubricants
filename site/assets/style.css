@@ -3733,6 +3733,7 @@ p.am-about-block__signature{
 }
 
 .am-dlv-map__pin-label{
+	display: none; /* pointer only - country name is in the aria-label */
 	position: absolute;
 	bottom: 125%;
 	left: 50%;

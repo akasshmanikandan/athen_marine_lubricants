@@ -256,21 +256,11 @@ get_header();
 					<span>Greece <span class="am-check">&#10003;</span></span>
 					<span>Rotterdam, Netherlands <span class="am-check">&#10003;</span></span>
 					<span>India <span class="am-check">&#10003;</span></span>
-					<span>Suez Canal, Egypt <span class="am-check">&#10003;</span></span>
-					<span>Port Said, Egypt <span class="am-check">&#10003;</span></span>
-					<span>Suez, Egypt <span class="am-check">&#10003;</span></span>
-					<span>Alexandria, Egypt <span class="am-check">&#10003;</span></span>
-					<span>Damietta, Egypt <span class="am-check">&#10003;</span></span>
 				</span>
 				<span>
 					<span>Greece <span class="am-check">&#10003;</span></span>
 					<span>Rotterdam, Netherlands <span class="am-check">&#10003;</span></span>
 					<span>India <span class="am-check">&#10003;</span></span>
-					<span>Suez Canal, Egypt <span class="am-check">&#10003;</span></span>
-					<span>Port Said, Egypt <span class="am-check">&#10003;</span></span>
-					<span>Suez, Egypt <span class="am-check">&#10003;</span></span>
-					<span>Alexandria, Egypt <span class="am-check">&#10003;</span></span>
-					<span>Damietta, Egypt <span class="am-check">&#10003;</span></span>
 				</span>
 			</div>
 		</div>
@@ -336,24 +326,6 @@ get_header();
 				</button>
 				<div class="am-faq-item__answer">
 					<p><?php esc_html_e( 'Athen Marine currently serves 20+ countries and 200+ ports, supporting more than 5,000 vessels worldwide.', 'athen-marine' ); ?></p>
-				</div>
-			</div>
-
-			<div class="am-faq-item">
-				<button type="button" class="am-faq-item__question" aria-expanded="false">
-					<span><?php esc_html_e( 'Is Athen Marine available in Egypt?', 'athen-marine' ); ?></span>
-					<span class="am-faq-item__icon" aria-hidden="true"></span>
-				</button>
-				<div class="am-faq-item__answer">
-					<p>
-						<?php
-						printf(
-							/* translators: %s: link to the Egypt page */
-							esc_html__( 'Yes. Athen Marine lubricants are available to vessels calling at Egyptian ports and transiting the Suez Canal. See our %s for details.', 'athen-marine' ),
-							'<a href="/egypt/">' . esc_html__( 'Egypt page', 'athen-marine' ) . '</a>'
-						);
-						?>
-					</p>
 				</div>
 			</div>
 

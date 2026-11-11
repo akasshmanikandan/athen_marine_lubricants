@@ -150,7 +150,6 @@ get_header();
 					<ul class="am-journey2__list">
 						<li><?php esc_html_e( '5,000+ vessels serviced across 200+ ports', 'athen-marine' ); ?></li>
 						<li><?php esc_html_e( 'Strategic Partnership with Legero', 'athen-marine' ); ?></li>
-						<li><?php esc_html_e( 'Egypt launch in partnership with Good Face', 'athen-marine' ); ?></li>
 					</ul>
 				</div>
 			</div>
