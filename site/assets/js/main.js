@@ -199,77 +199,130 @@
 	};
 
 	function initDeliveryMap() {
-		var stage = document.querySelector( '.am-dlv-map__stage' );
 		var pinsEl = document.getElementById( 'am-dlv-map-pins' );
 		var searchInput = document.getElementById( 'am-port-search' );
 		var resultsEl = document.getElementById( 'am-port-search-results' );
-		var panel = document.getElementById( 'am-dlv-port-panel' );
-		var panelTitle = document.getElementById( 'am-dlv-port-panel-title' );
-		var panelList = document.getElementById( 'am-dlv-port-panel-list' );
-		var panelClose = document.getElementById( 'am-dlv-port-panel-close' );
-		var regionsEl = document.getElementById( 'am-dlv-map-regions' );
+		var listEl = document.getElementById( 'am-dlv-dir-list' );
 
-		if ( ! stage || ! pinsEl || ! searchInput ) {
+		if ( ! pinsEl || ! searchInput || ! listEl ) {
 			return;
 		}
 
-		var countries = Object.keys( PORTS_DATA );
+		var REGIONS = [
+			[ 'africa', 'Africa' ],
+			[ 'asia', 'Asia' ],
+			[ 'europe', 'Europe' ],
+			[ 'americas', 'Americas' ],
+			[ 'middle-east', 'Middle East' ]
+		];
+		var countries = Object.keys( PORTS_DATA ).filter( function ( c ) { return COUNTRY_PINS[ c ]; } );
 		var pinEls = {};
+		var countryEls = {};
+		var regionEls = {};
+		var activeCountry = null;
 
+		/* Pointer-only pins on the map. */
 		countries.forEach( function ( country ) {
 			var pos = COUNTRY_PINS[ country ];
-			if ( ! pos ) {
-				return;
-			}
-
-			var left = pos.left;
-			var top = pos.top;
-
 			var pin = document.createElement( 'button' );
 			pin.type = 'button';
 			pin.className = 'am-dlv-map__pin';
-			pin.style.left = left + '%';
-			pin.style.top = top + '%';
+			pin.style.left = pos.left + '%';
+			pin.style.top = pos.top + '%';
 			pin.setAttribute( 'aria-label', country );
-
-			var label = document.createElement( 'span' );
-			label.className = 'am-dlv-map__pin-label';
-			label.textContent = country;
-			pin.appendChild( label );
-
 			pin.addEventListener( 'click', function () {
-				showCountry( country );
+				selectCountry( country, true );
 			} );
-
 			pinsEl.appendChild( pin );
 			pinEls[ country ] = pin;
 		} );
 
-		function setActivePin( country ) {
-			countries.forEach( function ( c ) {
-				if ( pinEls[ c ] ) {
-					pinEls[ c ].classList.toggle( 'is-active', c === country );
-				}
-			} );
-		}
-
-		function showCountry( country ) {
-			var ports = PORTS_DATA[ country ];
-			if ( ! ports || ! panel ) {
+		/* Directory: region accordions > countries > ports. */
+		REGIONS.forEach( function ( r ) {
+			var inRegion = countries.filter( function ( c ) { return COUNTRY_REGION[ c ] === r[ 0 ]; } ).sort();
+			if ( ! inRegion.length ) {
 				return;
 			}
+			var wrap = document.createElement( 'div' );
+			wrap.className = 'am-dlv-dir__region';
 
-			panelTitle.textContent = country;
-			panelList.innerHTML = '';
-			ports.forEach( function ( port ) {
-				var li = document.createElement( 'li' );
-				li.textContent = port;
-				panelList.appendChild( li );
+			var head = document.createElement( 'button' );
+			head.type = 'button';
+			head.className = 'am-dlv-dir__region-head';
+			head.setAttribute( 'aria-expanded', 'false' );
+			head.innerHTML = '<span></span><i aria-hidden="true">+</i>';
+			head.firstChild.textContent = r[ 1 ];
+
+			var body = document.createElement( 'div' );
+			body.className = 'am-dlv-dir__region-body';
+			body.hidden = true;
+
+			inRegion.forEach( function ( country ) {
+				var item = document.createElement( 'div' );
+				item.className = 'am-dlv-dir__country';
+				var btn = document.createElement( 'button' );
+				btn.type = 'button';
+				btn.className = 'am-dlv-dir__country-btn';
+				btn.textContent = country;
+				btn.addEventListener( 'click', function () {
+					selectCountry( country, false );
+				} );
+				var ports = document.createElement( 'ul' );
+				ports.className = 'am-dlv-dir__ports';
+				ports.hidden = true;
+				PORTS_DATA[ country ].forEach( function ( p ) {
+					var li = document.createElement( 'li' );
+					li.textContent = p;
+					ports.appendChild( li );
+				} );
+				item.appendChild( btn );
+				item.appendChild( ports );
+				body.appendChild( item );
+				countryEls[ country ] = { item: item, btn: btn, ports: ports, region: r[ 0 ] };
 			} );
 
-			panel.hidden = false;
-			setActivePin( country );
-			searchInput.value = country;
+			head.addEventListener( 'click', function () {
+				toggleRegion( r[ 0 ] );
+			} );
+			wrap.appendChild( head );
+			wrap.appendChild( body );
+			listEl.appendChild( wrap );
+			regionEls[ r[ 0 ] ] = { head: head, body: body };
+		} );
+
+		function toggleRegion( key, forceOpen ) {
+			var r = regionEls[ key ];
+			if ( ! r ) {
+				return;
+			}
+			var open = typeof forceOpen === 'boolean' ? forceOpen : r.body.hidden;
+			r.body.hidden = ! open;
+			r.head.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
+			r.head.querySelector( 'i' ).textContent = open ? '\u2212' : '+';
+		}
+
+		function selectCountry( country, fromPin ) {
+			var entry = countryEls[ country ];
+			if ( ! entry ) {
+				return;
+			}
+			if ( activeCountry && countryEls[ activeCountry ] ) {
+				countryEls[ activeCountry ].item.classList.remove( 'is-active' );
+				countryEls[ activeCountry ].ports.hidden = true;
+				pinEls[ activeCountry ].classList.remove( 'is-active' );
+			}
+			if ( activeCountry === country && ! fromPin ) {
+				activeCountry = null;
+				return;
+			}
+			activeCountry = country;
+			toggleRegion( entry.region, true );
+			entry.item.classList.add( 'is-active' );
+			entry.ports.hidden = false;
+			pinEls[ country ].classList.add( 'is-active' );
+			if ( fromPin && entry.item.scrollIntoView ) {
+				entry.item.scrollIntoView( { block: 'nearest', behavior: 'smooth' } );
+			}
 			closeResults();
 		}
 
@@ -278,46 +331,42 @@
 			resultsEl.innerHTML = '';
 		}
 
-		if ( panelClose ) {
-			panelClose.addEventListener( 'click', function () {
-				panel.hidden = true;
-				setActivePin( null );
-			} );
-		}
-
+		/* Port search: matches country or port names. */
 		searchInput.addEventListener( 'input', function () {
-			var query = searchInput.value.trim().toLowerCase();
+			var q = searchInput.value.trim().toLowerCase();
 			resultsEl.innerHTML = '';
-
-			if ( ! query ) {
+			if ( ! q ) {
 				closeResults();
 				return;
 			}
-
-			var matches = countries.filter( function ( c ) {
-				return c.toLowerCase().indexOf( query ) !== -1;
+			var hits = [];
+			countries.forEach( function ( c ) {
+				if ( c.toLowerCase().indexOf( q ) !== -1 ) {
+					hits.push( { country: c, label: c } );
+				}
+				PORTS_DATA[ c ].forEach( function ( p ) {
+					if ( p !== 'Others' && p.toLowerCase().indexOf( q ) !== -1 && c.toLowerCase().indexOf( q ) === -1 ) {
+						hits.push( { country: c, label: p + ', ' + c } );
+					}
+				} );
 			} );
-
-			if ( ! matches.length ) {
+			if ( ! hits.length ) {
 				var empty = document.createElement( 'div' );
 				empty.className = 'am-dlv-map__search-empty';
-				empty.textContent = 'No country found';
+				empty.textContent = 'No port or country found';
 				resultsEl.appendChild( empty );
-				resultsEl.classList.add( 'is-open' );
-				return;
 			}
-
-			matches.forEach( function ( country ) {
-				var btn = document.createElement( 'button' );
-				btn.type = 'button';
-				btn.className = 'am-dlv-map__search-result';
-				btn.textContent = country;
-				btn.addEventListener( 'click', function () {
-					showCountry( country );
+			hits.slice( 0, 12 ).forEach( function ( h ) {
+				var b = document.createElement( 'button' );
+				b.type = 'button';
+				b.className = 'am-dlv-map__search-result';
+				b.textContent = h.label;
+				b.addEventListener( 'click', function () {
+					searchInput.value = h.label;
+					selectCountry( h.country, true );
 				} );
-				resultsEl.appendChild( btn );
+				resultsEl.appendChild( b );
 			} );
-
 			resultsEl.classList.add( 'is-open' );
 		} );
 
@@ -326,24 +375,6 @@
 				closeResults();
 			}
 		} );
-
-		if ( regionsEl ) {
-			regionsEl.addEventListener( 'change', function () {
-				var region = regionsEl.value;
-
-				countries.forEach( function ( c ) {
-					var pin = pinEls[ c ];
-					if ( ! pin ) {
-						return;
-					}
-					var matches = region === 'all' || COUNTRY_REGION[ c ] === region;
-					pin.classList.toggle( 'is-dimmed', ! matches );
-				} );
-
-				panel.hidden = true;
-				setActivePin( null );
-			} );
-		}
 	}
 
 	/* ---------------------------------------------------------------- */

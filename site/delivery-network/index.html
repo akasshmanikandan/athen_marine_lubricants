@@ -176,45 +176,21 @@
 	</section>
 
 	<!-- ============================= WORLD MAP ============================= -->
-	<section class="am-dlv-map" id="map">
+	<section class="am-dlv-map am-dlv-map--full" id="map">
 		<h2 class="am-dlv-map__title">Trusted Across Every Ocean</h2>
 
-		<div class="am-dlv-map__search">
-			<input type="text" id="am-port-search" class="am-dlv-map__search-input" placeholder="Search a country…" autocomplete="off">
-			<div id="am-port-search-results" class="am-dlv-map__search-results"></div>
-		</div>
+		<div class="am-dlv-map__stage">
+			<img src="/assets/images/world-map.png" alt="World map marking the countries and ports Athen Marine delivers to" class="am-dlv-map__img">
+			<div id="am-dlv-map-pins" class="am-dlv-map__pins"></div>
 
-		<div class="am-dlv-map__layout">
-			<div class="am-dlv-map__stage">
-				<img src="/assets/images/world-map.png?v=1791983468" alt="World map marking the countries and ports Athen Marine delivers to" class="am-dlv-map__img">
-				<div id="am-dlv-map-pins" class="am-dlv-map__pins"></div>
-
-				<div id="am-dlv-port-panel" class="am-dlv-port-panel" hidden>
-					<button type="button" class="am-dlv-port-panel__close" id="am-dlv-port-panel-close" aria-label="Close">&times;</button>
-					<span class="am-dlv-port-panel__eyebrow">Country</span>
-					<h3 id="am-dlv-port-panel-title" class="am-dlv-port-panel__title"></h3>
-					<span class="am-dlv-port-panel__eyebrow">Port</span>
-					<ul id="am-dlv-port-panel-list" class="am-dlv-port-panel__list"></ul>
+			<aside class="am-dlv-dir" aria-label="International Ports Directory">
+				<h3 class="am-dlv-dir__title">International Ports Directory</h3>
+				<div class="am-dlv-map__search">
+					<input type="text" id="am-port-search" class="am-dlv-dir__search" placeholder="Port Search" autocomplete="off">
+					<div id="am-port-search-results" class="am-dlv-map__search-results"></div>
 				</div>
-			</div>
-
-			<aside class="am-dlv-map__sidebar">
-				<h3 class="am-dlv-map__sidebar-title">Filter by Region</h3>
-				<div class="am-dlv-map__regions">
-					<select id="am-dlv-map-regions" class="am-dlv-map__region-select">
-						<option value="all">All Regions</option>
-						<option value="africa">Africa</option>
-						<option value="asia">Asia</option>
-						<option value="europe">Europe</option>
-						<option value="americas">Americas</option>
-						<option value="middle-east">Middle East</option>
-					</select>
-				</div>
+				<div id="am-dlv-dir-list" class="am-dlv-dir__list"></div>
 			</aside>
-		</div>
-
-		<div class="am-dlv-map__legend">
-			<span class="am-dlv-map__legend-item"><span class="am-dlv-legend-dot"></span> Port Location — click a pin or search a country</span>
 		</div>
 	</section>
 
