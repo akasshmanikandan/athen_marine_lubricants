@@ -6106,3 +6106,11 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 	.am-journey__track{ grid-template-columns: minmax(0,1fr); }
 	.am-footer__inner{ padding-left: 24px; padding-right: 24px; }
 }
+
+/* Delivery hero legibility on phones/tablets */
+@media (max-width: 900px){
+	.am-dlv-hero__photo::after{ background: linear-gradient(180deg, rgba(13,13,13,0.78) 0%, rgba(13,13,13,0.70) 100%); }
+	.am-dlv-hero__label, .am-dlv-hero__tagline{ color: #7fd4a3; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+	.am-dlv-hero__title{ color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.55); }
+	.am-dlv-hero__subtitle{ color: rgba(255,255,255,.92); text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+}
