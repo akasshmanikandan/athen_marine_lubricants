@@ -229,7 +229,7 @@
 			zoomSnap: 0.25,
 			scrollWheelZoom: false,
 			attributionControl: false,
-			minZoom: 2,
+			minZoom: ( mapEl.clientWidth < 700 ? 0 : 2 ),
 			maxZoom: 10,
 			maxBounds: [ [ -85, -180 ], [ 85, 180 ] ],
 			maxBoundsViscosity: 1.0
@@ -240,8 +240,13 @@
 		   empty ocean margin, regardless of the container's aspect ratio.
 		   The container is short and wide, so fitBounds alone is capped by
 		   height; nudge zoom up further to fill the width too. */
-		map.fitBounds( [ [ -58, -130 ], [ 72, 150 ] ] );
-		map.setZoom( map.getZoom() + 0.25, { animate: false } );
+		if ( mapEl.clientWidth < 700 ) {
+			/* phones: show the whole world, width-limited */
+			map.fitBounds( [ [ -58, -175 ], [ 78, 178 ] ], { animate: false } );
+		} else {
+			map.fitBounds( [ [ -58, -130 ], [ 72, 150 ] ] );
+			map.setZoom( map.getZoom() + 0.25, { animate: false } );
+		}
 
 		window.L.control.zoom( { position: 'topright' } ).addTo( map );
 
