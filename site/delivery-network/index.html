@@ -17,6 +17,7 @@
 <link rel="canonical" href="https://athenmarine.com/delivery-network/">
 <link rel="icon" href="/assets/images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="/assets/vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body class="page" id="top">
@@ -176,21 +177,36 @@
 	</section>
 
 	<!-- ============================= WORLD MAP ============================= -->
-	<section class="am-dlv-map am-dlv-map--full" id="map">
+	<section class="am-dlv-map" id="map">
 		<h2 class="am-dlv-map__title">Trusted Across Every Ocean</h2>
 
 		<div class="am-dlv-map__stage">
-			<img src="/assets/images/world-map.png" alt="World map marking the countries and ports Athen Marine delivers to" class="am-dlv-map__img">
-			<div id="am-dlv-map-pins" class="am-dlv-map__pins"></div>
+			<aside class="am-dlv-map__sidebar">
+				<h3 class="am-dlv-map__sidebar-title">International Ports Directory</h3>
 
-			<aside class="am-dlv-dir" aria-label="International Ports Directory">
-				<h3 class="am-dlv-dir__title">International Ports Directory</h3>
 				<div class="am-dlv-map__search">
-					<input type="text" id="am-port-search" class="am-dlv-dir__search" placeholder="Port Search" autocomplete="off">
+					<input type="text" id="am-port-search" class="am-dlv-map__search-input" placeholder="Port Search" autocomplete="off">
 					<div id="am-port-search-results" class="am-dlv-map__search-results"></div>
 				</div>
-				<div id="am-dlv-dir-list" class="am-dlv-dir__list"></div>
+
+				<div class="am-dlv-map__accordion" id="am-dlv-map-accordion"></div>
 			</aside>
+
+			<div class="am-dlv-map__mapwrap">
+				<div id="am-dlv-leaflet-map" class="am-dlv-leaflet-map"></div>
+
+				<div id="am-dlv-port-panel" class="am-dlv-port-panel" hidden>
+					<button type="button" class="am-dlv-port-panel__close" id="am-dlv-port-panel-close" aria-label="Close">&times;</button>
+					<span class="am-dlv-port-panel__eyebrow">Country</span>
+					<h3 id="am-dlv-port-panel-title" class="am-dlv-port-panel__title"></h3>
+					<span class="am-dlv-port-panel__eyebrow">Port</span>
+					<ul id="am-dlv-port-panel-list" class="am-dlv-port-panel__list"></ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="am-dlv-map__legend">
+			<span class="am-dlv-map__legend-item"><span class="am-dlv-legend-dot"></span> Port Location — click a marker or search a country</span>
 		</div>
 	</section>
 
@@ -239,7 +255,7 @@
 					<li><a href="/services">Services</a></li>
 					<li><a href="/products">Products</a></li>
 					<li><a href="/delivery-network">Delivery Network</a></li>
-					<li><a href="/contact">Contact</a></li>
+										<li><a href="/contact">Contact</a></li>
 					<li><a href="/blog">Blog</a></li>
 				</ul>
 			</div>
@@ -282,6 +298,7 @@
 		</div>
 	</footer>
 
+<script src="/assets/vendor/leaflet/leaflet.js"></script>
 <script src="/assets/js/main.js"></script>
 <script>if(/[?&]sent=1/.test(location.search)){var b=document.createElement("div");b.setAttribute("role","status");b.style.cssText="position:fixed;top:0;left:0;right:0;z-index:99999;background:#0a7d4f;color:#fff;padding:14px 20px;text-align:center;font:600 15px Inter,sans-serif";b.textContent="Thank you - your message has been sent. Our team will be in touch shortly.";document.body.appendChild(b);setTimeout(function(){b.remove()},8000)}</script></body>
 </html>

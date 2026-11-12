@@ -109,11 +109,11 @@
 		'Gibraltar': [ 'Gibraltar', 'Others' ],
 		'Greece': [ 'Piraeus', 'Lavrio', 'Vatika', 'Chios', 'Kalamata', 'Others' ],
 		'Hong Kong': [ 'Hong Kong', 'Others' ],
-		'India': [ 'Chennai', 'Cochin', 'Goa', 'Kandla', 'Karwar', 'Krishnapatnam', 'Mangalore', 'Mumbai', 'Mundra', 'Others' ],
+		'India': [ 'Budge Budge', 'Chennai', 'Cochin', 'Dahej', 'Dhamra', 'Ennore', 'Gangavaram', 'Haldia', 'Hazira', 'Jaigarh', 'JNPT', 'Kakinada', 'Kandla', 'Karaikal', 'Karwar', 'Kolkata', 'Krishnapatnam', 'Mormugao (Goa)', 'Mumbai', 'Mumbai-Butcher Island', 'Mumbai-Pirpav', 'Mundra', 'New Mangalore', 'Paradip', 'Pipavav', 'Sikka', 'Tuticorin', 'Vizag', 'Others' ],
 		'Indonesia': [ 'Batam', 'Port Klang', 'Jakarta', 'Others' ],
 		'Malaysia': [ 'Port Klang', 'Tanjung Pelepas', 'Others' ],
 		'Malta': [ 'Malta' ],
-		'Netherlands': [ 'Amsterdam' ],
+		'Netherlands': [ 'Rotterdam' ],
 		'Oman': [ 'Salalah', 'Duqm', 'Sohar', 'Muscat' ],
 		'Pakistan': [ 'Bin Qasim', 'Karachi', 'Others' ],
 		'Panama': [ 'Cristobal', 'Balboa', 'Colon', 'Manzanillo' ],
@@ -123,7 +123,7 @@
 		'South Africa': [ 'Durban', 'Port Elizabeth', 'Capetown', 'Richards Bay' ],
 		'South Korea': [ 'Yeosu', 'Others' ],
 		'Spain': [ 'Algeciras', 'Barcelona', 'Las Palmas', 'Others' ],
-		'Sri Lanka': [ 'Galle', 'Colombo' ],
+		'Sri Lanka': [ 'Galle', 'Colombo', 'Trincomalee' ],
 		'Estonia': [ 'Tallinn', 'Others' ],
 		'Turkey': [ 'Istanbul', 'Desan', 'Iskenderun', 'Sinop', 'Trabzon', 'Others' ],
 		'UAE': [ 'Fujairah', 'Khor Fakkan', 'Hamriya/Sharjah', 'Hamriya/Dubai', 'Khalid', 'Mina Saqr', 'RMC Port', 'RAK Maritime', 'Al Jaseera Port', 'Jebel Ali', 'Dubai Dry Dock', 'DMC', 'Damen Shipyard', 'Mina Zayed-AUH', 'Khalifa', 'Mussafah', 'Kalba' ],
@@ -131,42 +131,43 @@
 		'Vietnam': [ 'Ho Chi Minh', 'Others' ]
 	};
 
-	/* Pin positions as percentages of world-map.png (Mercator, 360 deg across
-	   the full width). Each pin tip sits at the real latitude/longitude of the
-	   country's main port or city (large multi-coast countries use their centre):
-	   left = (1200 + lon * 2400/360) / 2400, top = (1097.58 - 381.97 * ln(tan(pi/4 + lat/2))) / 1554. */
-	var COUNTRY_PINS = {
-		'Bangladesh': { left: 75.50, top: 60.80 },
-		'Brazil': { left: 35.31, top: 75.29 },
-		'China': { left: 83.75, top: 56.53 },
-		'Curacao': { left: 30.84, top: 65.37 },
-		'Denmark': { left: 52.64, top: 41.50 },
-		'Estonia': { left: 56.88, top: 38.74 },
-		'Gibraltar': { left: 48.51, top: 53.98 },
-		'Greece': { left: 56.57, top: 53.01 },
-		'Hong Kong': { left: 81.71, top: 60.81 },
-		'India': { left: 70.24, top: 62.29 },
-		'Indonesia': { left: 79.67, top: 73.25 },
-		'Malaysia': { left: 78.17, top: 69.34 },
-		'Malta': { left: 54.03, top: 54.11 },
-		'Netherlands': { left: 51.36, top: 44.16 },
-		'Oman': { left: 66.25, top: 60.21 },
-		'Pakistan': { left: 68.61, top: 59.61 },
-		'Panama': { left: 27.92, top: 66.75 },
-		'Saudi Arabia': { left: 62.50, top: 60.02 },
-		'Senegal': { left: 45.17, top: 64.25 },
-		'Singapore': { left: 78.85, top: 70.08 },
-		'South Africa': { left: 58.61, top: 84.08 },
-		'South Korea': { left: 85.47, top: 54.74 },
-		'Spain': { left: 49.00, top: 51.77 },
-		'Sri Lanka': { left: 72.18, top: 67.65 },
-		'Turkey': { left: 58.05, top: 51.31 },
-		'UAE': { left: 65.35, top: 59.45 },
-		'USA': { left: 24.98, top: 57.15 },
-		'Vietnam': { left: 79.64, top: 65.97 }
+	/* Real-world [lat, lng] of each country's primary port city, for the
+	   Leaflet map. */
+	/* Each country's true geographic center (not a specific port city),
+	   so the dot sits in the middle of the landmass rather than at one
+	   coastal point — verified against the rendered country shapes. */
+	var COUNTRY_COORDS = {
+		'Bangladesh': [ 23.6850, 90.3563 ],
+		'Brazil': [ -14.2350, -51.9253 ],
+		'China': [ 35.8617, 104.1954 ],
+		'Curacao': [ 12.1696, -68.9900 ],
+		'Denmark': [ 56.2639, 9.5018 ],
+		'Gibraltar': [ 36.1408, -5.3536 ],
+		'Greece': [ 39.0742, 21.8243 ],
+		'Hong Kong': [ 22.3193, 114.1694 ],
+		'India': [ 22.3511, 78.6677 ],
+		'Indonesia': [ -2.5, 118.0149 ],
+		'Malaysia': [ 4.2105, 101.9758 ],
+		'Malta': [ 35.9375, 14.3754 ],
+		'Netherlands': [ 52.1326, 5.2913 ],
+		'Oman': [ 21.4735, 55.9754 ],
+		'Pakistan': [ 30.3753, 69.3451 ],
+		'Panama': [ 8.5380, -80.7821 ],
+		'Saudi Arabia': [ 23.8859, 45.0792 ],
+		'Senegal': [ 14.4974, -14.4524 ],
+		'Singapore': [ 1.3521, 103.8198 ],
+		'South Africa': [ -30.5595, 22.9375 ],
+		'South Korea': [ 35.9078, 127.7669 ],
+		'Spain': [ 40.4637, -3.7492 ],
+		'Sri Lanka': [ 7.8731, 80.7718 ],
+		'Estonia': [ 58.5953, 25.0136 ],
+		'Turkey': [ 38.9637, 35.2433 ],
+		'UAE': [ 23.4241, 53.8478 ],
+		'USA': [ 39.8283, -98.5795 ],
+		'Vietnam': [ 14.0583, 108.2772 ]
 	};
 
-	/* Region grouping for the filter buttons above the map. */
+	/* Region grouping, used for the accordion sidebar. */
 	var COUNTRY_REGION = {
 		'USA': 'americas',
 		'Panama': 'americas',
@@ -198,132 +199,115 @@
 		'South Korea': 'asia'
 	};
 
+	var REGION_ORDER = [ 'africa', 'asia', 'europe', 'americas', 'middle-east' ];
+	var REGION_LABELS = {
+		'africa': 'Africa',
+		'asia': 'Asia',
+		'europe': 'Europe',
+		'americas': 'Americas',
+		'middle-east': 'Middle East'
+	};
+
 	function initDeliveryMap() {
-		var pinsEl = document.getElementById( 'am-dlv-map-pins' );
+		var mapEl = document.getElementById( 'am-dlv-leaflet-map' );
 		var searchInput = document.getElementById( 'am-port-search' );
 		var resultsEl = document.getElementById( 'am-port-search-results' );
-		var listEl = document.getElementById( 'am-dlv-dir-list' );
+		var panel = document.getElementById( 'am-dlv-port-panel' );
+		var panelTitle = document.getElementById( 'am-dlv-port-panel-title' );
+		var panelList = document.getElementById( 'am-dlv-port-panel-list' );
+		var panelClose = document.getElementById( 'am-dlv-port-panel-close' );
+		var accordionEl = document.getElementById( 'am-dlv-map-accordion' );
 
-		if ( ! pinsEl || ! searchInput || ! listEl ) {
+		if ( ! mapEl || ! searchInput || typeof window.L === 'undefined' ) {
 			return;
 		}
 
-		var REGIONS = [
-			[ 'africa', 'Africa' ],
-			[ 'asia', 'Asia' ],
-			[ 'europe', 'Europe' ],
-			[ 'americas', 'Americas' ],
-			[ 'middle-east', 'Middle East' ]
-		];
-		var countries = Object.keys( PORTS_DATA ).filter( function ( c ) { return COUNTRY_PINS[ c ]; } );
-		var pinEls = {};
-		var countryEls = {};
-		var regionEls = {};
-		var activeCountry = null;
+		var countries = Object.keys( PORTS_DATA );
 
-		/* Pointer-only pins on the map. */
+		var map = window.L.map( mapEl, {
+			zoomControl: false,
+			zoomSnap: 0.25,
+			scrollWheelZoom: false,
+			attributionControl: false,
+			minZoom: 2,
+			maxZoom: 10,
+			maxBounds: [ [ -85, -180 ], [ 85, 180 ] ],
+			maxBoundsViscosity: 1.0
+		} );
+
+		/* Fit tightly to the inhabited landmass extent (instead of a fixed
+		   zoom level) so the map fills the available width with minimal
+		   empty ocean margin, regardless of the container's aspect ratio.
+		   The container is short and wide, so fitBounds alone is capped by
+		   height; nudge zoom up further to fill the width too. */
+		map.fitBounds( [ [ -58, -130 ], [ 72, 150 ] ] );
+		map.setZoom( map.getZoom() + 0.25, { animate: false } );
+
+		window.L.control.zoom( { position: 'topright' } ).addTo( map );
+
+		/* Country shapes rendered in our own brand colors (not a photo
+		   tile provider), so land/ocean are our exact pine green / cream,
+		   not an approximation via CSS filters on raster map tiles. */
+		fetch( 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json' )
+			.then( function ( r ) { return r.json(); } )
+			.then( function ( geo ) {
+				window.L.geoJSON( geo, {
+					style: {
+						fillColor: '#1B4332',
+						fillOpacity: 1,
+						color: '#EDEBE4',
+						weight: 0.7
+					},
+					interactive: false
+				} ).addTo( map );
+			} )
+			.catch( function () {} );
+
+		var markerIcon = window.L.divIcon( {
+			className: 'am-dlv-leaflet-pin',
+			iconSize: [ 14, 14 ],
+			iconAnchor: [ 7, 7 ]
+		} );
+
+		var markersByCountry = {};
+
 		countries.forEach( function ( country ) {
-			var pos = COUNTRY_PINS[ country ];
-			var pin = document.createElement( 'button' );
-			pin.type = 'button';
-			pin.className = 'am-dlv-map__pin';
-			pin.style.left = pos.left + '%';
-			pin.style.top = pos.top + '%';
-			pin.setAttribute( 'aria-label', country );
-			pin.addEventListener( 'click', function () {
-				selectCountry( country, true );
+			var coords = COUNTRY_COORDS[ country ];
+			if ( ! coords ) {
+				return;
+			}
+
+			var marker = window.L.marker( coords, { icon: markerIcon, title: country } );
+			marker.on( 'click', function () {
+				showCountry( country );
 			} );
-			pinsEl.appendChild( pin );
-			pinEls[ country ] = pin;
+
+			marker.addTo( map );
+			markersByCountry[ country ] = marker;
 		} );
 
-		/* Directory: region accordions > countries > ports. */
-		REGIONS.forEach( function ( r ) {
-			var inRegion = countries.filter( function ( c ) { return COUNTRY_REGION[ c ] === r[ 0 ]; } ).sort();
-			if ( ! inRegion.length ) {
+		function showCountry( country ) {
+			var ports = PORTS_DATA[ country ];
+			var marker = markersByCountry[ country ];
+			if ( ! ports || ! panel ) {
 				return;
 			}
-			var wrap = document.createElement( 'div' );
-			wrap.className = 'am-dlv-dir__region';
 
-			var head = document.createElement( 'button' );
-			head.type = 'button';
-			head.className = 'am-dlv-dir__region-head';
-			head.setAttribute( 'aria-expanded', 'false' );
-			head.innerHTML = '<span></span><i aria-hidden="true">+</i>';
-			head.firstChild.textContent = r[ 1 ];
-
-			var body = document.createElement( 'div' );
-			body.className = 'am-dlv-dir__region-body';
-			body.hidden = true;
-
-			inRegion.forEach( function ( country ) {
-				var item = document.createElement( 'div' );
-				item.className = 'am-dlv-dir__country';
-				var btn = document.createElement( 'button' );
-				btn.type = 'button';
-				btn.className = 'am-dlv-dir__country-btn';
-				btn.textContent = country;
-				btn.addEventListener( 'click', function () {
-					selectCountry( country, false );
-				} );
-				var ports = document.createElement( 'ul' );
-				ports.className = 'am-dlv-dir__ports';
-				ports.hidden = true;
-				PORTS_DATA[ country ].forEach( function ( p ) {
-					var li = document.createElement( 'li' );
-					li.textContent = p;
-					ports.appendChild( li );
-				} );
-				item.appendChild( btn );
-				item.appendChild( ports );
-				body.appendChild( item );
-				countryEls[ country ] = { item: item, btn: btn, ports: ports, region: r[ 0 ] };
+			panelTitle.textContent = country;
+			panelList.innerHTML = '';
+			ports.forEach( function ( port ) {
+				var li = document.createElement( 'li' );
+				li.textContent = port;
+				panelList.appendChild( li );
 			} );
 
-			head.addEventListener( 'click', function () {
-				toggleRegion( r[ 0 ] );
-			} );
-			wrap.appendChild( head );
-			wrap.appendChild( body );
-			listEl.appendChild( wrap );
-			regionEls[ r[ 0 ] ] = { head: head, body: body };
-		} );
-
-		function toggleRegion( key, forceOpen ) {
-			var r = regionEls[ key ];
-			if ( ! r ) {
-				return;
-			}
-			var open = typeof forceOpen === 'boolean' ? forceOpen : r.body.hidden;
-			r.body.hidden = ! open;
-			r.head.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
-			r.head.querySelector( 'i' ).textContent = open ? '\u2212' : '+';
-		}
-
-		function selectCountry( country, fromPin ) {
-			var entry = countryEls[ country ];
-			if ( ! entry ) {
-				return;
-			}
-			if ( activeCountry && countryEls[ activeCountry ] ) {
-				countryEls[ activeCountry ].item.classList.remove( 'is-active' );
-				countryEls[ activeCountry ].ports.hidden = true;
-				pinEls[ activeCountry ].classList.remove( 'is-active' );
-			}
-			if ( activeCountry === country && ! fromPin ) {
-				activeCountry = null;
-				return;
-			}
-			activeCountry = country;
-			toggleRegion( entry.region, true );
-			entry.item.classList.add( 'is-active' );
-			entry.ports.hidden = false;
-			pinEls[ country ].classList.add( 'is-active' );
-			if ( fromPin && entry.item.scrollIntoView ) {
-				entry.item.scrollIntoView( { block: 'nearest', behavior: 'smooth' } );
-			}
+			panel.hidden = false;
+			searchInput.value = country;
 			closeResults();
+
+			if ( marker ) {
+				map.setView( marker.getLatLng(), Math.max( map.getZoom(), 4 ) );
+			}
 		}
 
 		function closeResults() {
@@ -331,42 +315,55 @@
 			resultsEl.innerHTML = '';
 		}
 
-		/* Port search: matches country or port names. */
+		if ( panelClose ) {
+			panelClose.addEventListener( 'click', function () {
+				panel.hidden = true;
+			} );
+		}
+
 		searchInput.addEventListener( 'input', function () {
-			var q = searchInput.value.trim().toLowerCase();
+			var query = searchInput.value.trim().toLowerCase();
 			resultsEl.innerHTML = '';
-			if ( ! q ) {
+
+			if ( ! query ) {
 				closeResults();
 				return;
 			}
-			var hits = [];
+
+			/* Match country names and port names. */
+			var matches = [];
 			countries.forEach( function ( c ) {
-				if ( c.toLowerCase().indexOf( q ) !== -1 ) {
-					hits.push( { country: c, label: c } );
+				if ( c.toLowerCase().indexOf( query ) !== -1 ) {
+					matches.push( { country: c, label: c } );
+					return;
 				}
 				PORTS_DATA[ c ].forEach( function ( p ) {
-					if ( p !== 'Others' && p.toLowerCase().indexOf( q ) !== -1 && c.toLowerCase().indexOf( q ) === -1 ) {
-						hits.push( { country: c, label: p + ', ' + c } );
+					if ( p !== 'Others' && p.toLowerCase().indexOf( query ) !== -1 ) {
+						matches.push( { country: c, label: p + ', ' + c } );
 					}
 				} );
 			} );
-			if ( ! hits.length ) {
+
+			if ( ! matches.length ) {
 				var empty = document.createElement( 'div' );
 				empty.className = 'am-dlv-map__search-empty';
 				empty.textContent = 'No port or country found';
 				resultsEl.appendChild( empty );
+				resultsEl.classList.add( 'is-open' );
+				return;
 			}
-			hits.slice( 0, 12 ).forEach( function ( h ) {
-				var b = document.createElement( 'button' );
-				b.type = 'button';
-				b.className = 'am-dlv-map__search-result';
-				b.textContent = h.label;
-				b.addEventListener( 'click', function () {
-					searchInput.value = h.label;
-					selectCountry( h.country, true );
+
+			matches.slice( 0, 12 ).forEach( function ( m ) {
+				var btn = document.createElement( 'button' );
+				btn.type = 'button';
+				btn.className = 'am-dlv-map__search-result';
+				btn.textContent = m.label;
+				btn.addEventListener( 'click', function () {
+					showCountry( m.country );
 				} );
-				resultsEl.appendChild( b );
+				resultsEl.appendChild( btn );
 			} );
+
 			resultsEl.classList.add( 'is-open' );
 		} );
 
@@ -376,64 +373,48 @@
 			}
 		} );
 
-		/* Make the directory card draggable (grab the heading). Desktop only:
-		   on small screens the card sits below the map. */
-		var dir = document.querySelector( '.am-dlv-dir' );
-		var handle = dir ? dir.querySelector( '.am-dlv-dir__title' ) : null;
-		var stageEl = dir ? dir.parentElement : null;
-		var small = window.matchMedia ? window.matchMedia( '(max-width: 900px)' ) : { matches: false };
+		/* Build the accordion: region groups, each expandable to list its
+		   countries (same visual idea as the reference "Ports Directory"). */
+		if ( accordionEl ) {
+			REGION_ORDER.forEach( function ( region, i ) {
+				var regionCountries = countries.filter( function ( c ) {
+					return COUNTRY_REGION[ c ] === region;
+				} ).sort();
 
-		function clampDir() {
-			if ( ! dir || small.matches || dir.style.top === '' ) {
-				return;
-			}
-			var maxL = Math.max( 0, stageEl.clientWidth - dir.offsetWidth );
-			var maxT = Math.max( 0, stageEl.clientHeight - dir.offsetHeight );
-			dir.style.left = Math.min( Math.max( 0, parseFloat( dir.style.left ) ), maxL ) + 'px';
-			dir.style.top = Math.min( Math.max( 0, parseFloat( dir.style.top ) ), maxT ) + 'px';
-		}
+				var item = document.createElement( 'div' );
+				item.className = 'am-dlv-accordion-item';
 
-		if ( dir && handle && stageEl ) {
-			var dragging = false, startX = 0, startY = 0, startL = 0, startT = 0;
+				var header = document.createElement( 'button' );
+				header.type = 'button';
+				header.className = 'am-dlv-accordion-header';
+				header.setAttribute( 'aria-expanded', 'false' );
+				header.innerHTML = '<span>' + REGION_LABELS[ region ] + '</span><span class="am-dlv-accordion-icon">+</span>';
 
-			handle.addEventListener( 'pointerdown', function ( e ) {
-				if ( small.matches ) {
-					return;
-				}
-				dragging = true;
-				startX = e.clientX;
-				startY = e.clientY;
-				startL = dir.offsetLeft;
-				startT = dir.offsetTop;
-				dir.style.left = startL + 'px';
-				dir.style.top = startT + 'px';
-				dir.style.right = 'auto';
-				dir.style.bottom = 'auto';
-				dir.classList.add( 'is-dragging' );
-				handle.setPointerCapture( e.pointerId );
-				e.preventDefault();
-			} );
-			handle.addEventListener( 'pointermove', function ( e ) {
-				if ( ! dragging ) {
-					return;
-				}
-				dir.style.left = ( startL + e.clientX - startX ) + 'px';
-				dir.style.top = ( startT + e.clientY - startY ) + 'px';
-				clampDir();
-			} );
-			function endDrag() {
-				dragging = false;
-				dir.classList.remove( 'is-dragging' );
-			}
-			handle.addEventListener( 'pointerup', endDrag );
-			handle.addEventListener( 'pointercancel', endDrag );
-			/* Double-click the heading to snap back to the default corner. */
-			handle.addEventListener( 'dblclick', function () {
-				dir.style.left = dir.style.top = dir.style.right = dir.style.bottom = '';
-			} );
-			window.addEventListener( 'resize', clampDir );
-			listEl.addEventListener( 'click', function () {
-				window.setTimeout( clampDir, 0 );
+				var body = document.createElement( 'div' );
+				body.className = 'am-dlv-accordion-body';
+				body.hidden = true;
+
+				regionCountries.forEach( function ( country ) {
+					var link = document.createElement( 'button' );
+					link.type = 'button';
+					link.className = 'am-dlv-accordion-link';
+					link.textContent = country;
+					link.addEventListener( 'click', function () {
+						showCountry( country );
+					} );
+					body.appendChild( link );
+				} );
+
+				header.addEventListener( 'click', function () {
+					var isOpen = header.getAttribute( 'aria-expanded' ) === 'true';
+					header.setAttribute( 'aria-expanded', isOpen ? 'false' : 'true' );
+					header.querySelector( '.am-dlv-accordion-icon' ).textContent = isOpen ? '+' : '−';
+					body.hidden = isOpen;
+				} );
+
+				item.appendChild( header );
+				item.appendChild( body );
+				accordionEl.appendChild( item );
 			} );
 		}
 	}
@@ -1063,4 +1044,72 @@
 		findProduct: findProduct,
 		submitQuickQuote: submitQuickQuote
 	};
+} )();
+
+/* Delivery map: the Ports Directory card can be dragged (grab the heading);
+   double-click the heading to reset. Desktop only. */
+( function () {
+	function init() {
+		var dir = document.querySelector( '.am-dlv-map__sidebar' );
+		var handle = dir ? dir.querySelector( '.am-dlv-map__sidebar-title' ) : null;
+		var stage = dir ? dir.parentElement : null;
+		if ( ! dir || ! handle || ! stage ) {
+			return;
+		}
+		var small = window.matchMedia( '(max-width: 768px)' );
+		var dragging = false, sx = 0, sy = 0, sl = 0, st = 0;
+
+		function clamp() {
+			if ( small.matches || dir.style.top === '' ) {
+				return;
+			}
+			var l = Math.min( Math.max( 0, parseFloat( dir.style.left ) ), Math.max( 0, stage.clientWidth - dir.offsetWidth ) );
+			var t = Math.min( Math.max( 0, parseFloat( dir.style.top ) ), Math.max( 0, stage.clientHeight - dir.offsetHeight ) );
+			dir.style.left = l + 'px';
+			dir.style.top = t + 'px';
+		}
+
+		handle.addEventListener( 'pointerdown', function ( e ) {
+			if ( small.matches ) {
+				return;
+			}
+			dragging = true;
+			sx = e.clientX;
+			sy = e.clientY;
+			sl = dir.offsetLeft;
+			st = dir.offsetTop;
+			dir.style.left = sl + 'px';
+			dir.style.top = st + 'px';
+			dir.style.right = 'auto';
+			dir.style.bottom = 'auto';
+			dir.classList.add( 'is-dragging' );
+			handle.setPointerCapture( e.pointerId );
+			e.preventDefault();
+		} );
+		handle.addEventListener( 'pointermove', function ( e ) {
+			if ( dragging ) {
+				dir.style.left = ( sl + e.clientX - sx ) + 'px';
+				dir.style.top = ( st + e.clientY - sy ) + 'px';
+				clamp();
+			}
+		} );
+		function end() {
+			dragging = false;
+			dir.classList.remove( 'is-dragging' );
+		}
+		handle.addEventListener( 'pointerup', end );
+		handle.addEventListener( 'pointercancel', end );
+		handle.addEventListener( 'dblclick', function () {
+			dir.style.left = dir.style.top = dir.style.right = dir.style.bottom = '';
+		} );
+		window.addEventListener( 'resize', clamp );
+		dir.addEventListener( 'click', function () {
+			window.setTimeout( clamp, 0 );
+		} );
+	}
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
 } )();

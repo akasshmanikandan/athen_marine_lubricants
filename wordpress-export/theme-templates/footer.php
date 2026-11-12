@@ -18,6 +18,7 @@
 					<li><a href="/services"><?php esc_html_e( 'Services', 'athen-marine' ); ?></a></li>
 					<li><a href="/products"><?php esc_html_e( 'Products', 'athen-marine' ); ?></a></li>
 					<li><a href="/delivery-network"><?php esc_html_e( 'Delivery Network', 'athen-marine' ); ?></a></li>
+					<?php /* Hidden until Egypt page is ready to show: <li><a href="/egypt"><?php esc_html_e( 'Egypt', 'athen-marine' ); ?></a></li> */ ?>
 					<li><a href="/contact"><?php esc_html_e( 'Contact', 'athen-marine' ); ?></a></li>
 					<li><a href="/blog"><?php esc_html_e( 'Blog', 'athen-marine' ); ?></a></li>
 				</ul>

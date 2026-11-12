@@ -119,6 +119,7 @@
 					array( 'label' => __( 'Our Reach', 'athen-marine' ), 'url' => '/delivery-network/#reach' ),
 					array( 'label' => __( 'World Map & Ports', 'athen-marine' ), 'url' => '/delivery-network/#map' ),
 					array( 'label' => __( 'Global Locations', 'athen-marine' ), 'url' => '/delivery-network/#locations' ),
+					// Hidden until Egypt page is ready to show: array( 'label' => __( 'Egypt Coverage', 'athen-marine' ), 'url' => '/egypt/' ),
 				),
 			),
 			array(

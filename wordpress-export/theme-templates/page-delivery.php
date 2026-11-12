@@ -47,21 +47,36 @@ get_header();
 	</section>
 
 	<!-- ============================= WORLD MAP ============================= -->
-	<section class="am-dlv-map am-dlv-map--full" id="map">
+	<section class="am-dlv-map" id="map">
 		<h2 class="am-dlv-map__title"><?php esc_html_e( 'Trusted Across Every Ocean', 'athen-marine' ); ?></h2>
 
 		<div class="am-dlv-map__stage">
-			<img src="<?php echo esc_url( get_template_directory_uri() . '/images/world-map.png' ); ?>" alt="<?php esc_attr_e( 'World map marking the countries and ports Athen Marine delivers to', 'athen-marine' ); ?>" class="am-dlv-map__img">
-			<div id="am-dlv-map-pins" class="am-dlv-map__pins"></div>
+			<aside class="am-dlv-map__sidebar">
+				<h3 class="am-dlv-map__sidebar-title"><?php esc_html_e( 'International Ports Directory', 'athen-marine' ); ?></h3>
 
-			<aside class="am-dlv-dir" aria-label="<?php esc_attr_e( 'International Ports Directory', 'athen-marine' ); ?>">
-				<h3 class="am-dlv-dir__title"><?php esc_html_e( 'International Ports Directory', 'athen-marine' ); ?></h3>
 				<div class="am-dlv-map__search">
-					<input type="text" id="am-port-search" class="am-dlv-dir__search" placeholder="<?php esc_attr_e( 'Port Search', 'athen-marine' ); ?>" autocomplete="off">
+					<input type="text" id="am-port-search" class="am-dlv-map__search-input" placeholder="<?php esc_attr_e( 'Port Search', 'athen-marine' ); ?>" autocomplete="off">
 					<div id="am-port-search-results" class="am-dlv-map__search-results"></div>
 				</div>
-				<div id="am-dlv-dir-list" class="am-dlv-dir__list"></div>
+
+				<div class="am-dlv-map__accordion" id="am-dlv-map-accordion"></div>
 			</aside>
+
+			<div class="am-dlv-map__mapwrap">
+				<div id="am-dlv-leaflet-map" class="am-dlv-leaflet-map"></div>
+
+				<div id="am-dlv-port-panel" class="am-dlv-port-panel" hidden>
+					<button type="button" class="am-dlv-port-panel__close" id="am-dlv-port-panel-close" aria-label="<?php esc_attr_e( 'Close', 'athen-marine' ); ?>">&times;</button>
+					<span class="am-dlv-port-panel__eyebrow"><?php esc_html_e( 'Country', 'athen-marine' ); ?></span>
+					<h3 id="am-dlv-port-panel-title" class="am-dlv-port-panel__title"></h3>
+					<span class="am-dlv-port-panel__eyebrow"><?php esc_html_e( 'Port', 'athen-marine' ); ?></span>
+					<ul id="am-dlv-port-panel-list" class="am-dlv-port-panel__list"></ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="am-dlv-map__legend">
+			<span class="am-dlv-map__legend-item"><span class="am-dlv-legend-dot"></span> <?php esc_html_e( 'Port Location — click a marker or search a country', 'athen-marine' ); ?></span>
 		</div>
 	</section>
 

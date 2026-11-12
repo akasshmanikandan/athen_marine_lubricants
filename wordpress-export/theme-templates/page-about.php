@@ -85,6 +85,7 @@ get_header();
 					<div class="am-about-people-box am-about-people-box--people">
 						<h3 class="am-about-people-box__title"><?php esc_html_e( 'Our People', 'athen-marine' ); ?></h3>
 						<p class="am-about-people-box__desc"><?php esc_html_e( 'Talented professionals backed by industry veterans, combining fresh thinking with decades of maritime expertise.', 'athen-marine' ); ?></p>
+						<p class="am-about-people-box__desc"><?php esc_html_e( 'People are at the heart of Athen Marine. Driven by Agility, Growth, Trust and Partnership, we work as one team to create value for our customers, and support their success wherever they operate.', 'athen-marine' ); ?></p>
 					</div>
 				</div>
 			</div>

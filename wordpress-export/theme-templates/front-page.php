@@ -329,6 +329,25 @@ get_header();
 				</div>
 			</div>
 
+			<?php /* Hidden until Egypt page is ready to show:
+			<div class="am-faq-item">
+				<button type="button" class="am-faq-item__question" aria-expanded="false">
+					<span><?php esc_html_e( 'Is Athen Marine available in Egypt?', 'athen-marine' ); ?></span>
+					<span class="am-faq-item__icon" aria-hidden="true"></span>
+				</button>
+				<div class="am-faq-item__answer">
+					<p>
+						<?php
+						printf(
+							esc_html__( 'Yes. Athen Marine lubricants are available to vessels calling at Egyptian ports and transiting the Suez Canal. See our %s for details.', 'athen-marine' ),
+							'<a href="/egypt/">' . esc_html__( 'Egypt page', 'athen-marine' ) . '</a>'
+						);
+						?>
+					</p>
+				</div>
+			</div>
+			*/ ?>
+
 			<div class="am-faq-item">
 				<button type="button" class="am-faq-item__question" aria-expanded="false">
 					<span><?php esc_html_e( "Who is Athen Marine's strategic partner?", 'athen-marine' ); ?></span>

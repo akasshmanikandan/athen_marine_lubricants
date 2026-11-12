@@ -41,6 +41,23 @@ function athen_marine_scripts() {
 
 	$main_deps = array();
 
+	if ( is_page_template( 'page-delivery.php' ) ) {
+		wp_enqueue_style(
+			'leaflet',
+			'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
+			array(),
+			'1.9.4'
+		);
+		wp_enqueue_script(
+			'leaflet',
+			'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
+			array(),
+			'1.9.4',
+			true
+		);
+		$main_deps = array( 'leaflet' );
+	}
+
 	wp_enqueue_script(
 		'athen-marine-main',
 		get_template_directory_uri() . '/js/main.js',
