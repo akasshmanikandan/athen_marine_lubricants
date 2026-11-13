@@ -121,7 +121,7 @@ get_header();
 			<div class="am-finder__tabs" role="tablist" id="am-finder-tabs">
 				<button type="button" class="am-finder__tab is-active" data-type="all"><?php esc_html_e( 'All', 'athen-marine' ); ?></button>
 				<button type="button" class="am-finder__tab" data-type="cyl"><?php esc_html_e( 'CYL', 'athen-marine' ); ?></button>
-				<button type="button" class="am-finder__tab" data-type="oil"><?php esc_html_e( 'OIL', 'athen-marine' ); ?></button>
+				<button type="button" class="am-finder__tab" data-type="oil"><?php esc_html_e( 'MSDO', 'athen-marine' ); ?></button>
 			</div>
 			<div class="am-finder__table" id="am-finder-table">
 				<div class="am-finder__row am-finder__row--head"><span><?php esc_html_e( 'Product', 'athen-marine' ); ?></span><span><?php esc_html_e( 'Description', 'athen-marine' ); ?></span></div>
