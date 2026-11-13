@@ -6355,3 +6355,8 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 .am-wa-chat{ width: auto; height: auto; padding: 14px 24px 14px 18px; gap: 14px; justify-content: flex-start; }
 .am-wa-chat span{ font-family: var(--font-head); font-weight: 700; font-size: 17px; line-height: 1.2; color: #fff; }
 .am-wa-chat svg{ width: 26px; height: 26px; }
+
+/* Side labels so neighbouring pins stay unambiguous */
+.am-dlv-label--pinned.am-dlv-label--r span{ transform: translate(16px, -50%); }
+.am-dlv-label--pinned.am-dlv-label--l span{ transform: translate(calc(-100% - 16px), -50%); }
+.am-dlv-label--pinned.am-dlv-label--u span{ transform: translate(-50%, calc(-100% - 14px)); }

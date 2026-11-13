@@ -289,6 +289,8 @@
 			'France': [ 46.6, 2.5 ], 'Norway': [ 61.5, 9 ], 'China': [ 35, 103 ], 'India': [ 22, 79 ],
 			'Indonesia': [ -2.5, 115 ], 'Chile': [ -35, -71 ], 'Greece': [ 39.2, 22 ]
 		};
+		/* Keep labels of closely-spaced pins beside their own dot */
+		var LABEL_SIDE = { 'Denmark': 'l', 'Netherlands': 'l', 'Spain': 'r', 'UAE': 'u', 'Oman': 'r' };
 		var SEA_LABELS = [
 			[ 'Atlantic Ocean', 25, -40, 2 ], [ 'Pacific Ocean', -8, -112, 2 ], [ 'Indian Ocean', -20, 80, 2 ],
 			[ 'Arabian Sea', 15, 65, 4 ], [ 'Bay of Bengal', 14, 88, 4 ], [ 'Mediterranean Sea', 34.5, 18, 4 ],
@@ -329,7 +331,7 @@
 					var area = Math.abs( ( b.getNorth() - b.getSouth() ) * ( b.getEast() - b.getWest() ) );
 					var m = window.L.marker( c, {
 						interactive: false, keyboard: false,
-						icon: window.L.divIcon( { className: 'am-dlv-label' + ( pinned ? ' am-dlv-label--pinned' : '' ), html: '<span>' + name.replace( 'United States of America', 'USA' ).replace( 'United Kingdom', 'UK' ).replace( 'Democratic Republic of the Congo', 'DR Congo' ).replace( 'Republic of the Congo', 'Congo' ).replace( 'United Republic of Tanzania', 'Tanzania' ).replace( 'United Arab Emirates', 'UAE' ).replace( 'Republic of Korea', 'South Korea' ) + '</span>', iconSize: [ 0, 0 ] } )
+						icon: window.L.divIcon( { className: 'am-dlv-label' + ( pinned ? ' am-dlv-label--pinned' : '' ) + ( pinned && LABEL_SIDE[ alias ] ? ' am-dlv-label--' + LABEL_SIDE[ alias ] : '' ), html: '<span>' + name.replace( 'United States of America', 'USA' ).replace( 'United Kingdom', 'UK' ).replace( 'Democratic Republic of the Congo', 'DR Congo' ).replace( 'Republic of the Congo', 'Congo' ).replace( 'United Republic of Tanzania', 'Tanzania' ).replace( 'United Arab Emirates', 'UAE' ).replace( 'Republic of Korea', 'South Korea' ) + '</span>', iconSize: [ 0, 0 ] } )
 					} );
 					labelItems.push( { marker: m, area: pinned ? 1e6 : area, sea: false } );
 				} );
