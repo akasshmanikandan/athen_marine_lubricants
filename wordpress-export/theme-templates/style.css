@@ -6292,3 +6292,13 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 	.am-dlv-loc-btn{ width: 42px; height: 42px; }
 	.am-dlv-loc-btn--prev{ left: -8px; } .am-dlv-loc-btn--next{ right: -8px; }
 }
+
+/* About board: both cards share one stacked layout */
+.am-about-leadership__grid--duo{ align-items: stretch; }
+.am-about-leader--duo-b{ flex-direction: column; align-items: stretch; background: linear-gradient(115deg, var(--pine) 0%, var(--pine) 55%, #11291e 100%); }
+.am-about-leader--duo{ padding: 36px; gap: 28px; }
+.am-about-leader--duo .am-about-value-card{ flex: 1; }
+.am-about-leader__photos--single{ justify-content: center; }
+.am-about-leader__photos--single .am-about-leader__fig{ flex: 0 0 calc(50% - 8px); }
+.am-about-leader__photos--pair .am-about-leader__avatar{ height: 280px; object-position: top center; }
+@media (max-width: 480px){ .am-about-leader--duo{ padding: 24px; } .am-about-leader__photos--single .am-about-leader__fig{ flex-basis: 70%; } }

@@ -190,8 +190,8 @@ get_header();
 				</div>
 			</div>
 			<div class="am-about-leader am-about-leader--duo am-about-leader--duo-b">
-				<div class="am-about-leader__photos">
-					<img class="am-about-leader__avatar" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/leader-jackcraig.jpg" alt="<?php esc_attr_e( 'Jack Craig', 'athen-marine' ); ?>">
+				<div class="am-about-leader__photos am-about-leader__photos--pair am-about-leader__photos--single">
+					<figure class="am-about-leader__fig"><img class="am-about-leader__avatar" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/leader-jackcraig.jpg" alt="<?php esc_attr_e( 'Jack Craig', 'athen-marine' ); ?>"><figcaption>Jack Craig</figcaption></figure>
 				</div>
 				<div class="am-about-value-card">
 					<h3 class="am-about-value-card__title"><?php esc_html_e( 'Jack Craig', 'athen-marine' ); ?></h3>
