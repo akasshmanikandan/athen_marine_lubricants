@@ -106,38 +106,29 @@ get_header();
 					<option value="2-stroke"><?php esc_html_e( '2-Stroke Crosshead', 'athen-marine' ); ?></option>
 					<option value="4-stroke-medium"><?php esc_html_e( '4-Stroke Medium Speed', 'athen-marine' ); ?></option>
 					<option value="4-stroke-high"><?php esc_html_e( '4-Stroke High Speed', 'athen-marine' ); ?></option>
-					<option value="auxiliary"><?php esc_html_e( 'Auxiliary', 'athen-marine' ); ?></option>
 				</select>
 			</div>
 			<div class="am-finder__field">
-				<label for="am-fuel-grade"><?php esc_html_e( 'Fuel Grade', 'athen-marine' ); ?></label>
+				<label for="am-fuel-grade"><?php esc_html_e( 'Fuel', 'athen-marine' ); ?></label>
 				<select id="am-fuel-grade" name="fuel_grade">
-					<option value="hfo"><?php esc_html_e( 'HFO', 'athen-marine' ); ?></option>
-					<option value="vlsfo"><?php esc_html_e( 'VLSFO', 'athen-marine' ); ?></option>
-					<option value="ulsfo"><?php esc_html_e( 'ULSFO', 'athen-marine' ); ?></option>
+					<option value="hfo"><?php esc_html_e( 'HFO / ULSFO / VLSFO', 'athen-marine' ); ?></option>
 					<option value="mgo"><?php esc_html_e( 'MGO', 'athen-marine' ); ?></option>
 				</select>
 			</div>
-			<div class="am-finder__field">
-				<label for="am-sulfur-content"><?php esc_html_e( 'Sulfur Content', 'athen-marine' ); ?></label>
-				<select id="am-sulfur-content" name="sulfur_content">
-					<option value="0.1">0.1%</option>
-					<option value="0.5">0.5%</option>
-					<option value="1.0">1.0%</option>
-					<option value="2.0">2.0%</option>
-					<option value="3.5">3.5%+</option>
-				</select>
-			</div>
-			<button type="submit" class="am-btn am-btn--pine am-finder__submit"><?php esc_html_e( 'Find My Lubricant', 'athen-marine' ); ?></button>
+			<button type="submit" class="am-btn am-btn--pine am-finder__submit"><?php esc_html_e( 'Find My Lube', 'athen-marine' ); ?></button>
 		</form>
 
 		<div class="am-finder__result" id="am-finder-result">
-			<div>
-				<span class="am-finder__result-tag"><?php esc_html_e( 'Recommended For You', 'athen-marine' ); ?></span>
-				<div class="am-finder__result-title" id="am-finder-result-title">&mdash;</div>
-				<p class="am-finder__result-desc" id="am-finder-result-desc"></p>
+			<div class="am-finder__tabs" role="tablist" id="am-finder-tabs">
+				<button type="button" class="am-finder__tab is-active" data-type="all"><?php esc_html_e( 'All', 'athen-marine' ); ?></button>
+				<button type="button" class="am-finder__tab" data-type="cyl"><?php esc_html_e( 'CYL', 'athen-marine' ); ?></button>
+				<button type="button" class="am-finder__tab" data-type="oil"><?php esc_html_e( 'OIL', 'athen-marine' ); ?></button>
 			</div>
-			<a href="#quote" class="am-btn am-btn--pine"><?php esc_html_e( 'Request This Grade', 'athen-marine' ); ?></a>
+			<div class="am-finder__table" id="am-finder-table">
+				<div class="am-finder__row am-finder__row--head"><span><?php esc_html_e( 'Product', 'athen-marine' ); ?></span><span><?php esc_html_e( 'Description', 'athen-marine' ); ?></span></div>
+				<div class="am-finder__rows" id="am-finder-rows"></div>
+			</div>
+			<a href="/request-a-quote/" class="am-btn am-btn--pine am-finder__cta"><?php esc_html_e( 'Request a Quote', 'athen-marine' ); ?></a>
 		</div>
 	</section>
 

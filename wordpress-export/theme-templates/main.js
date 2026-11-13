@@ -799,72 +799,164 @@
 	/* ---------------------------------------------------------------- */
 	/* Smart product finder                                               */
 	/* ---------------------------------------------------------------- */
-	var CYLINDER_BY_SULFUR = {
-		'0.1': { grade: 'CYL OIL 5040', bn: 'BN 40' },
-		'0.5': { grade: 'CYL OIL 5040', bn: 'BN 40' },
-		'1.0': { grade: 'CYL OIL 5070', bn: 'BN 70' },
-		'2.0': { grade: 'CYL OIL 50100', bn: 'BN 100' },
-		'3.5': { grade: 'CYL OIL 50140', bn: 'BN 140' }
-	};
-
-	var TRUNK_TBN_BY_FUEL = {
-		hfo: 'TBN 40',
-		vlsfo: 'TBN 30',
-		ulsfo: 'TBN 20',
-		mgo: 'TBN 15'
-	};
-
-	function findProduct( engineType, fuelGrade, sulfurContent ) {
-		if ( engineType === '2-stroke' ) {
-			var cyl = CYLINDER_BY_SULFUR[ sulfurContent ] || CYLINDER_BY_SULFUR[ '1.0' ];
-			return {
-				title: cyl.grade + ' — ' + cyl.bn,
-				desc: 'A cylinder oil matched to ' + sulfurContent + '% sulfur fuel for 2-stroke crosshead engines, keeping neutralisation capacity aligned with your fuel’s acid load.'
-			};
-		}
-
-		if ( engineType === '4-stroke-medium' ) {
-			return {
-				title: 'SYSTEM OIL 30 — TBN 15',
-				desc: 'A medium-speed system oil formulated for ' + fuelGrade.toUpperCase() + ' operation, balancing detergency and TBN retention across long drain intervals.'
-			};
-		}
-
-		if ( engineType === '4-stroke-high' ) {
-			var tbn = TRUNK_TBN_BY_FUEL[ fuelGrade ] || 'TBN 20';
-			return {
-				title: 'TRUNK PISTON OIL 40 — ' + tbn,
-				desc: 'A high-speed trunk piston oil sized to ' + fuelGrade.toUpperCase() + ' fuel, protecting rings and liners under high thermal load.'
-			};
-		}
-
-		return {
-			title: 'AUX ENGINE OIL 40 — TBN 20',
-			desc: 'A general-purpose auxiliary engine oil suited to generator sets and auxiliary machinery running on ' + fuelGrade.toUpperCase() + '.'
-		};
-	}
+	var FINDER_PRODUCTS = [
+	 {
+	  "t": "cyl",
+	  "n": "Athen Marine CYL Oil 5025",
+	  "f": "mgo",
+	  "d": "Modern low-speed two-stroke engines on fuels with 0.1% sulfur"
+	 },
+	 {
+	  "t": "cyl",
+	  "n": "Athen Marine CYL Oil 5040",
+	  "f": "hfo",
+	  "d": "Residual fuels with sulfur up to 0.5%"
+	 },
+	 {
+	  "t": "cyl",
+	  "n": "Athen Marine CYL Oil 5055",
+	  "f": "hfo",
+	  "d": "Latest highly rated engines on heavy fuels, sulfur 0.5% to 3.5%"
+	 },
+	 {
+	  "t": "cyl",
+	  "n": "Athen Marine CYL Oil 5070",
+	  "f": "hfo",
+	  "d": "Residual fuels with sulfur in excess of 1%"
+	 },
+	 {
+	  "t": "cyl",
+	  "n": "Athen Marine CYL Oil 50100",
+	  "f": "hfo",
+	  "d": "Slow-speed engines on residual fuels, sulfur 1.5% to 3.5%"
+	 },
+	 {
+	  "t": "cyl",
+	  "n": "Athen Marine CYL Oil 50140",
+	  "f": "hfo",
+	  "d": "Very high sulfur fuels (>3.5%)"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 3030",
+	  "f": "hfo",
+	  "d": "Residual and distillate fuels, sulfur up to 3.5%"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 3040",
+	  "f": "hfo",
+	  "d": "Medium to high sulfur fuels up to 4.5%"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 3055",
+	  "f": "hfo",
+	  "d": "Suitable for high-sulphur fuel engines with less frequent oil replenishment."
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 4030",
+	  "f": "hfo",
+	  "d": "Medium-speed four-stroke trunk piston engines, fuels up to 3.5% sulfur"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 4040",
+	  "f": "hfo",
+	  "d": "Fuels with sulfur up to 4.5%"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 4055",
+	  "f": "hfo",
+	  "d": "Suitable for high-sulphur fuel engines with less frequent oil replenishment."
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 3012",
+	  "f": "mgo",
+	  "d": "Low-sulfur fuels (0.5% or less)"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 3015",
+	  "f": "mgo",
+	  "d": "Low to moderate sulfur fuels (up to 1.0%)"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 3020",
+	  "f": "mgo",
+	  "d": "Residual or distillate fuels, sulfur up to 1.5%"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 4012",
+	  "f": "mgo",
+	  "d": "Low-sulfur fuels (0.5% or less)"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 4015",
+	  "f": "mgo",
+	  "d": "Low to moderate sulfur fuels (up to 1.0%)"
+	 },
+	 {
+	  "t": "oil",
+	  "n": "Athen Marine MSDO 4020",
+	  "f": "mgo",
+	  "d": "Residual or distillate fuels, sulfur up to 1.5%"
+	 }
+	];
 
 	function initProductFinder() {
 		var form = document.getElementById( 'am-finder-form' );
 		var result = document.getElementById( 'am-finder-result' );
-		if ( ! form || ! result ) {
+		var rowsEl = document.getElementById( 'am-finder-rows' );
+		var tabs = document.querySelectorAll( '.am-finder__tab' );
+		if ( ! form || ! result || ! rowsEl ) {
 			return;
 		}
+
+		var state = { fuel: 'hfo', type: 'all' };
+
+		function esc( s ) {
+			return String( s ).replace( /[&<>"]/g, function ( c ) {
+				return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ c ];
+			} );
+		}
+
+		function render() {
+			var list = FINDER_PRODUCTS.filter( function ( p ) {
+				return p.f === state.fuel && ( state.type === 'all' || p.t === state.type );
+			} );
+			rowsEl.innerHTML = list.length ? list.map( function ( p ) {
+				return '<div class="am-finder__row"><strong>' + esc( p.n ) + '</strong><span>' + esc( p.d ) + '</span></div>';
+			} ).join( '' ) : '<div class="am-finder__row"><span>No matching products.</span></div>';
+			Array.prototype.forEach.call( tabs, function ( t ) {
+				t.classList.toggle( 'is-active', t.getAttribute( 'data-type' ) === state.type );
+			} );
+		}
+
+		Array.prototype.forEach.call( tabs, function ( t ) {
+			t.addEventListener( 'click', function () {
+				state.type = t.getAttribute( 'data-type' );
+				render();
+			} );
+		} );
 
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
 
 			var engineType = document.getElementById( 'am-engine-type' ).value;
-			var fuelGrade = document.getElementById( 'am-fuel-grade' ).value;
-			var sulfurContent = document.getElementById( 'am-sulfur-content' ).value;
-
-			var match = findProduct( engineType, fuelGrade, sulfurContent );
-
-			setText( 'am-finder-result-title', match.title );
-			setText( 'am-finder-result-desc', match.desc );
+			state.fuel = document.getElementById( 'am-fuel-grade' ).value;
+			/* 2-stroke engines use cylinder oils; 4-stroke use trunk piston (OIL) */
+			state.type = engineType === '2-stroke' ? 'cyl' : 'oil';
+			render();
 
 			result.classList.add( 'is-visible' );
-			result.scrollIntoView( { behavior: 'smooth', block: 'center' } );
+			result.scrollIntoView( { behavior: 'smooth', block: 'nearest' } );
 		} );
 	}
 
@@ -1046,7 +1138,6 @@
 	// Expose for inline/manual use if ever needed.
 	window.athenMarine = {
 		renderCompareCategory: renderCompareCategory,
-		findProduct: findProduct,
 		submitQuickQuote: submitQuickQuote
 	};
 } )();

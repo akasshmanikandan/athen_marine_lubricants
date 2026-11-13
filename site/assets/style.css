@@ -933,7 +933,7 @@ section{ position: relative; }
 
 .am-finder__form{
 	display: grid;
-	grid-template-columns: repeat(3, 1fr) auto;
+	grid-template-columns: repeat(2, 1fr) auto;
 	gap: 16px;
 	align-items: end;
 }
@@ -6113,4 +6113,24 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 	.am-dlv-hero__label, .am-dlv-hero__tagline{ color: #7fd4a3; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
 	.am-dlv-hero__title{ color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.55); }
 	.am-dlv-hero__subtitle{ color: rgba(255,255,255,.92); text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+}
+
+/* Lube finder results table */
+.am-finder__result{ flex-direction: column; align-items: stretch; gap: 16px; padding: 20px; }
+.am-finder__result.is-visible{ display: flex; }
+.am-finder__tabs{ display: flex; gap: 8px; }
+.am-finder__tab{ border: 1px solid var(--pine); background: #fff; color: var(--pine); font-family: var(--font-head); font-weight: 700; font-size: 12px; letter-spacing: .08em; padding: 9px 20px; border-radius: 999px; cursor: pointer; }
+.am-finder__tab.is-active{ background: var(--pine); color: #fff; }
+.am-finder__table{ border: 1px solid var(--light-grey); border-radius: 8px; overflow: hidden; }
+.am-finder__rows{ max-height: 340px; overflow-y: auto; }
+.am-finder__row{ display: grid; grid-template-columns: minmax(180px, 1fr) 2fr; gap: 16px; padding: 14px 18px; border-top: 1px solid var(--light-grey); font-size: 14px; color: #555; align-items: start; }
+.am-finder__rows .am-finder__row:first-child{ border-top: none; }
+.am-finder__row strong{ color: var(--black); font-family: var(--font-head); font-weight: 700; }
+.am-finder__row--head{ background: var(--offwhite); border-top: none; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--pine); }
+.am-finder__cta{ align-self: flex-start; }
+@media (max-width: 768px){
+	.am-finder__form{ grid-template-columns: minmax(0,1fr); }
+	.am-finder__row{ grid-template-columns: minmax(0,1fr); gap: 4px; }
+	.am-finder__row--head span:last-child{ display: none; }
+	.am-finder__rows{ max-height: 380px; }
 }

@@ -237,38 +237,29 @@
 					<option value="2-stroke">2-Stroke Crosshead</option>
 					<option value="4-stroke-medium">4-Stroke Medium Speed</option>
 					<option value="4-stroke-high">4-Stroke High Speed</option>
-					<option value="auxiliary">Auxiliary</option>
 				</select>
 			</div>
 			<div class="am-finder__field">
-				<label for="am-fuel-grade">Fuel Grade</label>
+				<label for="am-fuel-grade">Fuel</label>
 				<select id="am-fuel-grade" name="fuel_grade">
-					<option value="hfo">HFO</option>
-					<option value="vlsfo">VLSFO</option>
-					<option value="ulsfo">ULSFO</option>
+					<option value="hfo">HFO / ULSFO / VLSFO</option>
 					<option value="mgo">MGO</option>
 				</select>
 			</div>
-			<div class="am-finder__field">
-				<label for="am-sulfur-content">Sulfur Content</label>
-				<select id="am-sulfur-content" name="sulfur_content">
-					<option value="0.1">0.1%</option>
-					<option value="0.5">0.5%</option>
-					<option value="1.0">1.0%</option>
-					<option value="2.0">2.0%</option>
-					<option value="3.5">3.5%+</option>
-				</select>
-			</div>
-			<button type="submit" class="am-btn am-btn--pine am-finder__submit">Find My Lubricant</button>
+			<button type="submit" class="am-btn am-btn--pine am-finder__submit">Find My Lube</button>
 		</form>
 
 		<div class="am-finder__result" id="am-finder-result">
-			<div>
-				<span class="am-finder__result-tag">Recommended For You</span>
-				<div class="am-finder__result-title" id="am-finder-result-title">&mdash;</div>
-				<p class="am-finder__result-desc" id="am-finder-result-desc"></p>
+			<div class="am-finder__tabs" role="tablist" id="am-finder-tabs">
+				<button type="button" class="am-finder__tab is-active" data-type="all">All</button>
+				<button type="button" class="am-finder__tab" data-type="cyl">CYL</button>
+				<button type="button" class="am-finder__tab" data-type="oil">OIL</button>
 			</div>
-			<a href="#quote" class="am-btn am-btn--pine">Request This Grade</a>
+			<div class="am-finder__table" id="am-finder-table">
+				<div class="am-finder__row am-finder__row--head"><span>Product</span><span>Description</span></div>
+				<div class="am-finder__rows" id="am-finder-rows"></div>
+			</div>
+			<a href="/request-a-quote/" class="am-btn am-btn--pine am-finder__cta">Request a Quote</a>
 		</div>
 	</section>
 
