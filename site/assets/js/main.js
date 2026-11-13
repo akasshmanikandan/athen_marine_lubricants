@@ -953,6 +953,10 @@
 			state.fuel = document.getElementById( 'am-fuel-grade' ).value;
 			/* 2-stroke engines use cylinder oils; 4-stroke use trunk piston (OIL) */
 			state.type = engineType === '2-stroke' ? 'cyl' : 'oil';
+			/* only the tab for the chosen engine is shown */
+			Array.prototype.forEach.call( tabs, function ( t ) {
+				t.style.display = t.getAttribute( 'data-type' ) === state.type ? '' : 'none';
+			} );
 			render();
 
 			result.classList.add( 'is-visible' );
