@@ -105,7 +105,6 @@ get_header();
 				<select id="am-engine-type" name="engine_type">
 					<option value="2-stroke"><?php esc_html_e( '2-Stroke Crosshead', 'athen-marine' ); ?></option>
 					<option value="4-stroke-medium"><?php esc_html_e( '4-Stroke Medium Speed', 'athen-marine' ); ?></option>
-					<option value="4-stroke-high"><?php esc_html_e( '4-Stroke High Speed', 'athen-marine' ); ?></option>
 				</select>
 			</div>
 			<div class="am-finder__field">
