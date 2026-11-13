@@ -116,9 +116,9 @@
 				'url'    => '/delivery-network',
 				'active' => ( strpos( $am_current_url, 'delivery' ) !== false ),
 				'mega'   => array(
-					array( 'label' => __( 'Our Reach', 'athen-marine' ), 'url' => '/delivery-network/#reach' ),
-					array( 'label' => __( 'World Map & Ports', 'athen-marine' ), 'url' => '/delivery-network/#map' ),
-					array( 'label' => __( 'Global Locations', 'athen-marine' ), 'url' => '/delivery-network/#locations' ),
+					array( 'label' => __( 'Global Supply', 'athen-marine' ), 'url' => '/delivery-network/#reach' ),
+					array( 'label' => __( 'Interactive Port Map', 'athen-marine' ), 'url' => '/delivery-network/#map' ),
+					array( 'label' => __( 'Our Supply Network', 'athen-marine' ), 'url' => '/delivery-network/#locations' ),
 					// Hidden until Egypt page is ready to show: array( 'label' => __( 'Egypt Coverage', 'athen-marine' ), 'url' => '/egypt/' ),
 				),
 			),

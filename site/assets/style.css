@@ -6235,3 +6235,11 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 @media (max-width: 768px){
 	.am-dlv-grip, .am-dlv-minbtn{ display: none !important; }
 }
+
+/* Board: separate portraits for the two brothers */
+.am-about-leader--duo-a{ flex-direction: column; align-items: stretch; }
+.am-about-leader__photos--pair{ gap: 16px; width: 100%; }
+.am-about-leader__fig{ flex: 1 1 0; min-width: 0; margin: 0; text-align: center; }
+.am-about-leader__photos--pair .am-about-leader__avatar{ width: 100%; height: 260px; }
+.am-about-leader__fig figcaption{ margin-top: 10px; font-family: var(--font-head); font-weight: 700; font-size: 14px; color: var(--offwhite); }
+@media (max-width: 480px){ .am-about-leader__photos--pair .am-about-leader__avatar{ height: 200px; } }

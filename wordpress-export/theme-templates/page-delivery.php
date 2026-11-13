@@ -97,10 +97,9 @@ get_header();
 			<div class="am-dlv-location-card">
 				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Greece', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Blending operations strengthening our European supply capabilities. Every batch is blended and quality-checked before it leaves the facility, supporting consistent product performance across the region.', 'athen-marine' ); ?></p>
-				<span class="am-dlv-location-card__note"><?php esc_html_e( 'Facility capacity and certifications to be published once confirmed.', 'athen-marine' ); ?></span>
 			</div>
 			<div class="am-dlv-location-card">
-				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Rotterdam', 'athen-marine' ); ?></h3>
+				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Netherlands', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Marine supply and barge operations within a major European maritime hub.', 'athen-marine' ); ?></p>
 			</div>
 			<div class="am-dlv-location-card">

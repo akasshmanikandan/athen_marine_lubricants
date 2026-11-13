@@ -180,8 +180,9 @@ get_header();
 
 		<div class="am-about-values__grid am-about-leadership__grid am-about-leadership__grid--duo">
 			<div class="am-about-leader am-about-leader--duo am-about-leader--duo-a">
-				<div class="am-about-leader__photos">
-					<img class="am-about-leader__avatar" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/leader-plune-duo.jpg" alt="<?php esc_attr_e( 'Gerrie Plune and Robert Plune', 'athen-marine' ); ?>">
+				<div class="am-about-leader__photos am-about-leader__photos--pair">
+					<figure class="am-about-leader__fig"><img class="am-about-leader__avatar" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/leader-gerrie.jpg" alt="<?php esc_attr_e( 'Gerrie Plune', 'athen-marine' ); ?>"><figcaption><?php esc_html_e( 'Gerrie Plune', 'athen-marine' ); ?></figcaption></figure>
+					<figure class="am-about-leader__fig"><img class="am-about-leader__avatar" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/leader-robert.jpg" alt="<?php esc_attr_e( 'Robert Plune', 'athen-marine' ); ?>"><figcaption><?php esc_html_e( 'Robert Plune', 'athen-marine' ); ?></figcaption></figure>
 				</div>
 				<div class="am-about-value-card">
 					<h3 class="am-about-value-card__title"><?php esc_html_e( 'Gerrie Plune & Robert Plune', 'athen-marine' ); ?></h3>
