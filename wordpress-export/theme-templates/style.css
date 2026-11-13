@@ -6302,3 +6302,12 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 .am-about-leader__photos--single .am-about-leader__fig{ flex: 0 0 calc(50% - 8px); }
 .am-about-leader__photos--pair .am-about-leader__avatar{ height: 280px; object-position: top center; }
 @media (max-width: 480px){ .am-about-leader--duo{ padding: 24px; } .am-about-leader__photos--single .am-about-leader__fig{ flex-basis: 70%; } }
+
+/* Blog: title spacing + branded placeholder for missing images */
+.am-blog-hero{ padding-bottom: 36px; }
+.am-blog-hero__title{ padding-bottom: .12em; }
+.am-blog-card__image.is-missing, .am-blog-featured__image.is-missing{
+	background: linear-gradient(135deg, #1b4332 0%, #0f2a1f 100%) url("images/logo-white.png") center/38% auto no-repeat;
+	font-size: 0; color: transparent;
+}
+.am-blog-card__image.is-missing img, .am-blog-featured__image.is-missing img{ display: none; }

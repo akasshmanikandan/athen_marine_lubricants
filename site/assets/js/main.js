@@ -1419,3 +1419,14 @@
 	window.addEventListener( 'resize', upd );
 	upd();
 } )();
+
+( function () {
+	function mark( img ) {
+		var box = img.closest( '.am-blog-card__image, .am-blog-featured__image' );
+		if ( box ) { box.classList.add( 'is-missing' ); }
+	}
+	document.querySelectorAll( '.am-blog-card__image img, .am-blog-featured__image img' ).forEach( function ( img ) {
+		if ( img.complete && img.naturalWidth === 0 ) { mark( img ); }
+		img.addEventListener( 'error', function () { mark( img ); } );
+	} );
+} )();
