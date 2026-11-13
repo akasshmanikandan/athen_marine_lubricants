@@ -132,6 +132,13 @@ get_header();
 			</div>
 			<div class="am-dlv-location-card">
 				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
+				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Port Supply', 'athen-marine' ); ?></span>
+				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Egypt', 'athen-marine' ); ?></h3>
+				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Marine lubricant supply for vessels calling at Egyptian ports.', 'athen-marine' ); ?></p>
+				<a class="am-dlv-location-card__link" href="/contact/"><?php esc_html_e( 'Check availability', 'athen-marine' ); ?> &rarr;</a>
+			</div>
+			<div class="am-dlv-location-card">
+				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
 				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Partner Supply', 'athen-marine' ); ?></span>
 				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'India', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Available through strategic partnership with ZEST Marine.', 'athen-marine' ); ?></p>
