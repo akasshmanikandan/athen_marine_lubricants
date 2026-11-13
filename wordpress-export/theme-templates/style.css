@@ -6360,3 +6360,8 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 .am-dlv-label--pinned.am-dlv-label--r span{ transform: translate(16px, -50%); }
 .am-dlv-label--pinned.am-dlv-label--l span{ transform: translate(calc(-100% - 16px), -50%); }
 .am-dlv-label--pinned.am-dlv-label--u span{ transform: translate(-50%, calc(-100% - 14px)); }
+
+/* Contact lines with icons */
+.am-contact-line a{ display: inline-flex; align-items: center; gap: 12px; }
+.am-contact-line svg{ flex: none; color: #8FD1AE; }
+.am-wa-chat + .am-contact-line, .am-contact-hero__quickinfo .am-contact-line:first-of-type{ margin-top: 14px; }

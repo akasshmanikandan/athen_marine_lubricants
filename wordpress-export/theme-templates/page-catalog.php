@@ -78,7 +78,6 @@ $am_category_docs = array(
 		<h2 class="am-cta__title"><?php esc_html_e( 'Need Help Choosing the Right Product?', 'athen-marine' ); ?></h2>
 		<p class="am-cta__sub"><?php esc_html_e( 'Our technical team can recommend the right grade for your fleet and operating conditions.', 'athen-marine' ); ?></p>
 		<div class="am-cta__actions">
-			<a href="/request-quote/" class="am-btn am-btn--offwhite" style="background:var(--offwhite);color:var(--pine);"><?php esc_html_e( 'Request a Quote', 'athen-marine' ); ?></a>
 			<a href="/contact/" class="am-btn am-btn--ghost"><?php esc_html_e( 'Contact Our Team', 'athen-marine' ); ?></a>
 		</div>
 	</section>
