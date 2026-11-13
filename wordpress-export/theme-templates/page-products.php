@@ -1068,7 +1068,6 @@ get_header();
 		<h2 class="am-prod-cta__title"><?php esc_html_e( 'Speak to Our Product Specialists', 'athen-marine' ); ?></h2>
 		<p class="am-prod-cta__sub"><?php esc_html_e( 'Tell us your vessel type, engine specification and operating route — we\'ll recommend the right grade.', 'athen-marine' ); ?></p>
 		<div class="am-prod-cta__actions">
-			<a href="/#quote" class="am-prod-cta__btn am-prod-cta__btn--solid"><?php esc_html_e( 'Request a Quote', 'athen-marine' ); ?></a>
 			<a href="/contact/" class="am-prod-cta__btn am-prod-cta__btn--outline"><?php esc_html_e( 'Contact Our Experts', 'athen-marine' ); ?></a>
 		</div>
 	</section>
