@@ -1239,6 +1239,13 @@
 		var small = window.matchMedia( '(max-width: 768px)' );
 		var dragging = false, sx = 0, sy = 0, sl = 0, st = 0;
 
+		function anchorTopLeft() {
+			card.style.left = card.offsetLeft + 'px';
+			card.style.top = card.offsetTop + 'px';
+			card.style.right = 'auto';
+			card.style.bottom = 'auto';
+		}
+
 		function clamp() {
 			if ( small.matches || card.style.top === '' ) {
 				return;
@@ -1249,6 +1256,76 @@
 			card.style.top = t + 'px';
 		}
 
+		/* ---- visible resize grip (bottom-right corner of the card) ---- */
+		var grip = document.createElement( 'div' );
+		grip.className = 'am-dlv-grip';
+		grip.title = 'Drag to resize';
+		grip.innerHTML = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 5L5 14M14 10l-4 4"/></svg>';
+		stage.appendChild( grip );
+
+		function placeGrip() {
+			var visible = card.offsetParent !== null && ! small.matches && ! card.classList.contains( 'is-collapsed' );
+			grip.style.display = visible ? 'flex' : 'none';
+			if ( visible ) {
+				grip.style.left = ( card.offsetLeft + card.offsetWidth - 30 ) + 'px';
+				grip.style.top = ( card.offsetTop + card.offsetHeight - 30 ) + 'px';
+			}
+		}
+
+		var resizing = false, rx = 0, ry = 0, rw = 0, rh = 0;
+		grip.addEventListener( 'pointerdown', function ( e ) {
+			resizing = true;
+			rx = e.clientX;
+			ry = e.clientY;
+			rw = card.offsetWidth;
+			rh = card.offsetHeight;
+			anchorTopLeft();
+			card.classList.add( 'is-dragging' );
+			grip.setPointerCapture( e.pointerId );
+			e.preventDefault();
+		} );
+		grip.addEventListener( 'pointermove', function ( e ) {
+			if ( ! resizing ) {
+				return;
+			}
+			var maxW = Math.min( 720, stage.clientWidth - card.offsetLeft );
+			var maxH = stage.clientHeight - card.offsetTop;
+			card.style.width = Math.max( 240, Math.min( maxW, rw + e.clientX - rx ) ) + 'px';
+			card.style.height = Math.max( 150, Math.min( maxH, rh + e.clientY - ry ) ) + 'px';
+			placeGrip();
+		} );
+		function endResize() {
+			resizing = false;
+			card.classList.remove( 'is-dragging' );
+		}
+		grip.addEventListener( 'pointerup', endResize );
+		grip.addEventListener( 'pointercancel', endResize );
+
+		/* ---- minimise button in the header ---- */
+		var min = document.createElement( 'button' );
+		min.type = 'button';
+		min.className = 'am-dlv-minbtn';
+		min.setAttribute( 'aria-label', 'Minimise' );
+		min.innerHTML = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10"/></svg>';
+		handle.appendChild( min );
+		var savedH = '';
+		min.addEventListener( 'click', function ( e ) {
+			e.stopPropagation();
+			var collapsed = card.classList.toggle( 'is-collapsed' );
+			if ( collapsed ) {
+				savedH = card.style.height;
+				card.style.height = '';
+			} else {
+				card.style.height = savedH;
+			}
+			min.innerHTML = collapsed ?
+				'<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M8 3v10"/></svg>' :
+				'<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10"/></svg>';
+			min.setAttribute( 'aria-label', collapsed ? 'Expand' : 'Minimise' );
+			placeGrip();
+		} );
+
+		/* ---- drag by header ---- */
 		handle.addEventListener( 'pointerdown', function ( e ) {
 			if ( small.matches || e.target.closest( 'button' ) ) {
 				return;
@@ -1258,10 +1335,7 @@
 			sy = e.clientY;
 			sl = card.offsetLeft;
 			st = card.offsetTop;
-			card.style.left = sl + 'px';
-			card.style.top = st + 'px';
-			card.style.right = 'auto';
-			card.style.bottom = 'auto';
+			anchorTopLeft();
 			card.classList.add( 'is-dragging' );
 			handle.setPointerCapture( e.pointerId );
 			e.preventDefault();
@@ -1271,6 +1345,7 @@
 				card.style.left = ( sl + e.clientX - sx ) + 'px';
 				card.style.top = ( st + e.clientY - sy ) + 'px';
 				clamp();
+				placeGrip();
 			}
 		} );
 		function end() {
@@ -1279,13 +1354,23 @@
 		}
 		handle.addEventListener( 'pointerup', end );
 		handle.addEventListener( 'pointercancel', end );
-		handle.addEventListener( 'dblclick', function () {
+		handle.addEventListener( 'dblclick', function ( e ) {
+			if ( e.target.closest( 'button' ) ) {
+				return;
+			}
+			card.classList.remove( 'is-collapsed' );
 			card.style.left = card.style.top = card.style.right = card.style.bottom = card.style.width = card.style.height = '';
+			placeGrip();
 		} );
-		window.addEventListener( 'resize', clamp );
+		window.addEventListener( 'resize', function () { clamp(); placeGrip(); } );
 		card.addEventListener( 'click', function () {
-			window.setTimeout( clamp, 0 );
+			window.setTimeout( function () { clamp(); placeGrip(); }, 0 );
 		} );
+		if ( window.ResizeObserver ) {
+			new window.ResizeObserver( placeGrip ).observe( card );
+		}
+		new MutationObserver( placeGrip ).observe( card, { attributes: true, attributeFilter: [ 'hidden', 'class', 'style' ] } );
+		placeGrip();
 	}
 
 	function init() {
