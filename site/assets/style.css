@@ -3711,7 +3711,7 @@ p.am-about-block__signature{
 	width: 100%;
 	height: 720px;
 	z-index: 1;
-	background: var(--offwhite) !important;
+	background: #DCE8E3 !important;
 }
 
 .am-dlv-leaflet-pin{
@@ -6133,4 +6133,27 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 	.am-finder__row{ grid-template-columns: minmax(0,1fr); gap: 4px; }
 	.am-finder__row--head span:last-child{ display: none; }
 	.am-finder__rows{ max-height: 380px; }
+}
+
+/* Delivery map: labels, numbered markers, fullscreen */
+.am-dlv-label{ pointer-events: none; }
+.am-dlv-label span{ position: absolute; transform: translate(-50%,-50%); white-space: nowrap; font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: .03em; color: rgba(237,235,228,.78); text-shadow: 0 0 3px rgba(13,40,28,.8); }
+.am-dlv-label--sea span{ font-style: italic; font-weight: 500; color: #5F8274; text-shadow: none; letter-spacing: .12em; font-size: 11px; }
+.am-dlv-leaflet-pin--count{ width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 800; font-size: 12px; color: #fff; background: var(--red); border: 2px solid #fff; box-shadow: 0 0 0 4px rgba(229,56,59,.28), 0 2px 5px rgba(0,0,0,.35); }
+.am-dlv-leaflet-pin--count span{ line-height: 1; }
+.am-dlv-fs-btn{ display: block; width: 30px; height: 30px; margin-top: 8px; background: #fff; border: 2px solid rgba(0,0,0,.2); border-radius: 4px; color: #222; cursor: pointer; padding: 0; line-height: 0; }
+.am-dlv-fs-btn svg{ margin: auto; }
+.am-dlv-fs-btn:hover{ background: #f4f4f4; }
+.am-dlv-map__stage:fullscreen{ background: #DCE8E3; }
+.am-dlv-map__stage:fullscreen .am-dlv-leaflet-map{ height: 100vh; }
+.am-dlv-map__stage:fullscreen .am-dlv-map__sidebar{ max-height: calc(100vh - 32px); }
+@media (max-width: 768px){
+	.am-dlv-label span{ font-size: 8px; }
+	.am-dlv-leaflet-pin--count{ width: 22px; height: 22px; font-size: 10px; }
+}
+.am-dlv-label--pinned span{ transform: translate(-50%, 18px); color: #fff; font-weight: 700; }
+.am-dlv-label--pinned span{ text-shadow: 0 0 2px #0d281c, 0 0 2px #0d281c, 0 0 4px #0d281c, 0 1px 3px #0d281c; }
+@media (max-width: 768px){
+	.am-dlv-label{ display: none; }
+	.am-dlv-leaflet-pin--count{ width: 20px !important; height: 20px !important; margin: -10px 0 0 -10px !important; font-size: 9px; border-width: 1.5px; box-shadow: 0 0 0 2px rgba(229,56,59,.28); }
 }

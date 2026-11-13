@@ -250,23 +250,102 @@
 
 		window.L.control.zoom( { position: 'topright' } ).addTo( map );
 
+		/* Scroll-wheel zoom only after the map is clicked (so page scroll is
+		   never trapped), and a fullscreen toggle. */
+		map.on( 'click focus', function () { map.scrollWheelZoom.enable(); } );
+		mapEl.addEventListener( 'mouseleave', function () { map.scrollWheelZoom.disable(); } );
+
+		var stage = mapEl.closest( '.am-dlv-map__stage' );
+		if ( stage && ( stage.requestFullscreen || stage.webkitRequestFullscreen ) ) {
+			var FsControl = window.L.Control.extend( {
+				options: { position: 'topright' },
+				onAdd: function () {
+					var btn = window.L.DomUtil.create( 'button', 'am-dlv-fs-btn' );
+					btn.type = 'button';
+					btn.setAttribute( 'aria-label', 'Toggle fullscreen map' );
+					btn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+					window.L.DomEvent.disableClickPropagation( btn );
+					btn.addEventListener( 'click', function () {
+						if ( document.fullscreenElement ) {
+							document.exitFullscreen();
+						} else {
+							( stage.requestFullscreen || stage.webkitRequestFullscreen ).call( stage );
+						}
+					} );
+					return btn;
+				}
+			} );
+			new FsControl().addTo( map );
+			document.addEventListener( 'fullscreenchange', function () {
+				setTimeout( function () { map.invalidateSize(); }, 150 );
+			} );
+		}
+
 		/* Country shapes rendered in our own brand colors (not a photo
 		   tile provider), so land/ocean are our exact pine green / cream,
 		   not an approximation via CSS filters on raster map tiles. */
+		/* Country + sea name labels (our own styling). Larger countries show
+		   first; smaller ones appear as you zoom in. */
+		var LABEL_OVERRIDES = {
+			'United States of America': [ 39.5, -98.5 ], 'Russia': [ 61, 95 ], 'Canada': [ 58, -100 ],
+			'France': [ 46.6, 2.5 ], 'Norway': [ 61.5, 9 ], 'China': [ 35, 103 ], 'India': [ 22, 79 ],
+			'Indonesia': [ -2.5, 115 ], 'Chile': [ -35, -71 ], 'Greece': [ 39.2, 22 ]
+		};
+		var SEA_LABELS = [
+			[ 'Atlantic Ocean', 25, -40, 2 ], [ 'Pacific Ocean', -8, -112, 2 ], [ 'Indian Ocean', -20, 80, 2 ],
+			[ 'Arabian Sea', 15, 65, 4 ], [ 'Bay of Bengal', 14, 88, 4 ], [ 'Mediterranean Sea', 34.5, 18, 4 ],
+			[ 'South China Sea', 12, 114, 4 ], [ 'North Sea', 56, 3, 5 ], [ 'Red Sea', 20, 38.5, 5 ],
+			[ 'Caribbean Sea', 15, -74, 4 ], [ 'Gulf of Guinea', 2, 2, 5 ], [ 'Southern Ocean', -58, 20, 2 ]
+		];
+		var labelLayer = window.L.layerGroup().addTo( map );
+		var labelItems = [];
+
+		function updateLabels() {
+			var z = map.getZoom();
+			labelItems.forEach( function ( it ) {
+				var show = it.sea ? z >= it.minZoom : it.area >= Math.max( it.area >= 1e6 ? 0 : 8, z >= 5 ? 0 : z >= 4 ? 4 : z >= 3 ? 40 : z >= 2 ? 150 : z >= 1 ? 300 : 700 );
+				if ( show && ! labelLayer.hasLayer( it.marker ) ) { labelLayer.addLayer( it.marker ); }
+				if ( ! show && labelLayer.hasLayer( it.marker ) ) { labelLayer.removeLayer( it.marker ); }
+			} );
+		}
+
 		fetch( 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json' )
 			.then( function ( r ) { return r.json(); } )
 			.then( function ( geo ) {
-				window.L.geoJSON( geo, {
+				var shapes = window.L.geoJSON( geo, {
 					style: {
 						fillColor: '#1B4332',
 						fillOpacity: 1,
-						color: '#EDEBE4',
-						weight: 0.7
+						color: '#8FB5A3',
+						weight: 0.6
 					},
 					interactive: false
 				} ).addTo( map );
+				shapes.eachLayer( function ( layer ) {
+					var name = layer.feature && layer.feature.properties && layer.feature.properties.name;
+					if ( ! name || name === 'Fiji' || name === 'Antarctica' ) { return; }
+					var b = layer.getBounds();
+					var alias = { 'United States of America': 'USA', 'United Arab Emirates': 'UAE', 'Republic of Korea': 'South Korea', 'South Korea': 'South Korea', 'Netherlands': 'Netherlands' }[ name ] || name;
+					var pinned = COUNTRY_COORDS[ alias ] && PORTS_DATA[ alias ];
+					var c = pinned ? COUNTRY_COORDS[ alias ] : ( LABEL_OVERRIDES[ name ] || [ b.getCenter().lat, b.getCenter().lng ] );
+					var area = Math.abs( ( b.getNorth() - b.getSouth() ) * ( b.getEast() - b.getWest() ) );
+					var m = window.L.marker( c, {
+						interactive: false, keyboard: false,
+						icon: window.L.divIcon( { className: 'am-dlv-label' + ( pinned ? ' am-dlv-label--pinned' : '' ), html: '<span>' + name.replace( 'United States of America', 'USA' ).replace( 'United Kingdom', 'UK' ).replace( 'Democratic Republic of the Congo', 'DR Congo' ).replace( 'Republic of the Congo', 'Congo' ).replace( 'United Republic of Tanzania', 'Tanzania' ).replace( 'United Arab Emirates', 'UAE' ).replace( 'Republic of Korea', 'South Korea' ) + '</span>', iconSize: [ 0, 0 ] } )
+					} );
+					labelItems.push( { marker: m, area: pinned ? 1e6 : area, sea: false } );
+				} );
+				SEA_LABELS.forEach( function ( sl ) {
+					var m = window.L.marker( [ sl[ 1 ], sl[ 2 ] ], {
+						interactive: false, keyboard: false,
+						icon: window.L.divIcon( { className: 'am-dlv-label am-dlv-label--sea', html: '<span>' + sl[ 0 ] + '</span>', iconSize: [ 0, 0 ] } )
+					} );
+					labelItems.push( { marker: m, sea: true, minZoom: sl[ 3 ] } );
+				} );
+				updateLabels();
 			} )
 			.catch( function () {} );
+		map.on( 'zoomend', updateLabels );
 
 		var markerIcon = window.L.divIcon( {
 			className: 'am-dlv-leaflet-pin',
@@ -282,7 +361,14 @@
 				return;
 			}
 
-			var marker = window.L.marker( coords, { icon: markerIcon, title: country } );
+			var portCount = PORTS_DATA[ country ].filter( function ( p ) { return p !== 'Others'; } ).length || 1;
+			var icon = portCount > 1 ? window.L.divIcon( {
+				className: 'am-dlv-leaflet-pin am-dlv-leaflet-pin--count',
+				html: '<span>' + portCount + '</span>',
+				iconSize: [ 28, 28 ],
+				iconAnchor: [ 14, 14 ]
+			} ) : markerIcon;
+			var marker = window.L.marker( coords, { icon: icon, title: country + ' — ' + portCount + ( portCount > 1 ? ' ports' : ' port' ) } );
 			marker.on( 'click', function () {
 				showCountry( country );
 			} );
