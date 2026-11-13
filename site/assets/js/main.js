@@ -108,7 +108,6 @@
 		'Denmark': [ 'Skagen', 'Others' ],
 		'Gibraltar': [ 'Gibraltar', 'Others' ],
 		'Greece': [ 'Piraeus', 'Lavrio', 'Vatika', 'Chios', 'Kalamata', 'Others' ],
-		'Hong Kong': [ 'Hong Kong', 'Others' ],
 		'India': [ 'Budge Budge', 'Chennai', 'Cochin', 'Dahej', 'Dhamra', 'Ennore', 'Gangavaram', 'Haldia', 'Hazira', 'Jaigarh', 'JNPT', 'Kakinada', 'Kandla', 'Karaikal', 'Karwar', 'Kolkata', 'Krishnapatnam', 'Mormugao (Goa)', 'Mumbai', 'Mumbai-Butcher Island', 'Mumbai-Pirpav', 'Mundra', 'New Mangalore', 'Paradip', 'Pipavav', 'Sikka', 'Tuticorin', 'Vizag', 'Others' ],
 		'Indonesia': [ 'Batam', 'Port Klang', 'Jakarta', 'Others' ],
 		'Malaysia': [ 'Port Klang', 'Tanjung Pelepas', 'Others' ],
@@ -144,7 +143,6 @@
 		'Denmark': [ 56.2639, 9.5018 ],
 		'Gibraltar': [ 36.1408, -5.3536 ],
 		'Greece': [ 39.0742, 21.8243 ],
-		'Hong Kong': [ 22.3193, 114.1694 ],
 		'India': [ 22.3511, 78.6677 ],
 		'Indonesia': [ -2.5, 118.0149 ],
 		'Malaysia': [ 4.2105, 101.9758 ],
@@ -195,7 +193,6 @@
 		'Indonesia': 'asia',
 		'Vietnam': 'asia',
 		'China': 'asia',
-		'Hong Kong': 'asia',
 		'South Korea': 'asia'
 	};
 

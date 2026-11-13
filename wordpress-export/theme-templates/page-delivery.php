@@ -97,6 +97,13 @@ get_header();
 		<div class="am-dlv-location-grid">
 			<div class="am-dlv-location-card">
 				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
+				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Regional Coverage', 'athen-marine' ); ?></span>
+				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Europe', 'athen-marine' ); ?></h3>
+				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Supply and support across Europe, including Spain, Gibraltar, the Netherlands, Denmark, Estonia, Greece and Malta.', 'athen-marine' ); ?></p>
+				<a class="am-dlv-location-card__link" href="/contact/"><?php esc_html_e( 'Check availability', 'athen-marine' ); ?> &rarr;</a>
+			</div>
+			<div class="am-dlv-location-card">
+				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
 				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Blending', 'athen-marine' ); ?></span>
 				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Greece', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Blending operations strengthening our European supply capabilities. Every batch is blended and quality-checked before it leaves the facility, supporting consistent product performance across the region.', 'athen-marine' ); ?></p>
@@ -107,6 +114,20 @@ get_header();
 				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Supply & Barge', 'athen-marine' ); ?></span>
 				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Netherlands', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Marine supply and barge operations within a major European maritime hub.', 'athen-marine' ); ?></p>
+				<a class="am-dlv-location-card__link" href="/contact/"><?php esc_html_e( 'Check availability', 'athen-marine' ); ?> &rarr;</a>
+			</div>
+			<div class="am-dlv-location-card">
+				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
+				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Port Supply', 'athen-marine' ); ?></span>
+				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'UAE', 'athen-marine' ); ?></h3>
+				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Supply and delivery across major UAE ports, including Jebel Ali, Fujairah, Khor Fakkan, Mina Zayed and Sharjah.', 'athen-marine' ); ?></p>
+				<a class="am-dlv-location-card__link" href="/contact/"><?php esc_html_e( 'Check availability', 'athen-marine' ); ?> &rarr;</a>
+			</div>
+			<div class="am-dlv-location-card">
+				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
+				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Port Supply', 'athen-marine' ); ?></span>
+				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Oman', 'athen-marine' ); ?></h3>
+				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Supply available at Omani ports including Salalah, Duqm, Sohar and Muscat.', 'athen-marine' ); ?></p>
 				<a class="am-dlv-location-card__link" href="/contact/"><?php esc_html_e( 'Check availability', 'athen-marine' ); ?> &rarr;</a>
 			</div>
 			<div class="am-dlv-location-card">
