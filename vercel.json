@@ -5,17 +5,90 @@
   "outputDirectory": "site",
   "trailingSlash": true,
   "redirects": [
-    { "source": "/egypt", "destination": "/delivery-network/", "permanent": true },
-    { "source": "/service", "destination": "/services/", "permanent": true },
-    { "source": "/company", "destination": "/about-us/", "permanent": true },
-    { "source": "/service/delivery-network", "destination": "/delivery-network/", "permanent": true },
-    { "source": "/service/about-us", "destination": "/about-us/", "permanent": true },
-    { "source": "/service/services", "destination": "/services/", "permanent": true },
-    { "source": "/request-a-quote", "destination": "/request-quote/", "permanent": true },
-    { "source": "/product-catalog-3", "destination": "/product-catalog/", "permanent": true },
-    { "source": "/main-grades", "destination": "/products/#main-grades", "permanent": true },
-    { "source": "/secondaries", "destination": "/products/#secondary-grades", "permanent": true },
-    { "source": "/synthetics", "destination": "/products/#synthetics", "permanent": true },
-    { "source": "/grease", "destination": "/products/#greases", "permanent": true }
+    {
+      "source": "/egypt",
+      "destination": "/delivery-network/",
+      "permanent": true
+    },
+    {
+      "source": "/service",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/company",
+      "destination": "/about-us/",
+      "permanent": true
+    },
+    {
+      "source": "/service/delivery-network",
+      "destination": "/delivery-network/",
+      "permanent": true
+    },
+    {
+      "source": "/service/about-us",
+      "destination": "/about-us/",
+      "permanent": true
+    },
+    {
+      "source": "/service/services",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/request-a-quote",
+      "destination": "/request-quote/",
+      "permanent": true
+    },
+    {
+      "source": "/product-catalog-3",
+      "destination": "/product-catalog/",
+      "permanent": true
+    },
+    {
+      "source": "/main-grades",
+      "destination": "/products/#main-grades",
+      "permanent": true
+    },
+    {
+      "source": "/secondaries",
+      "destination": "/products/#secondary-grades",
+      "permanent": true
+    },
+    {
+      "source": "/synthetics",
+      "destination": "/products/#synthetics",
+      "permanent": true
+    },
+    {
+      "source": "/grease",
+      "destination": "/products/#greases",
+      "permanent": true
+    },
+    {
+      "source": "/documents/athen-marine-main-grades-catalogue.pdf",
+      "destination": "/documents/athen-marine-product-catalog.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/documents/athen-marine-secondary-grades-catalogue.pdf",
+      "destination": "/documents/athen-marine-product-catalog.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/documents/athen-marine-synthetics-catalogue.pdf",
+      "destination": "/documents/athen-marine-product-catalog.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/documents/athen-marine-greases-catalogue.pdf",
+      "destination": "/documents/athen-marine-product-catalog.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/documents/athen-marine-eal-catalogue.pdf",
+      "destination": "/documents/athen-marine-product-catalog.pdf",
+      "permanent": true
+    }
   ]
 }

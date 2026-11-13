@@ -21,11 +21,11 @@ $am_catalog_docs = array(
 );
 
 $am_category_docs = array(
-	array( 'title' => __( 'Main Grades', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-main-grades-catalogue.pdf' ),
-	array( 'title' => __( 'Secondary Grades', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-secondary-grades-catalogue.pdf' ),
-	array( 'title' => __( 'Synthetics', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-synthetics-catalogue.pdf' ),
-	array( 'title' => __( 'EAL', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-eal-catalogue.pdf' ),
-	array( 'title' => __( 'Greases', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-greases-catalogue.pdf' ),
+	array( 'title' => __( 'Main Grades', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-product-catalog.pdf' ),
+	array( 'title' => __( 'Secondary Grades', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-product-catalog.pdf' ),
+	array( 'title' => __( 'Synthetics', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-product-catalog.pdf' ),
+	array( 'title' => __( 'EAL', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-product-catalog.pdf' ),
+	array( 'title' => __( 'Greases', 'athen-marine' ), 'href' => get_template_directory_uri() . '/pdfs/athen-marine-product-catalog.pdf' ),
 );
 ?>
 
