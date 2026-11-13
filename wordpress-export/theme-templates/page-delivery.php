@@ -91,20 +91,30 @@ get_header();
 
 	<!-- ============================= LOCATIONS ============================= -->
 	<section class="am-dlv-ports" id="locations">
+		<span class="am-dlv-ports__eyebrow"><?php esc_html_e( 'Our Supply Network', 'athen-marine' ); ?></span>
 		<h2 class="am-dlv-ports__title"><?php esc_html_e( 'Global Reach. Dependable Supply. Responsive Support.', 'athen-marine' ); ?></h2>
 
 		<div class="am-dlv-location-grid">
 			<div class="am-dlv-location-card">
+				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
+				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Blending', 'athen-marine' ); ?></span>
 				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Greece', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Blending operations strengthening our European supply capabilities. Every batch is blended and quality-checked before it leaves the facility, supporting consistent product performance across the region.', 'athen-marine' ); ?></p>
+				<a class="am-dlv-location-card__link" href="/contact/"><?php esc_html_e( 'Check availability', 'athen-marine' ); ?> &rarr;</a>
 			</div>
 			<div class="am-dlv-location-card">
+				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
+				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Supply & Barge', 'athen-marine' ); ?></span>
 				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'Netherlands', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Marine supply and barge operations within a major European maritime hub.', 'athen-marine' ); ?></p>
+				<a class="am-dlv-location-card__link" href="/contact/"><?php esc_html_e( 'Check availability', 'athen-marine' ); ?> &rarr;</a>
 			</div>
 			<div class="am-dlv-location-card">
+				<span class="am-dlv-location-card__icon" aria-hidden="true"></span>
+				<span class="am-dlv-location-card__tag"><?php esc_html_e( 'Partner Supply', 'athen-marine' ); ?></span>
 				<h3 class="am-dlv-location-card__name"><?php esc_html_e( 'India', 'athen-marine' ); ?></h3>
 				<p class="am-dlv-location-card__desc"><?php esc_html_e( 'Available through strategic partnership with ZEST Marine.', 'athen-marine' ); ?></p>
+				<a class="am-dlv-location-card__link" href="/contact/"><?php esc_html_e( 'Check availability', 'athen-marine' ); ?> &rarr;</a>
 			</div>
 		</div>
 	</section>
