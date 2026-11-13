@@ -365,7 +365,6 @@ get_header();
 		<h2 class="am-cta__title"><?php esc_html_e( 'Keep Your Fleet Moving With Confidence', 'athen-marine' ); ?></h2>
 		<p class="am-cta__sub"><?php esc_html_e( 'From premium marine lubricants to technical expertise and dependable global supply, Athen Marine is built around one purpose: to empower the global maritime industry through reliable lubrication solutions.', 'athen-marine' ); ?></p>
 		<div class="am-cta__actions">
-			<a href="/request-quote/" class="am-btn am-btn--offwhite" style="background:var(--offwhite);color:var(--pine);"><?php esc_html_e( 'Request a Quote', 'athen-marine' ); ?></a>
 			<a href="/contact/" class="am-btn am-btn--ghost"><?php esc_html_e( 'Contact Our Experts', 'athen-marine' ); ?></a>
 		</div>
 	</section>
