@@ -64,31 +64,6 @@
       "source": "/grease",
       "destination": "/products/#greases",
       "permanent": true
-    },
-    {
-      "source": "/documents/athen-marine-main-grades-catalogue.pdf",
-      "destination": "/documents/athen-marine-product-catalog.pdf",
-      "permanent": true
-    },
-    {
-      "source": "/documents/athen-marine-secondary-grades-catalogue.pdf",
-      "destination": "/documents/athen-marine-product-catalog.pdf",
-      "permanent": true
-    },
-    {
-      "source": "/documents/athen-marine-synthetics-catalogue.pdf",
-      "destination": "/documents/athen-marine-product-catalog.pdf",
-      "permanent": true
-    },
-    {
-      "source": "/documents/athen-marine-greases-catalogue.pdf",
-      "destination": "/documents/athen-marine-product-catalog.pdf",
-      "permanent": true
-    },
-    {
-      "source": "/documents/athen-marine-eal-catalogue.pdf",
-      "destination": "/documents/athen-marine-product-catalog.pdf",
-      "permanent": true
     }
   ]
 }

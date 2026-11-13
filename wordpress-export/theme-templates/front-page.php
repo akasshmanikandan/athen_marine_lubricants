@@ -150,7 +150,7 @@ get_header();
 				<p class="am-card__desc"><?php esc_html_e( 'High-performance lubricants for main propulsion and trunk piston engines, protecting against wear, deposits, and corrosion.', 'athen-marine' ); ?></p>
 				<div class="am-card__actions">
 					<a href="/products/" class="am-card__link"><?php esc_html_e( 'Learn More →', 'athen-marine' ); ?></a>
-					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-product-catalog.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
+					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-main-grades-catalogue.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
 				</div>
 			</div>
 			<div class="am-trust__card am-products__iconcard">
@@ -159,7 +159,7 @@ get_header();
 				<p class="am-card__desc"><?php esc_html_e( 'Advanced lubricants for auxiliary engines and onboard machinery, including other critical equipments.', 'athen-marine' ); ?></p>
 				<div class="am-card__actions">
 					<a href="/products/" class="am-card__link"><?php esc_html_e( 'Learn More →', 'athen-marine' ); ?></a>
-					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-product-catalog.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
+					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-secondary-grades-catalogue.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
 				</div>
 			</div>
 			<div class="am-trust__card am-products__iconcard">
@@ -168,7 +168,7 @@ get_header();
 				<p class="am-card__desc"><?php esc_html_e( 'Advanced synthetic lubricants engineered for extended performance in the most demanding operating conditions.', 'athen-marine' ); ?></p>
 				<div class="am-card__actions">
 					<a href="/products/" class="am-card__link"><?php esc_html_e( 'Learn More →', 'athen-marine' ); ?></a>
-					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-product-catalog.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
+					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-synthetics-catalogue.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
 				</div>
 			</div>
 			<div class="am-trust__card am-products__iconcard">
@@ -177,7 +177,7 @@ get_header();
 				<p class="am-card__desc"><?php esc_html_e( 'High-performance marine greases engineered for superior load protection, water resistance, and corrosion control.', 'athen-marine' ); ?></p>
 				<div class="am-card__actions">
 					<a href="/products/" class="am-card__link"><?php esc_html_e( 'Learn More →', 'athen-marine' ); ?></a>
-					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-product-catalog.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
+					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-greases-catalogue.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
 				</div>
 			</div>
 			<div class="am-trust__card am-products__iconcard">
@@ -186,7 +186,7 @@ get_header();
 				<p class="am-card__desc"><?php esc_html_e( 'Advanced EALs for oil-to-sea interface applications, combining equipment protection with environmental compliance.', 'athen-marine' ); ?></p>
 				<div class="am-card__actions">
 					<a href="/products/" class="am-card__link"><?php esc_html_e( 'Learn More →', 'athen-marine' ); ?></a>
-					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-product-catalog.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
+					<a href="<?php echo esc_url( get_template_directory_uri() ); ?>/pdfs/athen-marine-eal-catalogue.pdf" class="am-card__download" target="_blank" rel="noopener"><?php esc_html_e( 'Catalogue', 'athen-marine' ); ?></a>
 				</div>
 			</div>
 		</div>

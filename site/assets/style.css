@@ -6311,3 +6311,17 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 	font-size: 0; color: transparent;
 }
 .am-blog-card__image.is-missing img, .am-blog-featured__image.is-missing img{ display: none; }
+
+/* Map: no grab hand; pointer only on the red dots */
+.leaflet-container, .leaflet-grab, .leaflet-dragging .leaflet-grab, .leaflet-dragging .leaflet-container, .am-dlv-map .leaflet-interactive{ cursor: default !important; }
+.am-dlv-map .leaflet-marker-icon, .am-dlv-map .leaflet-marker-icon.leaflet-interactive, .am-dlv-map .leaflet-marker-pane .leaflet-interactive{ cursor: pointer !important; }
+.am-dlv-map .leaflet-marker-icon.am-dlv-label, .am-dlv-map .leaflet-marker-icon.am-dlv-label *{ cursor: default !important; }
+
+/* WhatsApp chat box */
+.am-wa-chat{ display: inline-flex; align-items: center; gap: 14px; padding: 14px 22px 14px 18px; border-radius: 12px; background: #25D366; color: #fff !important; text-decoration: none; box-shadow: 0 10px 26px rgba(37,211,102,.28); transition: transform .2s, box-shadow .2s, background .2s; }
+.am-wa-chat:hover{ background: #1fb857; transform: translateY(-2px); box-shadow: 0 14px 32px rgba(37,211,102,.4); }
+.am-wa-chat svg{ flex: none; }
+.am-wa-chat span{ display: flex; flex-direction: column; line-height: 1.25; text-align: left; }
+.am-wa-chat strong{ font-family: var(--font-head); font-size: 17px; font-weight: 700; letter-spacing: 0; }
+.am-wa-chat small{ font-size: 12px; opacity: .92; font-weight: 500; }
+.am-dlv-map .am-dlv-leaflet-pin, .am-dlv-map .am-dlv-leaflet-pin *{ cursor: pointer !important; }
