@@ -971,7 +971,7 @@
 	 {
 	  "t": "oil",
 	  "n": "Athen Marine MSDO 3020",
-	  "f": "mgo",
+	  "f": "both",
 	  "d": "Residual or distillate fuels, sulfur up to 1.5%"
 	 },
 	 {
@@ -989,7 +989,7 @@
 	 {
 	  "t": "oil",
 	  "n": "Athen Marine MSDO 4020",
-	  "f": "mgo",
+	  "f": "both",
 	  "d": "Residual or distillate fuels, sulfur up to 1.5%"
 	 }
 	];
@@ -1013,7 +1013,7 @@
 
 		function render() {
 			var list = FINDER_PRODUCTS.filter( function ( p ) {
-				return p.f === state.fuel && ( state.type === 'all' || p.t === state.type );
+				return ( p.f === state.fuel || p.f === 'both' ) && ( state.type === 'all' || p.t === state.type );
 			} );
 			rowsEl.innerHTML = list.length ? list.map( function ( p ) {
 				return '<div class="am-finder__row"><strong>' + esc( p.n ) + '</strong><span>' + esc( p.d ) + '</span></div>';
