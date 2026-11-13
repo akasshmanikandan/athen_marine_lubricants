@@ -66,11 +66,20 @@ get_header();
 				<div id="am-dlv-leaflet-map" class="am-dlv-leaflet-map"></div>
 
 				<div id="am-dlv-port-panel" class="am-dlv-port-panel" hidden>
-					<button type="button" class="am-dlv-port-panel__close" id="am-dlv-port-panel-close" aria-label="<?php esc_attr_e( 'Close', 'athen-marine' ); ?>">&times;</button>
-					<span class="am-dlv-port-panel__eyebrow"><?php esc_html_e( 'Country', 'athen-marine' ); ?></span>
-					<h3 id="am-dlv-port-panel-title" class="am-dlv-port-panel__title"></h3>
-					<span class="am-dlv-port-panel__eyebrow"><?php esc_html_e( 'Port', 'athen-marine' ); ?></span>
-					<ul id="am-dlv-port-panel-list" class="am-dlv-port-panel__list"></ul>
+					<div class="am-dlv-port-panel__head" id="am-dlv-port-panel-handle">
+						<span class="am-dlv-port-panel__anchor" aria-hidden="true"></span>
+						<div class="am-dlv-port-panel__headtext">
+							<span class="am-dlv-port-panel__eyebrow"><?php esc_html_e( 'Country', 'athen-marine' ); ?></span>
+							<h3 id="am-dlv-port-panel-title" class="am-dlv-port-panel__title"></h3>
+						</div>
+						<span id="am-dlv-port-panel-count" class="am-dlv-port-panel__count"></span>
+						<button type="button" class="am-dlv-port-panel__close" id="am-dlv-port-panel-close" aria-label="<?php esc_attr_e( 'Close', 'athen-marine' ); ?>">&times;</button>
+					</div>
+					<div class="am-dlv-port-panel__body">
+						<span class="am-dlv-port-panel__eyebrow am-dlv-port-panel__eyebrow--dark"><?php esc_html_e( 'Ports of call', 'athen-marine' ); ?></span>
+						<ul id="am-dlv-port-panel-list" class="am-dlv-port-panel__list"></ul>
+						<a class="am-dlv-port-panel__cta" href="/request-a-quote/"><?php esc_html_e( 'Request delivery quote', 'athen-marine' ); ?></a>
+					</div>
 				</div>
 			</div>
 		</div>

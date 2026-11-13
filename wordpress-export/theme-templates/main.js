@@ -216,6 +216,7 @@
 		var panelTitle = document.getElementById( 'am-dlv-port-panel-title' );
 		var panelList = document.getElementById( 'am-dlv-port-panel-list' );
 		var panelClose = document.getElementById( 'am-dlv-port-panel-close' );
+		var panelCount = document.getElementById( 'am-dlv-port-panel-count' );
 		var accordionEl = document.getElementById( 'am-dlv-map-accordion' );
 
 		if ( ! mapEl || ! searchInput || typeof window.L === 'undefined' ) {
@@ -392,6 +393,10 @@
 				panelList.appendChild( li );
 			} );
 
+			var realPorts = ports.filter( function ( p ) { return p !== 'Others'; } ).length;
+			if ( panelCount ) {
+				panelCount.textContent = realPorts + ( realPorts === 1 ? ' port' : ' ports' );
+			}
 			panel.hidden = false;
 			searchInput.value = country;
 			closeResults();
@@ -479,7 +484,7 @@
 				header.type = 'button';
 				header.className = 'am-dlv-accordion-header';
 				header.setAttribute( 'aria-expanded', 'false' );
-				header.innerHTML = '<span>' + REGION_LABELS[ region ] + '</span><span class="am-dlv-accordion-icon">+</span>';
+				header.innerHTML = '<span>' + REGION_LABELS[ region ] + ' <em class="am-dlv-accordion-count">' + regionCountries.length + '</em></span><span class="am-dlv-accordion-icon">+</span>';
 
 				var body = document.createElement( 'div' );
 				body.className = 'am-dlv-accordion-body';
@@ -489,7 +494,8 @@
 					var link = document.createElement( 'button' );
 					link.type = 'button';
 					link.className = 'am-dlv-accordion-link';
-					link.textContent = country;
+					var n = PORTS_DATA[ country ].filter( function ( p ) { return p !== 'Others'; } ).length;
+					link.innerHTML = '<span>' + country + '</span><em>' + n + ' ' + ( n === 1 ? 'port' : 'ports' ) + '</em>';
 					link.addEventListener( 'click', function () {
 						showCountry( country );
 					} );
@@ -1232,66 +1238,75 @@
 	};
 } )();
 
-/* Delivery map: the Ports Directory card can be dragged (grab the heading);
-   double-click the heading to reset. Desktop only. */
+/* Delivery map: both floating cards (Ports Directory and the country port
+   list) can be dragged by their heading; double-click the heading to reset.
+   Desktop only. */
 ( function () {
-	function init() {
-		var dir = document.querySelector( '.am-dlv-map__sidebar' );
-		var handle = dir ? dir.querySelector( '.am-dlv-map__sidebar-title' ) : null;
-		var stage = dir ? dir.parentElement : null;
-		if ( ! dir || ! handle || ! stage ) {
-			return;
-		}
+	function makeDraggable( card, handle ) {
+		var stage = card.parentElement;
 		var small = window.matchMedia( '(max-width: 768px)' );
 		var dragging = false, sx = 0, sy = 0, sl = 0, st = 0;
 
 		function clamp() {
-			if ( small.matches || dir.style.top === '' ) {
+			if ( small.matches || card.style.top === '' ) {
 				return;
 			}
-			var l = Math.min( Math.max( 0, parseFloat( dir.style.left ) ), Math.max( 0, stage.clientWidth - dir.offsetWidth ) );
-			var t = Math.min( Math.max( 0, parseFloat( dir.style.top ) ), Math.max( 0, stage.clientHeight - dir.offsetHeight ) );
-			dir.style.left = l + 'px';
-			dir.style.top = t + 'px';
+			var l = Math.min( Math.max( 0, parseFloat( card.style.left ) ), Math.max( 0, stage.clientWidth - card.offsetWidth ) );
+			var t = Math.min( Math.max( 0, parseFloat( card.style.top ) ), Math.max( 0, stage.clientHeight - card.offsetHeight ) );
+			card.style.left = l + 'px';
+			card.style.top = t + 'px';
 		}
 
 		handle.addEventListener( 'pointerdown', function ( e ) {
-			if ( small.matches ) {
+			if ( small.matches || e.target.closest( 'button' ) ) {
 				return;
 			}
 			dragging = true;
 			sx = e.clientX;
 			sy = e.clientY;
-			sl = dir.offsetLeft;
-			st = dir.offsetTop;
-			dir.style.left = sl + 'px';
-			dir.style.top = st + 'px';
-			dir.style.right = 'auto';
-			dir.style.bottom = 'auto';
-			dir.classList.add( 'is-dragging' );
+			sl = card.offsetLeft;
+			st = card.offsetTop;
+			card.style.left = sl + 'px';
+			card.style.top = st + 'px';
+			card.style.right = 'auto';
+			card.style.bottom = 'auto';
+			card.classList.add( 'is-dragging' );
 			handle.setPointerCapture( e.pointerId );
 			e.preventDefault();
 		} );
 		handle.addEventListener( 'pointermove', function ( e ) {
 			if ( dragging ) {
-				dir.style.left = ( sl + e.clientX - sx ) + 'px';
-				dir.style.top = ( st + e.clientY - sy ) + 'px';
+				card.style.left = ( sl + e.clientX - sx ) + 'px';
+				card.style.top = ( st + e.clientY - sy ) + 'px';
 				clamp();
 			}
 		} );
 		function end() {
 			dragging = false;
-			dir.classList.remove( 'is-dragging' );
+			card.classList.remove( 'is-dragging' );
 		}
 		handle.addEventListener( 'pointerup', end );
 		handle.addEventListener( 'pointercancel', end );
 		handle.addEventListener( 'dblclick', function () {
-			dir.style.left = dir.style.top = dir.style.right = dir.style.bottom = '';
+			card.style.left = card.style.top = card.style.right = card.style.bottom = '';
 		} );
 		window.addEventListener( 'resize', clamp );
-		dir.addEventListener( 'click', function () {
+		card.addEventListener( 'click', function () {
 			window.setTimeout( clamp, 0 );
 		} );
+	}
+
+	function init() {
+		var dir = document.querySelector( '.am-dlv-map__sidebar' );
+		var dirHandle = dir ? dir.querySelector( '.am-dlv-map__sidebar-title' ) : null;
+		if ( dir && dirHandle ) {
+			makeDraggable( dir, dirHandle );
+		}
+		var panel = document.getElementById( 'am-dlv-port-panel' );
+		var panelHandle = document.getElementById( 'am-dlv-port-panel-handle' );
+		if ( panel && panelHandle ) {
+			makeDraggable( panel, panelHandle );
+		}
 	}
 	if ( document.readyState === 'loading' ) {
 		document.addEventListener( 'DOMContentLoaded', init );
