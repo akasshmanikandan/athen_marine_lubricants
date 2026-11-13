@@ -1280,7 +1280,7 @@
 		handle.addEventListener( 'pointerup', end );
 		handle.addEventListener( 'pointercancel', end );
 		handle.addEventListener( 'dblclick', function () {
-			card.style.left = card.style.top = card.style.right = card.style.bottom = '';
+			card.style.left = card.style.top = card.style.right = card.style.bottom = card.style.width = card.style.height = '';
 		} );
 		window.addEventListener( 'resize', clamp );
 		card.addEventListener( 'click', function () {

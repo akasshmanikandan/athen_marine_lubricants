@@ -6204,3 +6204,15 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 	.am-dlv-map__sidebar-title::after{ content: none; }
 }
 .am-dlv-port-panel__count, .am-dlv-accordion-count{ display: none !important; }
+
+/* Resizable cards (desktop): drag the bottom-right corner */
+@media (min-width: 769px){
+	.am-dlv-map__sidebar, .am-dlv-port-panel{ resize: both; overflow: auto; min-width: 240px; min-height: 220px; max-width: min(640px, calc(100% - 32px)); max-height: calc(100% - 32px); }
+	.am-dlv-port-panel{ overflow: hidden; }
+	.am-dlv-port-panel__body{ flex: 1 1 auto; }
+	.am-dlv-port-panel__list{ max-height: none; }
+}
+@media (max-width: 768px){
+	.am-dlv-map__sidebar, .am-dlv-port-panel{ resize: none; }
+}
+@media (min-width: 769px){ .am-dlv-port-panel:not([style*="height"]){ max-height: min(520px, calc(100% - 32px)); } }
