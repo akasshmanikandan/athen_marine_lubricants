@@ -6203,3 +6203,4 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 	.am-dlv-port-panel__head{ cursor: default; touch-action: auto; }
 	.am-dlv-map__sidebar-title::after{ content: none; }
 }
+.am-dlv-port-panel__count, .am-dlv-accordion-count{ display: none !important; }

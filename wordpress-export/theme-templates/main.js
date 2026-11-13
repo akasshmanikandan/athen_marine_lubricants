@@ -363,12 +363,7 @@
 			}
 
 			var portCount = PORTS_DATA[ country ].filter( function ( p ) { return p !== 'Others'; } ).length || 1;
-			var icon = portCount > 1 ? window.L.divIcon( {
-				className: 'am-dlv-leaflet-pin am-dlv-leaflet-pin--count',
-				html: '<span>' + portCount + '</span>',
-				iconSize: [ 28, 28 ],
-				iconAnchor: [ 14, 14 ]
-			} ) : markerIcon;
+			var icon = markerIcon;
 			var marker = window.L.marker( coords, { icon: icon, title: country + ' — ' + portCount + ( portCount > 1 ? ' ports' : ' port' ) } );
 			marker.on( 'click', function () {
 				showCountry( country );
@@ -394,9 +389,6 @@
 			} );
 
 			var realPorts = ports.filter( function ( p ) { return p !== 'Others'; } ).length;
-			if ( panelCount ) {
-				panelCount.textContent = realPorts + ( realPorts === 1 ? ' port' : ' ports' );
-			}
 			panel.hidden = false;
 			searchInput.value = country;
 			closeResults();
@@ -484,7 +476,7 @@
 				header.type = 'button';
 				header.className = 'am-dlv-accordion-header';
 				header.setAttribute( 'aria-expanded', 'false' );
-				header.innerHTML = '<span>' + REGION_LABELS[ region ] + ' <em class="am-dlv-accordion-count">' + regionCountries.length + '</em></span><span class="am-dlv-accordion-icon">+</span>';
+				header.innerHTML = '<span>' + REGION_LABELS[ region ] + '</span><span class="am-dlv-accordion-icon">+</span>';
 
 				var body = document.createElement( 'div' );
 				body.className = 'am-dlv-accordion-body';
@@ -495,7 +487,7 @@
 					link.type = 'button';
 					link.className = 'am-dlv-accordion-link';
 					var n = PORTS_DATA[ country ].filter( function ( p ) { return p !== 'Others'; } ).length;
-					link.innerHTML = '<span>' + country + '</span><em>' + n + ' ' + ( n === 1 ? 'port' : 'ports' ) + '</em>';
+					link.textContent = country;
 					link.addEventListener( 'click', function () {
 						showCountry( country );
 					} );
