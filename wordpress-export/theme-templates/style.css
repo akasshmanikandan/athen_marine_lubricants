@@ -6350,3 +6350,8 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 .am-doc-card--compact .am-btn{ padding: 11px 6px; font-size: 11px; letter-spacing: .02em; gap: 5px; }
 .am-doc-grid--compact{ gap: 12px; }
 .am-doc-card--compact{ padding: 20px 12px 14px; }
+
+/* WhatsApp: logo + "Chat with our support", site colours */
+.am-wa-chat{ width: auto; height: auto; padding: 14px 24px 14px 18px; gap: 14px; justify-content: flex-start; }
+.am-wa-chat span{ font-family: var(--font-head); font-weight: 700; font-size: 17px; line-height: 1.2; color: #fff; }
+.am-wa-chat svg{ width: 26px; height: 26px; }
