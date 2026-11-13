@@ -1388,3 +1388,34 @@
 		init();
 	}
 } )();
+
+( function () {
+	var grid = document.querySelector( '.am-dlv-location-grid' );
+	if ( ! grid ) { return; }
+	var wrap = document.createElement( 'div' );
+	wrap.className = 'am-dlv-loc-wrap';
+	grid.parentNode.insertBefore( wrap, grid );
+	wrap.appendChild( grid );
+	function btn( dir ) {
+		var b = document.createElement( 'button' );
+		b.type = 'button';
+		b.className = 'am-dlv-loc-btn am-dlv-loc-btn--' + ( dir > 0 ? 'next' : 'prev' );
+		b.setAttribute( 'aria-label', dir > 0 ? 'Scroll right' : 'Scroll left' );
+		b.innerHTML = dir > 0 ? '&rsaquo;' : '&lsaquo;';
+		b.addEventListener( 'click', function () {
+			var c = grid.querySelector( '.am-dlv-location-card' );
+			var step = c ? c.getBoundingClientRect().width + 24 : 300;
+			grid.scrollBy( { left: dir * step, behavior: 'smooth' } );
+		} );
+		wrap.appendChild( b );
+		return b;
+	}
+	var prev = btn( -1 ), next = btn( 1 );
+	function upd() {
+		prev.disabled = grid.scrollLeft < 4;
+		next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4;
+	}
+	grid.addEventListener( 'scroll', upd, { passive: true } );
+	window.addEventListener( 'resize', upd );
+	upd();
+} )();
