@@ -132,13 +132,31 @@ get_header();
 
 	<!-- ============================= REGIONAL CONTACTS ============================= -->
 	<section class="am-contact-regional">
-		<span class="am-contact-regional__label"><?php esc_html_e( 'Regional Contacts', 'athen-marine' ); ?></span>
+		<span class="am-contact-regional__label"><?php esc_html_e( 'Our Offices', 'athen-marine' ); ?></span>
 		<div class="am-contact-regional__grid">
 			<div class="am-contact-regional-card">
-				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'India Sales Contact', 'athen-marine' ); ?></h3>
-				<p class="am-contact-regional-card__name"><?php esc_html_e( 'Mr. Jay Sagar', 'athen-marine' ); ?></p>
-				<p class="am-contact-regional-card__org"><?php esc_html_e( 'Athen Marine India (P) Ltd.', 'athen-marine' ); ?></p>
-				<p class="am-contact-regional-card__detail"><a href="tel:+919521349669"><?php esc_html_e( 'Mobile: +91 95213 49669', 'athen-marine' ); ?></a></p>
+				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'Europe', 'athen-marine' ); ?></h3>
+				<p class="am-contact-regional-card__name"><?php esc_html_e( 'Athen Marine EU BV', 'athen-marine' ); ?></p>
+				<p class="am-contact-regional-card__detail"><a href="tel:+31102660890"><?php esc_html_e( 'Phone: +31 10 2660890', 'athen-marine' ); ?></a></p>
+				<p class="am-contact-regional-card__detail"><a href="mailto:orders@athenmarine.eu"><?php esc_html_e( 'Email: orders@athenmarine.eu', 'athen-marine' ); ?></a></p>
+			</div>
+			<div class="am-contact-regional-card">
+				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'UAE', 'athen-marine' ); ?></h3>
+				<p class="am-contact-regional-card__name"><?php esc_html_e( 'Athen Marine Lubricants LLC', 'athen-marine' ); ?></p>
+				<p class="am-contact-regional-card__detail"><a href="tel:+971502106852"><?php esc_html_e( 'Phone: +971 50 210 6852', 'athen-marine' ); ?></a></p>
+				<p class="am-contact-regional-card__detail"><a href="mailto:support@athenmarine.com"><?php esc_html_e( 'Email: support@athenmarine.com', 'athen-marine' ); ?></a></p>
+			</div>
+			<div class="am-contact-regional-card">
+				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'Singapore', 'athen-marine' ); ?></h3>
+				<p class="am-contact-regional-card__name"><?php esc_html_e( 'Athen Marine Pte Ltd', 'athen-marine' ); ?></p>
+				<p class="am-contact-regional-card__detail"><a href="tel:+6598332876"><?php esc_html_e( 'Phone: +65 9833 2876', 'athen-marine' ); ?></a></p>
+				<p class="am-contact-regional-card__detail"><a href="mailto:info@athenmarine.com"><?php esc_html_e( 'Email: info@athenmarine.com', 'athen-marine' ); ?></a></p>
+			</div>
+			<div class="am-contact-regional-card">
+				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'India', 'athen-marine' ); ?></h3>
+				<p class="am-contact-regional-card__name"><?php esc_html_e( 'Athen Marine India Pvt Ltd', 'athen-marine' ); ?></p>
+				<p class="am-contact-regional-card__detail"><a href="tel:+919512349669"><?php esc_html_e( 'Phone: +91 9512349669', 'athen-marine' ); ?></a></p>
+				<p class="am-contact-regional-card__detail"><a href="mailto:jay@athenmarine.com"><?php esc_html_e( 'Email: jay@athenmarine.com', 'athen-marine' ); ?></a></p>
 			</div>
 		</div>
 	</section>
