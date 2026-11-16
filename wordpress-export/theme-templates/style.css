@@ -6365,3 +6365,31 @@ h1, h2, h3, p, a, li{ overflow-wrap: break-word; }
 .am-contact-line a{ display: inline-flex; align-items: center; gap: 12px; }
 .am-contact-line svg{ flex: none; color: #8FD1AE; }
 .am-wa-chat + .am-contact-line, .am-contact-hero__quickinfo .am-contact-line:first-of-type{ margin-top: 14px; }
+
+/* ===== Section anchors: clear the sticky nav; Services as four distinct sections ===== */
+main [id]{ scroll-margin-top: 120px; }
+.am-svc-cards{ grid-template-columns: 1fr; gap: 28px; }
+.am-svc-card{
+	display: grid;
+	grid-template-columns: 72px minmax(0,1fr);
+	column-gap: 28px;
+	align-content: start;
+	padding: 44px 56px 40px 48px;
+	transition: box-shadow .3s ease, border-color .3s ease;
+}
+.am-svc-card > *{ grid-column: 2; }
+.am-svc-card > .am-svc-card__num{ grid-column: auto; }
+.am-svc-card > .am-svc-card__icon{ grid-column: 1; grid-row: 1 / span 6; width: 56px; height: 56px; margin: 0; }
+.am-svc-card > .am-svc-card__icon svg{ width: 26px; height: 26px; }
+.am-svc-card__title{ font-size: 28px; }
+.am-svc-card__desc{ max-width: 760px; font-size: 16px; }
+.am-svc-card:target{
+	border-color: var(--pine);
+	box-shadow: 0 0 0 2px var(--pine), 0 18px 48px rgba(27,67,50,.18);
+}
+@media (max-width: 640px){
+	.am-svc-card{ grid-template-columns: 1fr; padding: 28px 22px; }
+	.am-svc-card > *{ grid-column: 1; }
+	.am-svc-card > .am-svc-card__icon{ grid-row: auto; margin-bottom: 16px; }
+	.am-svc-card__title{ font-size: 22px; }
+}
