@@ -36,12 +36,5 @@
 					<p class="am-board__bio"><?php esc_html_e( 'Co-founded Legero with his brothers in 1988 and oversees the group as Managing Director, now operating from 13 cities across several continents.', 'athen-marine' ); ?></p>
 				</div>
 			</article>
-			<article class="am-board__card">
-				<div class="am-board__body">
-					<h3 class="am-board__name"><?php esc_html_e( 'Chris Todd', 'athen-marine' ); ?></h3>
-					<span class="am-board__role"><?php esc_html_e( 'CEO, Eleven Energy', 'athen-marine' ); ?></span>
-					<p class="am-board__bio"><?php esc_html_e( 'Chris Todd is a seasoned leader and respected figure in the global marine fuels and bunkering industry, having worked within leading companies in the sector for over two decades. He began his career in the early 2000s at World Fuel Services and Chemoil, building skills in marine fuel trading and logistics. In the mid-2010s he led bunkering at GP Global (formerly Gulf Petrochem) from Rotterdam as Head of Bunkering, West of Suez, expanding its European presence and barge fleet. A dealmaker with a broad global network, he is focused on growth and operational excellence.', 'athen-marine' ); ?></p>
-				</div>
-			</article>
 		</div>
 	</section>

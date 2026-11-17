@@ -6396,7 +6396,7 @@ main [id]{ scroll-margin-top: 120px; }
 
 /* ===== Board Members (matches corporate brochure) ===== */
 .am-board{ display:flex; flex-wrap:wrap; justify-content:center; gap:28px; max-width:1240px; margin:40px auto 0; }
-.am-board__card{ flex:0 1 calc(33.333% - 19px); min-width:300px; background:var(--pine); border:1px solid rgba(255,255,255,.08); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; text-align:left; }
+.am-board__card{ flex:0 1 calc(25% - 21px); min-width:260px; background:var(--pine); border:1px solid rgba(255,255,255,.08); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; text-align:left; }
 .am-board__photo{ width:100%; aspect-ratio:4/5; object-fit:cover; object-position:top center; display:block; }
 .am-board__body{ padding:26px 28px 32px; border-top:3px solid #C9A24A; }
 .am-board__name{ font-family:var(--font-head); font-weight:800; font-size:22px; color:#fff; margin:0 0 8px; }
