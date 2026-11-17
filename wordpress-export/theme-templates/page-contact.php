@@ -135,16 +135,16 @@ get_header();
 		<span class="am-contact-regional__label"><?php esc_html_e( 'Our Offices', 'athen-marine' ); ?></span>
 		<div class="am-contact-regional__grid">
 			<div class="am-contact-regional-card">
-				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'Europe', 'athen-marine' ); ?></h3>
-				<p class="am-contact-regional-card__name"><?php esc_html_e( 'Athen Marine EU BV', 'athen-marine' ); ?></p>
-				<p class="am-contact-regional-card__detail"><a href="tel:+31102660890"><?php esc_html_e( 'Phone: +31 10 2660890', 'athen-marine' ); ?></a></p>
-				<p class="am-contact-regional-card__detail"><a href="mailto:orders@athenmarine.eu"><?php esc_html_e( 'Email: orders@athenmarine.eu', 'athen-marine' ); ?></a></p>
-			</div>
-			<div class="am-contact-regional-card">
 				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'UAE', 'athen-marine' ); ?></h3>
 				<p class="am-contact-regional-card__name"><?php esc_html_e( 'Athen Marine Lubricants LLC', 'athen-marine' ); ?></p>
 				<p class="am-contact-regional-card__detail"><a href="tel:+971502106852"><?php esc_html_e( 'Phone: +971 50 210 6852', 'athen-marine' ); ?></a></p>
 				<p class="am-contact-regional-card__detail"><a href="mailto:support@athenmarine.com"><?php esc_html_e( 'Email: support@athenmarine.com', 'athen-marine' ); ?></a></p>
+			</div>
+			<div class="am-contact-regional-card">
+				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'Europe', 'athen-marine' ); ?></h3>
+				<p class="am-contact-regional-card__name"><?php esc_html_e( 'Athen Marine EU BV', 'athen-marine' ); ?></p>
+				<p class="am-contact-regional-card__detail"><a href="tel:+31102660890"><?php esc_html_e( 'Phone: +31 10 2660890', 'athen-marine' ); ?></a></p>
+				<p class="am-contact-regional-card__detail"><a href="mailto:orders@athenmarine.eu"><?php esc_html_e( 'Email: orders@athenmarine.eu', 'athen-marine' ); ?></a></p>
 			</div>
 			<div class="am-contact-regional-card">
 				<h3 class="am-contact-regional-card__title"><?php esc_html_e( 'Singapore', 'athen-marine' ); ?></h3>

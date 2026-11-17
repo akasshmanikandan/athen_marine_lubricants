@@ -243,13 +243,17 @@ get_header();
 		<div class="am-port-ticker__track">
 			<div class="am-port-ticker__content">
 				<span>
-					<span>Greece <span class="am-check">&#10003;</span></span>
+					<span>UAE <span class="am-check">&#10003;</span></span>
+					<span>Singapore <span class="am-check">&#10003;</span></span>
 					<span>Rotterdam, Netherlands <span class="am-check">&#10003;</span></span>
+					<span>Greece <span class="am-check">&#10003;</span></span>
 					<span>India <span class="am-check">&#10003;</span></span>
 				</span>
 				<span>
-					<span>Greece <span class="am-check">&#10003;</span></span>
+					<span>UAE <span class="am-check">&#10003;</span></span>
+					<span>Singapore <span class="am-check">&#10003;</span></span>
 					<span>Rotterdam, Netherlands <span class="am-check">&#10003;</span></span>
+					<span>Greece <span class="am-check">&#10003;</span></span>
 					<span>India <span class="am-check">&#10003;</span></span>
 				</span>
 			</div>
@@ -354,7 +358,7 @@ get_header();
 					<span class="am-faq-item__icon" aria-hidden="true"></span>
 				</button>
 				<div class="am-faq-item__answer">
-					<p><?php esc_html_e( "Yes. Athen Marine's product portfolio is 100% OEM approved, providing confidence in the suitability and performance of our lubricants for applicable marine engine and equipment requirements.", 'athen-marine' ); ?></p>
+					<p><?php esc_html_e( "Athen Marine works hard to keep pace with ever more demanding OEM requirements by consistently investing in trialing products in vessels at sea.", 'athen-marine' ); ?></p>
 				</div>
 			</div>
 		</div>
