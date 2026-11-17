@@ -78,12 +78,12 @@
 				'url'    => '/about-us',
 				'active' => ( strpos( $am_current_url, 'about' ) !== false ),
 				'mega'   => array(
-					array( 'label' => __( 'Our Vision', 'athen-marine' ), 'url' => '/about-us/#vision' ),
-					array( 'label' => __( 'Our Mission', 'athen-marine' ), 'url' => '/about-us/#mission' ),
-					array( 'label' => __( 'Our Values', 'athen-marine' ), 'url' => '/about-us/#values' ),
-					array( 'label' => __( 'Our Story', 'athen-marine' ), 'url' => '/about-us/#story' ),
-					array( 'label' => __( 'Our Journey', 'athen-marine' ), 'url' => '/about-us/#journey' ),
-					array( 'label' => __( 'Board Members', 'athen-marine' ), 'url' => '/about-us/#board' ),
+					array( 'label' => __( 'Who We Are', 'athen-marine' ), 'url' => '/about-us/' ),
+					array( 'label' => __( 'Our Vision', 'athen-marine' ), 'url' => '/about-us/vision/' ),
+					array( 'label' => __( 'Our Mission', 'athen-marine' ), 'url' => '/about-us/mission/' ),
+					array( 'label' => __( 'Our Values', 'athen-marine' ), 'url' => '/about-us/values/' ),
+					array( 'label' => __( 'Our Journey', 'athen-marine' ), 'url' => '/about-us/our-journey/' ),
+					array( 'label' => __( 'Board Members', 'athen-marine' ), 'url' => '/about-us/board-members/' ),
 				),
 			),
 			array(
@@ -91,10 +91,10 @@
 				'url'    => '/services',
 				'active' => ( strpos( $am_current_url, 'services' ) !== false ),
 				'mega'   => array(
-					array( 'label' => __( 'Technical Consultation & Advisory', 'athen-marine' ), 'url' => '/services/#consultation' ),
-					array( 'label' => __( 'Lube Oil Analysis & Condition Monitoring', 'athen-marine' ), 'url' => '/services/#oil-analysis' ),
-					array( 'label' => __( 'Lube Oil Compatibility & Equivalent Solutions', 'athen-marine' ), 'url' => '/services/#compatibility' ),
-					array( 'label' => __( 'Onboard Inspections & Ship Visits', 'athen-marine' ), 'url' => '/services/#inspections' ),
+					array( 'label' => __( 'Technical Consultation & Advisory', 'athen-marine' ), 'url' => '/services/technical-consultation/' ),
+					array( 'label' => __( 'Lube Oil Analysis & Condition Monitoring', 'athen-marine' ), 'url' => '/services/oil-analysis/' ),
+					array( 'label' => __( 'Lube Oil Compatibility & Equivalent Solutions', 'athen-marine' ), 'url' => '/services/compatibility/' ),
+					array( 'label' => __( 'Onboard Inspections & Ship Visits', 'athen-marine' ), 'url' => '/services/inspections/' ),
 				),
 			),
 			array(

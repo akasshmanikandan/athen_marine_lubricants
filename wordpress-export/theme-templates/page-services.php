@@ -47,101 +47,26 @@ get_header();
 		<h2 class="am-svc-grid-section__title"><?php esc_html_e( 'How We Help You', 'athen-marine' ); ?></h2>
 
 		<div class="am-svc-cards">
-			<div class="am-svc-card" id="consultation">
-				<span class="am-svc-card__num">01</span>
-				<div class="am-svc-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-				<h3 class="am-svc-card__title"><?php esc_html_e( 'Technical Consultation & Advisory', 'athen-marine' ); ?></h3>
-				<p class="am-svc-card__desc"><?php esc_html_e( 'Expert guidance to help customers identify the right marine lubrication solution for their operational requirements.', 'athen-marine' ); ?></p>
+			<?php $am_services = include get_template_directory() . '/parts/services-data.php'; foreach ( $am_services as $sv ) : ?>
+			<div class="am-svc-card" id="<?php echo esc_attr( $sv['id'] ); ?>">
+				<span class="am-svc-card__num"><?php echo esc_html( $sv['num'] ); ?></span>
+				<div class="am-svc-card__icon"><?php echo $sv['icon']; ?></div>
+				<h3 class="am-svc-card__title"><?php echo esc_html( $sv['title'] ); ?></h3>
+				<p class="am-svc-card__desc"><?php echo esc_html( $sv['desc'] ); ?></p>
 				<div class="am-svc-card__tags">
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Lubricant Selection', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Technical Recommendations', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Performance Optimization', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'OEM Guidance', 'athen-marine' ); ?></span>
+					<?php foreach ( $sv['tags'] as $tg ) : ?><span class="am-svc-card__tag"><?php echo esc_html( $tg ); ?></span><?php endforeach; ?>
 				</div>
 				<hr class="am-svc-card__divider">
-				<a href="/contact/" class="am-svc-card__link"><?php esc_html_e( 'Enquire Now →', 'athen-marine' ); ?></a>
-			</div>
-
-			<div class="am-svc-card" id="oil-analysis">
-				<span class="am-svc-card__num">02</span>
-				<div class="am-svc-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6L4.5 17a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L15 8V2"/><path d="M9 2h6"/><path d="M7.5 14h9"/></svg></div>
-				<h3 class="am-svc-card__title"><?php esc_html_e( 'Lube Oil Analysis & Condition Monitoring', 'athen-marine' ); ?></h3>
-				<p class="am-svc-card__desc"><?php esc_html_e( 'Laboratory-backed analysis designed to evaluate lubricant condition and flag potential issues before they affect equipment performance.', 'athen-marine' ); ?></p>
-				<div class="am-svc-card__tags">
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Oil Health Analysis', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Contamination Detection', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Performance Evaluation', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Preventive Maintenance Support', 'athen-marine' ); ?></span>
+				<div class="am-svc-card__links">
+					<a href="/services/<?php echo esc_attr( $sv['slug'] ); ?>/" class="am-svc-card__link"><?php esc_html_e( 'Learn More →', 'athen-marine' ); ?></a>
+					<a href="/contact/" class="am-svc-card__link"><?php esc_html_e( 'Enquire Now →', 'athen-marine' ); ?></a>
 				</div>
-				<hr class="am-svc-card__divider">
-				<a href="/contact/" class="am-svc-card__link"><?php esc_html_e( 'Enquire Now →', 'athen-marine' ); ?></a>
 			</div>
-
-			<div class="am-svc-card" id="compatibility">
-				<span class="am-svc-card__num">03</span>
-				<div class="am-svc-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6.5"/><circle cx="15" cy="12" r="6.5"/></svg></div>
-				<h3 class="am-svc-card__title"><?php esc_html_e( 'Lube Oil Compatibility & Equivalent Solutions', 'athen-marine' ); ?></h3>
-				<p class="am-svc-card__desc"><?php esc_html_e( 'Compatibility assessments and equivalent lubricant recommendations to help customers identify suitable alternatives without compromising engine warranty or performance.', 'athen-marine' ); ?></p>
-				<div class="am-svc-card__tags">
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Equivalent Product Charts', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Compatibility Assessment', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'OEM Compliance', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Product Recommendations', 'athen-marine' ); ?></span>
-				</div>
-				<hr class="am-svc-card__divider">
-				<a href="/contact/" class="am-svc-card__link"><?php esc_html_e( 'Enquire Now →', 'athen-marine' ); ?></a>
-			</div>
-
-			<div class="am-svc-card" id="inspections">
-				<span class="am-svc-card__num">04</span>
-				<div class="am-svc-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v13"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M7 12h10"/></svg></div>
-				<h3 class="am-svc-card__title"><?php esc_html_e( 'Onboard Inspections & Ship Visits', 'athen-marine' ); ?></h3>
-				<p class="am-svc-card__desc"><?php esc_html_e( 'Practical onboard support to assess lubrication systems and equipment and identify areas requiring attention.', 'athen-marine' ); ?></p>
-				<div class="am-svc-card__tags">
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Onboard Inspection', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Lubrication System Assessment', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Equipment Evaluation', 'athen-marine' ); ?></span>
-					<span class="am-svc-card__tag"><?php esc_html_e( 'Maintenance Recommendations', 'athen-marine' ); ?></span>
-				</div>
-				<hr class="am-svc-card__divider">
-				<a href="/contact/" class="am-svc-card__link"><?php esc_html_e( 'Enquire Now →', 'athen-marine' ); ?></a>
-			</div>
+			<?php endforeach; ?>
 		</div>
 	</section>
 
-	<!-- ============================= PROCESS ============================= -->
-	<section class="am-svc-process">
-		<span class="am-svc-process__label am-about-section-label--lg"><?php esc_html_e( 'How It Works', 'athen-marine' ); ?></span>
-		<h2 class="am-svc-process__title"><?php esc_html_e( 'Simple. Fast. Reliable.', 'athen-marine' ); ?></h2>
-
-		<div class="am-svc-process__steps">
-			<div class="am-svc-step">
-				<div class="am-svc-step__num">1</div>
-				<h3 class="am-svc-step__title"><?php esc_html_e( 'Connect With Us', 'athen-marine' ); ?></h3>
-				<p class="am-svc-step__desc"><?php esc_html_e( 'Share your vessel requirements with our team.', 'athen-marine' ); ?></p>
-			</div>
-			<div class="am-svc-step">
-				<div class="am-svc-step__num">2</div>
-				<h3 class="am-svc-step__title"><?php esc_html_e( 'Technical Evaluation', 'athen-marine' ); ?></h3>
-				<p class="am-svc-step__desc"><?php esc_html_e( 'Review of lubricant requirements, applications & recommend Athen equivalents', 'athen-marine' ); ?></p>
-			</div>
-			<div class="am-svc-step">
-				<div class="am-svc-step__num">3</div>
-				<h3 class="am-svc-step__title"><?php esc_html_e( 'Commercial Proposal', 'athen-marine' ); ?></h3>
-				<p class="am-svc-step__desc"><?php esc_html_e( 'Detailed offer with competitive pricing and recommended solutions.', 'athen-marine' ); ?></p>
-			</div>
-			<div class="am-svc-step">
-				<div class="am-svc-step__num">4</div>
-				<h3 class="am-svc-step__title"><?php esc_html_e( 'Purchase Confirmation', 'athen-marine' ); ?></h3>
-				<p class="am-svc-step__desc"><?php esc_html_e( 'Order acknowledged and processed for execution.', 'athen-marine' ); ?></p>
-			</div>
-			<div class="am-svc-step">
-				<div class="am-svc-step__num">5</div>
-				<h3 class="am-svc-step__title"><?php esc_html_e( 'Supply Execution', 'athen-marine' ); ?></h3>
-				<p class="am-svc-step__desc"><?php esc_html_e( 'Timely delivery as per vessel schedule supported by our global supply network', 'athen-marine' ); ?></p>
-			</div>
-		</div>
-	</section>
+	<?php include get_template_directory() . '/parts/services-process.php'; ?>
 
 	<!-- ============================= CTA ============================= -->
 	<section class="am-svc-cta">
