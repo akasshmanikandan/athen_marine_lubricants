@@ -66,12 +66,7 @@
 				'label'  => __( 'Home', 'athen-marine' ),
 				'url'    => '/',
 				'active' => ( $am_current_url === '/' ),
-				'mega'   => array(
-					array( 'label' => __( 'Find Your Lubricant', 'athen-marine' ), 'url' => '/#finder' ),
-					array( 'label' => __( 'Products Overview', 'athen-marine' ), 'url' => '/#products' ),
-					array( 'label' => __( 'Why Choose Athen', 'athen-marine' ), 'url' => '/#vision' ),
-					array( 'label' => __( 'FAQs', 'athen-marine' ), 'url' => '/#faq' ),
-				),
+				'mega'   => null,
 			),
 			array(
 				'label'  => __( 'About Us', 'athen-marine' ),
@@ -102,11 +97,11 @@
 				'url'    => '/products/',
 				'active' => ( strpos( $am_current_url, 'products' ) !== false ),
 				'mega'   => array(
-					array( 'label' => __( 'Main Grades', 'athen-marine' ), 'url' => '/products/#main-grades' ),
-					array( 'label' => __( 'Secondary Grades', 'athen-marine' ), 'url' => '/products/#secondary-grades' ),
-					array( 'label' => __( 'Synthetics', 'athen-marine' ), 'url' => '/products/#synthetics' ),
-					array( 'label' => __( 'Greases', 'athen-marine' ), 'url' => '/products/#greases' ),
-					array( 'label' => __( 'EAL', 'athen-marine' ), 'url' => '/products/#eal' ),
+					array( 'label' => __( 'Main Grades', 'athen-marine' ), 'url' => '/products/main-grades/' ),
+					array( 'label' => __( 'Secondary Grades', 'athen-marine' ), 'url' => '/products/secondary-grades/' ),
+					array( 'label' => __( 'Synthetics', 'athen-marine' ), 'url' => '/products/synthetics/' ),
+					array( 'label' => __( 'Greases', 'athen-marine' ), 'url' => '/products/greases/' ),
+					array( 'label' => __( 'EAL', 'athen-marine' ), 'url' => '/products/eal/' ),
 					array( 'label' => __( 'Product Catalog', 'athen-marine' ), 'url' => '/product-catalog/' ),
 					array( 'label' => __( 'Certificates', 'athen-marine' ), 'url' => '/certificates/' ),
 				),
@@ -115,10 +110,7 @@
 				'label'  => __( 'Delivery Network', 'athen-marine' ),
 				'url'    => '/delivery-network',
 				'active' => ( strpos( $am_current_url, 'delivery' ) !== false ),
-				'mega'   => array(
-					array( 'label' => __( 'Interactive Port Map', 'athen-marine' ), 'url' => '/delivery-network/#map' ),
-					// Hidden until Egypt page is ready to show: array( 'label' => __( 'Egypt Coverage', 'athen-marine' ), 'url' => '/egypt/' ),
-				),
+				'mega'   => null,
 			),
 			array(
 				'label'  => __( 'Contact', 'athen-marine' ),

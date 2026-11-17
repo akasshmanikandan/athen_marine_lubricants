@@ -27,11 +27,11 @@
 			<div class="am-footer__col">
 				<h4><?php esc_html_e( 'PRODUCTS & RESOURCES', 'athen-marine' ); ?></h4>
 				<ul>
-					<li><a href="/products/#main-grades"><?php esc_html_e( 'Main Grades', 'athen-marine' ); ?></a></li>
-					<li><a href="/products/#secondary-grades"><?php esc_html_e( 'Secondary Grades', 'athen-marine' ); ?></a></li>
-					<li><a href="/products/#synthetics"><?php esc_html_e( 'Synthetics', 'athen-marine' ); ?></a></li>
-					<li><a href="/products/#eal"><?php esc_html_e( 'EAL', 'athen-marine' ); ?></a></li>
-					<li><a href="/products/#greases"><?php esc_html_e( 'Greases', 'athen-marine' ); ?></a></li>
+					<li><a href="/products/main-grades/"><?php esc_html_e( 'Main Grades', 'athen-marine' ); ?></a></li>
+					<li><a href="/products/secondary-grades/"><?php esc_html_e( 'Secondary Grades', 'athen-marine' ); ?></a></li>
+					<li><a href="/products/synthetics/"><?php esc_html_e( 'Synthetics', 'athen-marine' ); ?></a></li>
+					<li><a href="/products/eal/"><?php esc_html_e( 'EAL', 'athen-marine' ); ?></a></li>
+					<li><a href="/products/greases/"><?php esc_html_e( 'Greases', 'athen-marine' ); ?></a></li>
 					<li><a href="/industries"><?php esc_html_e( 'Industries We Support', 'athen-marine' ); ?></a></li>
 					<li><a href="/glossary"><?php esc_html_e( 'Glossary', 'athen-marine' ); ?></a></li>
 				</ul>
