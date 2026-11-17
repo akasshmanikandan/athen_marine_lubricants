@@ -37,7 +37,6 @@
 				</div>
 			</article>
 			<article class="am-board__card">
-				<img class="am-board__photo" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/board-chris-todd.jpg" alt="<?php esc_attr_e( 'Chris Todd', 'athen-marine' ); ?>" loading="lazy">
 				<div class="am-board__body">
 					<h3 class="am-board__name"><?php esc_html_e( 'Chris Todd', 'athen-marine' ); ?></h3>
 					<span class="am-board__role"><?php esc_html_e( 'CEO, Eleven Energy', 'athen-marine' ); ?></span>
